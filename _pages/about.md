@@ -9,17 +9,15 @@ profile:
   image: prof_pic.jpg
   image_cicular: false # crops the image to make it circular
   address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p> Schapiro CEPSR 8th Floor </p>
+    <p> 530 W 120th St </p>
+    <p> New York City, NY, 10027</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a third year Ph.D. student at Columbia University supervised by Pr. Ethan Katz-Bassett, Pr. Vishal Misra and Pr. Daniel Rubenstein. My main interests are in internet measurement, complex systems analysis, and information geometry. I am working on finding new models to understand the interactions between virtual and geographical space. I like to leverage theory to validate qualitative models on top of carefully crafted measurements.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+In my free time, I like to collect jazz records and do improvisation. I am also an avid poetry reader and a friend chicken eater. 
