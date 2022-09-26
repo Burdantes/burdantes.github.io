@@ -1,12 +1,9 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - Burdantes
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - Burdantes/IPv4Squatting
+  - Burdantes/Curvature-based-Analysis-of-Network-Connectivity-in-Private-Backbone-Infrastructures
+  - Burdantes/DeepLearningCOMS4995
+  - standerson4/iGDB
+  
