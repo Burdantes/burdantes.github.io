@@ -6,7 +6,7 @@ subtitle: <a href=https://www.columbia.edu/>Columbia University</a>
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: prof_pic_test.jpg
   image_cicular: false # crops the image to make it circular
   address: >
     <p>Schapiro CEPSR 8th Floor</p>
