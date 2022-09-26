@@ -1,80 +1,32 @@
 ---
 layout: page
-title: project 1
-description: a project with a background image
+title: Geopolitics of the Internet
+description:
 img: assets/img/12.jpg
 importance: 1
 category: work
 ---
+One can understand the geography of the Internet and the datasphere through three approaches: the datasphere as embedded in the geographic space, the geographic space as embedded in the datasphere, and Internet as a new space on its own. Representing the “hardware”, i.e. physical equipment and cable infrastructures, data centres, exchange points, in a geographical space enables discussion about Internet issues such as:
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+a) A classical geographical and geopolitical problems, in terms of territory planning and spatial inequalities;
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+b) A framework that leverages the cyberspace and data can be gathered over the Internet to generate information that is useful to understand concrete geographical and geopolitical interaction in the real world, making Internet measurements a new observation tool for monitoring the world’s evolution;
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+c) A framework that represents cyberspace as a space that is independent of geography where existing relationships generate complex topology and structures.
+
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/AS_level.jpg" title="world_topology" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal it's glory in the next row of images.
-
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+  AS-level topology as observed from BGP feeds in 2020.
 </div>
 
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+In a very short period of time, driven by a decisively new geostrategic environment, major stakeholders of the Internet infrastructure have shown their will to bend and manipulate the public Internet for geopolitical reasons. However, these examples only illustrate a fundamental principle of the Internet. As a sociotechnical network, it is administered, controlled, and thus shaped by human actors following, among other things, prevailing power relationships and constraints. Conversely, the architecture of Internet infrastructures influences power relationships and equilibria around the world. But routing is a global phenomenon that transcends the political geography that governments have relied upon to assert their authority. The conference thus aims to challenge and question the representations underlying concepts subject to a wide range of interpretations like “digital sovereignty”. States now invoke the matter to assert their authority on data routing and infrastructures. They also attempt to control, divert, or spy on data flows both within and outside of their territories, and sometimes resort to political sanctions that can have an effect on routing and to the free access to the Internet.
 
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
+
 ```
 {% endraw %}
