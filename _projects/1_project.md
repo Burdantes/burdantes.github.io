@@ -2,7 +2,7 @@
 layout: page
 title: Geopolitics of the Internet
 description:
-img: assets/img/12.jpg
+img: assets/img/as_level_spectral.jpg
 importance: 1
 category: work
 ---
@@ -26,3 +26,5 @@ c) A framework that represents cyberspace as a space that is independent of geog
 
 
 In a very short period of time, driven by a decisively new geostrategic environment, major stakeholders of the Internet infrastructure have shown their will to bend and manipulate the public Internet for geopolitical reasons. However, these examples only illustrate a fundamental principle of the Internet. As a sociotechnical network, it is administered, controlled, and thus shaped by human actors following, among other things, prevailing power relationships and constraints. Conversely, the architecture of Internet infrastructures influences power relationships and equilibria around the world. But routing is a global phenomenon that transcends the political geography that governments have relied upon to assert their authority. The conference thus aims to challenge and question the representations underlying concepts subject to a wide range of interpretations like “digital sovereignty”. States now invoke the matter to assert their authority on data routing and infrastructures. They also attempt to control, divert, or spy on data flows both within and outside of their territories, and sometimes resort to political sanctions that can have an effect on routing and to the free access to the Internet.
+
+**Conferences invited:** RIPE Meeting \\
