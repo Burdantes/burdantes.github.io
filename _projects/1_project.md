@@ -25,13 +25,14 @@ c) A framework that represents cyberspace as a space that is independent of geog
 </div>
 
 
-In a very short period of time, driven by a decisively new geostrategic environment, major stakeholders of the Internet infrastructure have shown their will to bend and manipulate the public Internet for geopolitical reasons. However, these examples only illustrate a fundamental principle of the Internet. As a sociotechnical network, it is administered, controlled, and thus shaped by human actors following, among other things, prevailing power relationships and constraints. Conversely, the architecture of Internet infrastructures influences power relationships and equilibria around the world. But routing is a global phenomenon that transcends the political geography that governments have relied upon to assert their authority. The conference thus aims to challenge and question the representations underlying concepts subject to a wide range of interpretations like “digital sovereignty”. States now invoke the matter to assert their authority on data routing and infrastructures. They also attempt to control, divert, or spy on data flows both within and outside of their territories, and sometimes resort to political sanctions that can have an effect on routing and to the free access to the Internet.
+In a very short period of time, driven by a decisively new geostrategic environment, major stakeholders of the Internet infrastructure have shown their will to bend and manipulate the public Internet for geopolitical reasons. However, these examples only illustrate a fundamental principle of the Internet. As a sociotechnical network, it is administered, controlled, and thus shaped by human actors following, among other things, prevailing power relationships and constraints. Conversely, the architecture of Internet infrastructures influences power relationships and equilibria around the world. But routing is a global phenomenon that transcends the political geography that governments have relied upon to assert their authority. The research thus aims to challenge and question the representations underlying concepts subject to a wide range of interpretations like “digital sovereignty”. States now invoke the matter to assert their authority on data routing and infrastructures. They also attempt to control, divert, or spy on data flows both within and outside of their territories, and sometimes resort to political sanctions that can have an effect on routing and to the free access to the Internet. This work is currently on-going and is a collaboration with Louis Petiniaud, Kevin Limonier and Frederick Douzet and has led to several publications and presentations
 
-**Conferences invited:** <br>
+**Presentations and conferences:** <br>
 <a href="https://www.menog.org/meetings/menog-19/agenda/loqman-salamatian/">MENOG 19</a><br>
 <a href="https://www.ripe.net/participate/meetings/regional-meetings/ripe-ncc-day-moscow/loqman-salamatian">RIPE NCC Day</a><br>
 <a href="https://nog.fi/meeting/2022.06/ripe-ncc-update.pdf">Virtual Peering Series - Central Asia</a><br>
 International conference on the Geopolitics of Internet Routes<br>
+<a href="https://app.swapcard.com/widget/event/fic-2020/planning/UGxhbm5pbmdfOTM4ODE="> Masterclass at the International Forum of Cybersecurity 2020</a>
 
-**Grants**:
+**Grants**: <br>
 RIPE RACI Grants x 2
