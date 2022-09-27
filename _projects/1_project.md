@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Geopolitics of the Internet
-description:
-img: assets/img/as_level_spectral.jpg
+description: Toward developing methodologies to understand the relationship between the Internet and people.
+img: assets/img/as_level_spectral.png
 importance: 1
-category: work
+category: multidisciplinary
 ---
 One can understand the geography of the Internet and the datasphere through three approaches: the datasphere as embedded in the geographic space, the geographic space as embedded in the datasphere, and Internet as a new space on its own. Representing the “hardware”, i.e. physical equipment and cable infrastructures, data centres, exchange points, in a geographical space enables discussion about Internet issues such as:
 
@@ -27,4 +27,11 @@ c) A framework that represents cyberspace as a space that is independent of geog
 
 In a very short period of time, driven by a decisively new geostrategic environment, major stakeholders of the Internet infrastructure have shown their will to bend and manipulate the public Internet for geopolitical reasons. However, these examples only illustrate a fundamental principle of the Internet. As a sociotechnical network, it is administered, controlled, and thus shaped by human actors following, among other things, prevailing power relationships and constraints. Conversely, the architecture of Internet infrastructures influences power relationships and equilibria around the world. But routing is a global phenomenon that transcends the political geography that governments have relied upon to assert their authority. The conference thus aims to challenge and question the representations underlying concepts subject to a wide range of interpretations like “digital sovereignty”. States now invoke the matter to assert their authority on data routing and infrastructures. They also attempt to control, divert, or spy on data flows both within and outside of their territories, and sometimes resort to political sanctions that can have an effect on routing and to the free access to the Internet.
 
-**Conferences invited:** RIPE Meeting \\
+**Conferences invited:** <br>
+<a href="https://www.menog.org/meetings/menog-19/agenda/loqman-salamatian/">MENOG 19</a><br>
+<a href="https://www.ripe.net/participate/meetings/regional-meetings/ripe-ncc-day-moscow/loqman-salamatian">RIPE NCC Day</a><br>
+<a href="https://nog.fi/meeting/2022.06/ripe-ncc-update.pdf">Virtual Peering Series - Central Asia</a><br>
+International conference on the Geopolitics of Internet Routes<br>
+
+**Grants**:
+RIPE RACI Grants x 2
