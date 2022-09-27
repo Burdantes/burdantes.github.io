@@ -1,7 +1,7 @@
 ---
 layout: post
 title: IMC Paper
-date: 2022-09-26 15:59:00-0400
+date: 2022-09-10 15:59:00-0400
 inline: true
 ---
 

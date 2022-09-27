@@ -18,6 +18,6 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a third year Ph.D. student at Columbia University supervised by Pr. Ethan Katz-Bassett, Pr. Vishal Misra and Pr. Daniel Rubenstein. My main interests are in internet measurement, complex systems analysis, and information geometry. I am working on finding new models to understand the interactions between virtual and geographical space. I like to leverage theory to validate qualitative models on top of carefully crafted measurements.
+I am a rising third year Ph.D. student at Columbia University supervised by Pr. Ethan Katz-Bassett, Pr. Vishal Misra and Pr. Daniel Rubenstein. My main interests are in internet measurement, complex systems analysis, and information geometry. I am working on finding new models to understand the interactions between virtual and geographical space. I like to leverage theory to validate qualitative models on top of carefully crafted measurements. I think of what I do as discovery-oriented more than engineering-oriented even though I like being systems to back up the theory. I also get a great deal of satisfaction out of teaching and mentoring students so feel free to reach out to me if you are looking for research project or have general questions about grad school.
 
-In my free time, I like to collect jazz records and eat Iranian food.
+In my free time, I like to collect jazz records and eat Iranian food. I also like to play ping-pong.
