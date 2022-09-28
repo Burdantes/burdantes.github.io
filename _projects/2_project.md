@@ -4,7 +4,7 @@ title: Iranian Internet
 description: Understanding how Iranian Internet evolved to become fully independent and the impact on Iranian's life
 img: assets/img/iran.jpg
 importance: 2
-category: multidisciplinary
+category: old project 
 ---
 In this project, we show that Iran has leveraged BGP to achieve three specific strategic goals: 1) the pursuit of a self-sustaining national Internet with controlled borders as seemed to have been used in the current events 2) the desire to set up an Iranian Intranet to facilitate censorship which is a passive consequence from the architecture 3) the leverage of connectivity as a tool of regional influence through BGP dependencies. We show that the evolution of the Iranian AS landscape has happened along with a bigger governmental control.
 We also note that the Iranian government has been using BGP-tampering for the past few years with increasingly high firepower.

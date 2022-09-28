@@ -5,7 +5,7 @@ permalink: /projects/
 description: Here is a non-exhaustive list of projects I have been involved in.
 nav: true
 nav_order: 2
-display_categories: [multidisciplinary]
+display_categories: [current project, old project]
 horizontal: false
 ---
 

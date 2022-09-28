@@ -4,7 +4,7 @@ title: Geopolitics of the Internet
 description: Toward developing methodologies to understand the relationship between the Internet and people.
 img: assets/img/as_level_spectral.png
 importance: 1
-category: multidisciplinary
+category: old projects
 ---
 One can understand the geography of the Internet and the datasphere through three approaches: the datasphere as embedded in the geographic space, the geographic space as embedded in the datasphere, and Internet as a new space on its own. Representing the “hardware”, i.e. physical equipment and cable infrastructures, data centres, exchange points, in a geographical space enables discussion about Internet issues such as:
 

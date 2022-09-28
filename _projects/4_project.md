@@ -4,7 +4,7 @@ title: Riemannian Manifold of the Internet
 description: Toward building a new representation of the Internet
 img: assets/img/updated_manifold_view.jpg
 importance: 1
-category: multidisciplinary
+category: current project
 ---
 You can’t see it, but when you enter something in the search bar, there is a whole network of connections that happens. We typically don’t think about the internet having a map, but I likened his work to figuring out what the map of the internet is.
 
