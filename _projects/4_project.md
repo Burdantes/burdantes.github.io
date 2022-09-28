@@ -4,16 +4,24 @@ title: Riemannian Manifold of the Internet
 description: Toward building a new representation of the Internet
 img: assets/img/updated_manifold_view.jpg
 importance: 1
-category: current project
+category: current projects
 ---
+### Collaborators:
+<ul>
+   <li>Scott Anderson (University of Wisconsin-Madison)</li>
+   <li>Joshua Mathews (University of Wisconsin-Madison)</li>
+   <li>Paul Barford (University of Wisconsin-Madison)</li>
+   <li>Mark Crovella (Boston University)</li>
+   <li>Walter Willinger (Niksun Inc.)</li>
+</ul>
+
 You can’t see it, but when you enter something in the search bar, there is a whole network of connections that happens. We typically don’t think about the internet having a map, but I likened his work to figuring out what the map of the internet is.
 
 Gradually, cloud and content providers that dominate most of the web have started to build their own networks straight to the user instead of going through multiple different service providers (like Sprint, AT&T, and Verizon) to get to the user. This means most pathways are obscured from being seen. The reasons that service providers obscure their pathways are to protect their equipment, like where their routers are located and what they’re doing, which could open up a host of problems. It also brings a competitive advantage to hiding the relationship between Google and another site, which can be determined through the amount of traffic going from Google to a site.
 
-
 With these private backbone infrastructures, the standard mapping tool (called traceroute) can no longer be used to evaluate network connectivity on the public web. Companies are able to manipulate traceroute so the information that it’s giving is not completely accurate. Other providers have disallowed traceroute in their networks.
 
-Without traceroute, it’s harder to obtain useful insight into network structures. There is nothing holding companies accountable– they are able to make claims about the performance of their networks without verification from outside sources. It’s also harder for researchers such as Crovella to see what the maps of the internet look like. In order to get around this problem, Crovella and his team have used light-weight measurements combined with heavy-weight mathematical analysis tools.
+Without traceroute, it’s harder to obtain useful insight into network structures. There is nothing holding companies accountable– they are able to make claims about the performance of their networks without verification from outside sources. It’s also harder for researchers to see what the maps of the internet look like. In order to get around this problem, we came up with a light-weight measurements combined with heavy-weight mathematical analysis tools.
 
 A light-weight analysis tool would be measuring the end-to-end round trip delay (RTT) of information going through the network. RTT can then be augmented in the form of geolocation and path endpoints. Through triangulation, we are able to measure the distance between a user and the router on the map by taking data points that are emitted from different locations. This meant he could geolocate where a router was in the world.
 

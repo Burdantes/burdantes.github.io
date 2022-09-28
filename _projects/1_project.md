@@ -6,6 +6,12 @@ img: assets/img/as_level_spectral.png
 importance: 1
 category: old projects
 ---
+<ul>
+   <li>Kevin Limonier (Geode/French Institute of Geopolitics)</li>
+   <li>Louis Petiniaud (Geode)</li>
+   <li>Frederick Douzet (Geode/French Institute of Geopolitics)</li>
+   <li>Kave Salamatian (University of Savoy)</li>
+</ul>
 One can understand the geography of the Internet and the datasphere through three approaches: the datasphere as embedded in the geographic space, the geographic space as embedded in the datasphere, and Internet as a new space on its own. Representing the “hardware”, i.e. physical equipment and cable infrastructures, data centres, exchange points, in a geographical space enables discussion about Internet issues such as:
 
 a) A classical geographical and geopolitical problems, in terms of territory planning and spatial inequalities;
