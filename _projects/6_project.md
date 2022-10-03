@@ -34,7 +34,7 @@ have to be reexamined to account for squat space.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/fig_map+heatmap.jpg" title="world_topology" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/fig_map+heatmap.png" title="world_topology" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
