@@ -4,7 +4,7 @@ title: Iranian Internet
 description: Understanding how Iranian Internet evolved to become fully independent and the impact on Iranian's life
 img: assets/img/iran.jpg
 importance: 2
-category: old projects
+category: applied
 ---
 ### Collaborators:
 <ul>

@@ -4,7 +4,7 @@ title: Riemannian Manifold of the Internet
 description: Toward building a new representation of the Internet
 img: assets/img/updated_manifold_view.jpg
 importance: 1
-category: current projects
+category: models
 ---
 ### Collaborators:
 <ul>
@@ -31,11 +31,11 @@ In addition to this, routes can be curved. What might appear to be a straight li
 
 We made an analogy to Einstein’s theory of relativity to come to the conclusion that the distance between nodes might be curved. In order to determine the distance, we used Riemannian geometry– a heavy-weight analysis tool that deals with continuous surfaces. However, most computer science deals with graphs.
 
-Using this mathematical toolking, we were able to see the paths that packets were taking in different cloud service providers such as AWS, Azure, and Amazon. Using the resulting manifold view, we turned the graphs of packets into a map of the world represented with elevation. The points of elevation on the graph show that there are multiple different paths a packet can take. The deeper the valley, the more limited the paths are between two locations.
+Using this mathematical toolkit, we were able to see the paths that packets were taking in different cloud service providers (AWS, Azure, and Amazon). Using the resulting manifold view, we turned the graphs of packets into a map of the world represented with elevation. The points of elevation on the graph show that there are multiple different paths a packet can take. The deeper the valley, the more limited the paths are between two locations.
 
 We were able to identify that deep valleys between Europe and Asia are because the Red Sea is a choke point for data traffic since cables have to go underwater. Some cloud providers are able to find better routes that go around this chokepoint, such as AWS.
 
-His research can help companies determine where to place new infrastructure to help with connectivity issues. Recently, we were invited to present to the Google Networking group.
+Our research can also help companies determine where to place new infrastructure to help with connectivity issues as was illustrated in our paper. Recently, we were invited to present to the Google Networking group.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -45,3 +45,12 @@ His research can help companies determine where to place new infrastructure to h
 <div class="caption">
 Our methodology in a nutshell.
 </div>
+
+**Presentations and conferences:** <br>
+Google WAN Lab<br>
+ACM Sigmetrics 2022 - Virtual
+
+**Papers**: <br>
+<a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=wfIuIdMAAAAJ&citation_for_view=wfIuIdMAAAAJ:Y0pCki6q_DkC">Curvature-based Analysis of Network Connectivity in Private Backbone Infrastructures</a><br>
+A Manifold View of Connectivity in the Private Backbone Networks of Hyperscalers - to be published in Communications of ACM in November 2022<br>
+Matisse: Visualizing Measured Internet Latencies as Manifolds - Under Submission<br>
