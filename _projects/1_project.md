@@ -4,7 +4,7 @@ title: Geopolitics of the Internet
 description: Toward developing methodologies to understand the relationship between the Internet and people.
 img: assets/img/as_level_spectral.png
 importance: 1
-category: models
+category: Models
 ---
 
 After learning about Iranian politics from my grandfather, a political activist who fled to France, my interest in political science flourished from his dream: an intellectual awakening of a nation enriched by the history of an early civilization and a constant quest for freedom. Early on, I was drawn to mathematical modeling to reason through a problem by abstraction of the problem’s specificity. The capacity of thinking in terms of underlying structure and their properties motivated my first five years of university. In parallel with my mathematics undergrad, I consistently kept up with political affairs in Iran, Russia, the Black Sea. During my first research internship in South Korea, I came to realize that networks were a fertile environment to understand human behavior, where one could also observe the emergence of political phenomena. At that time, I had unconsciously laid the foundation for some of the research I would perform later: The idea of approaching political phenomena through the prism of networks and mathematics.
@@ -81,5 +81,6 @@ RIPE RACI Grants x 2
 <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=wfIuIdMAAAAJ&citation_for_view=wfIuIdMAAAAJ:9yKSN-GCB0IC">Measuring the fragmentation of the Internet: the case of the Border Gateway Protocol (BGP) during the Ukrainian crisis</a><br>
 <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=wfIuIdMAAAAJ&citation_for_view=wfIuIdMAAAAJ:d1gkVwhDpl0C">The geopolitics behind the routes data travel: a case study of Iran</a><br>
 <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=wfIuIdMAAAAJ&citation_for_view=wfIuIdMAAAAJ:IjCSPb-OGe4C">Mapping the routes of the Internet for geopolitics: the case of Eastern Ukraine</a><br>
-<a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=wfIuIdMAAAAJ&citation_for_view=wfIuIdMAAAAJ:UeHWp8X0CEIC">Le rôle de la topologie d’Internet dans les territoires en conflit en Ukraine, une approche géopolitique du routage des données</a>
+<a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=wfIuIdMAAAAJ&citation_for_view=wfIuIdMAAAAJ:UeHWp8X0CEIC">Le rôle de la topologie d’Internet dans les territoires en conflit en Ukraine, une approche géopolitique du routage des données</a> <br>
+
 <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=wfIuIdMAAAAJ&citation_for_view=wfIuIdMAAAAJ:Tyk-4Ss8FVUC">Geopolitics of Routing</a>

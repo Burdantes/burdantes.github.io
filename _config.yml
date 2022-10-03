@@ -38,7 +38,7 @@ repo_theme_dark: dark           # https://github.com/anuraghazra/github-readme-s
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: true
+rss_icon: false
 
 # -----------------------------------------------------------------------------
 # Layout
@@ -64,7 +64,7 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # Social integration
 # -----------------------------------------------------------------------------
 
-github_username: # your GitHub user name
+github_username: Burdantes # your GitHub user name
 gitlab_username: # your GitLab user name
 twitter_username: burdantes # your Twitter handle
 linkedin_username: loqman-salamatian-20a2377a # your LinkedIn user name
@@ -82,7 +82,7 @@ dblp_url: # your DBLP profile url
 stackoverflow_id: #your stackoverflow id
 
 contact_note: >
-  Feel free to contact me at my personal webmail salamatianloqman @ gmail.com
+  Feel free to contact me on my professional webmail  ls3748.at.columbia.com
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification

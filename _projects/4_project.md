@@ -2,9 +2,9 @@
 layout: page
 title: Riemannian Manifold of the Internet
 description: Toward building a new representation of the Internet
-img: assets/img/updated_manifold_view.jpg
+img: assets/img/example_manifold.jpg
 importance: 1
-category: models
+category: Models
 ---
 ### Collaborators:
 <ul>
@@ -33,10 +33,21 @@ We made an analogy to Einstein’s theory of relativity to come to the conclusio
 
 Using this mathematical toolkit, we were able to see the paths that packets were taking in different cloud service providers (AWS, Azure, and Amazon). Using the resulting manifold view, we turned the graphs of packets into a map of the world represented with elevation. The points of elevation on the graph show that there are multiple different paths a packet can take. The deeper the valley, the more limited the paths are between two locations.
 
+<center>
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/updated_manifold_view.jpg" title="world_topology" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+Manifold representation of three large cloud providers
+</div>
+</center>
+
 We were able to identify that deep valleys between Europe and Asia are because the Red Sea is a choke point for data traffic since cables have to go underwater. Some cloud providers are able to find better routes that go around this chokepoint, such as AWS.
 
 Our research can also help companies determine where to place new infrastructure to help with connectivity issues as was illustrated in our paper. Recently, we were invited to present to the Google Networking group.
-
+<center>
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/summary_fig.jpg" title="world_topology" class="img-fluid rounded z-depth-1" %}
@@ -45,6 +56,7 @@ Our research can also help companies determine where to place new infrastructure
 <div class="caption">
 Our methodology in a nutshell.
 </div>
+</center>
 
 **Presentations and conferences:** <br>
 Google WAN Lab<br>

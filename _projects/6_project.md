@@ -4,7 +4,7 @@ title: IPv4 Squatters
 description: Who is the squatting IPv4 space
 img:
 importance: 2
-category: measurements
+category: Measurements
 ---
 ### Collaborators:
 <ul>
