@@ -4,7 +4,7 @@ title: Riemannian Manifold of the Internet
 description: Toward building a new representation of the Internet
 img: assets/img/example_manifold.png
 importance: 1
-category: Models
+category: Geometry
 ---
 ### Collaborators:
 <ul>
