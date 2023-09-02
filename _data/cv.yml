@@ -1,0 +1,9 @@
+- title:
+  type: map
+  contents:
+    - name: Full Name
+      value: Loqman Salamatian
+    - name: Date of Birth
+      value: 22th December 1995
+    - name: Languages
+      value: French, Farsi, English
