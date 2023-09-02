@@ -23,3 +23,27 @@ I am a rising fourth year Ph.D. candidate at Columbia University supervised by P
 I also get a great deal of satisfaction out of teaching and mentoring students so feel free to reach out to me if you are looking for research project or have interrogations about grad school.  
 
 Outside the academic realm, I'm an avid collector of jazz records and have a penchant for Iranian cuisine. I am also a big Football Manager player.
+
+
+
+#### Current research interests:
+
+<ul>
+<li> Mathematical modeling of the Internet </li>
+<li> Resilient networking </li>
+<li> Mathematical analysis of systems </li>
+<li> Computational social science on computer networks</li>
+<li> Riemannian geometry </li>
+<li> Geopolitics of the Internet </li>
+</ul>
+
+### Mentoring:
+Over recent years, I've had the honor of mentoring several exceptional undergraduate scholars on diverse research topics:.
+<ul>
+   <li>Cyrus Illick (Fall 2021 - Spring 2023) on a new protocol to avoid broadcasting storm : starting Ph.D. at Columbia University in Fall 2023 </li>
+   <li>Joshua Hahn (Summer 2022 - Fall 2022) on emulating causal models and understand how synthetic control recovers the underlying latent space.</li>
+   <li>Dominic Sobhani (Summer 2022 - Spring 2023) on a transformer architecture to simulate Internet traffic data.</li>
+   <li>Alfonso Luis (Fall 2022 - Spring 2023) on sampling without replacements and Bloom Filters. </li>
+   <li> Seung Joon Rhee (Summer 2023 - Now) on inferring and geolocating hypergiants peering connections </li>  
+   <li> Kylie Berg (Summer 2023 - Now) on quantum networking verification </li>
+</ul>
