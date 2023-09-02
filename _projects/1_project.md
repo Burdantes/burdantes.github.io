@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Mapping Russian Influence in Twitter
-description: Representing immaterial space through network.
+title: Mapping Russian Influence on Twitter
+description: Representing immaterial space through networks.
 img: assets/img/as_level_spectral.png
 importance: 1
 category: Geopolitics
@@ -12,8 +12,11 @@ category: Geopolitics
    <li>Colin Gerard (Geode/French Institute of Geopolitics)</li>
    <li>Guillhem Marotte (Geode/French Institute of Geopolitics)</li>
 </ul>
-After learning about Iranian politics from my grandfather, a political activist who fled to France, my interest in political science flourished from his dream: an intellectual awakening of a nation enriched by the history of an early civilization and a constant quest for freedom. Early on, I was drawn to mathematical modeling to reason through a problem by abstraction of the problem’s specificity. The capacity of thinking in terms of underlying structure and their properties motivated my first five years of university. In parallel with my mathematics undergrad, I consistently kept up with political affairs in Iran, Russia, the Black Sea. During my first research internship in South Korea, I came to realize that networks were a fertile environment to understand human behavior, where one could also observe the emergence of political phenomena. At that time, I had unconsciously laid the foundation for some of the research I would perform later: The idea of approaching political phenomena through the prism of networks and mathematics. In 2019-2020, I examined Russia’s influence in Twitter by building tools to quantitatively support (or infirm) reasoning made by colleagues who were experts in political science. I have also participated in building a standardized methodology to represent graph based on spring layout that is now used in Cassini, a consulting start-up in France. Our work has proven in the past that Russian influences have been used as a scapegoat in past controversies in France.
+AInspired by stories from my grandfather, a political activist who took refuge in France, I developed a profound interest in political science. His dream of igniting an intellectual renaissance in a nation shaped by ancient civilization's history and an enduring pursuit of freedom deeply resonated with me. My academic inclinations led me towards mathematical modeling, which I found to be an efficient tool for abstract reasoning, allowing me to focus on the foundational structure of problems. This approach formed the cornerstone of my first five years at university.
 
+While I pursued my undergraduate studies in mathematics, I maintained a keen interest in the political dynamics of Iran, Russia, and the Black Sea region. A pivotal moment came during my research internship in South Korea, where I discovered the potential of network analysis in understanding human behaviors and the emergence of political phenomena. This realization set the groundwork for my future research: to view political events through the lens of networks and mathematics.
+
+In 2019-2020, I delved into analyzing Russia’s influence on Twitter. I developed tools that provided quantitative evidence to support or refute hypotheses presented by my political science peers. Furthermore, I collaborated in crafting a standardized methodology for representing graphs, based on the spring layout. This methodology is now taught as part of the master of geopolitics in the University of Paris VIII. Our research has illuminated instances where Russian influences were erroneously cited in previous French controversies.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -21,7 +24,6 @@ After learning about Iranian politics from my grandfather, a political activist 
     </div>
 </div>
 <div class="caption">
-  AS-level topology as observed from BGP feeds in 2020.
 </div>
 
 **Presentations and conferences:** <br>
