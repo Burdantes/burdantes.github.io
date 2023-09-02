@@ -1,4 +1,4 @@
-- title: General Information
+- title:
   type: map
   contents:
     - name: Full Name
@@ -6,5 +6,4 @@
     - name: Date of Birth
       value: 22th December 1995
     - name: Languages
-      value: French, Farsi, English, German
-- title: Please download the attached PDF.  
+      value: French, Farsi, English
