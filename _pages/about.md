@@ -48,3 +48,10 @@ Over recent years, I've had the honor of mentoring several exceptional undergrad
    <li> Seung Joon Rhee (Summer 2023 - Now) on inferring and geolocating hypergiants peering connections </li>  
    <li> Kylie Berg (Summer 2023 - Now) on quantum networking verification </li>
 </ul>
+
+### News:
+<ul>
+<li>Our paper **A Manifold View of Connectivity in the Private Backbone Networks of Hyperscalers** has been published in Communications of the ACM (CACM) as a Research Highlight!</li>
+<li>Our paper **iGDB: Connecting the Physical and Logical Layers of the Internet** has been accepted at ACM IMC 2022!</li>
+<li> Our paper on **Who are the IPv4 squatters?** was accepted at SIGCOMM Computer Communication Review - <span style="color: red;">Awarded best of CCR</span>.</li>
+</ul>
