@@ -26,7 +26,7 @@ Outside the academic realm, I'm an avid collector of jazz records and have a pen
 
 
 
-#### Current research interests:
+<h3>Current research interests:</h3>
 
 <ul>
 <li> Mathematical modeling of the Internet </li>
@@ -37,12 +37,12 @@ Outside the academic realm, I'm an avid collector of jazz records and have a pen
 <li> Geopolitics of the Internet </li>
 </ul>
 
-### Mentoring:
+<h3>Mentoring:</h3>
 
 Over recent years, I've had the honor of mentoring several exceptional undergraduate scholars on diverse research topics:.
 <ul>
-   <li>Cyrus Illick (Fall 2021 - Spring 2023) on a new protocol to avoid broadcasting storm : starting Ph.D. at Columbia University in Fall 2023 </li>
-   <li>Joshua Hahn (Summer 2022 - Fall 2022) on emulating causal models and understand how synthetic control recovers the underlying latent space.</li>
+   <li>Cyrus Illick (Fall 2021 - Spring 2023) on a new protocol to avoid broadcasting storm: starting Ph.D. at Columbia University in Fall 2023 </li>
+   <li>Joshua Hahn (Summer 2022 - Fall 2022) on emulating causal models and understanding how synthetic control recovers the underlying latent space.</li>
    <li>Dominic Sobhani (Summer 2022 - Spring 2023) on a transformer architecture to simulate Internet traffic data.</li>
    <li>Alfonso Luis (Fall 2022 - Spring 2023) on sampling without replacements and Bloom Filters. </li>
    <li> Seung Joon Rhee (Summer 2023 - Now) on inferring and geolocating hypergiants peering connections </li>  
