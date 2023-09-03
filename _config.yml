@@ -1,15 +1,19 @@
 # -----------------------------------------------------------------------------
 # Site settings
 # -----------------------------------------------------------------------------
-name: Jay Sarkar
-email: jsarkar@gmail.com
+name: Loqman Salamatian
+email: ls3748@columbia.edu
 
 description: > # this means to ignore newlines until "url:"
-  Jay Sarkar's research website
+    Loqman Salamatian's personal website. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
 #  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 
+footer_text: >
+keywords: Loqman Salamatian, Columbia University # add your own keywords or leave empty
+
+lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 url: https://jay-sarkar.github.io # the base hostname & protocol for your site
 baseurl:  # the subpath of your site, e.g. /blog/
 # url:  # the base hostname & protocol for your site
@@ -19,18 +23,36 @@ last_updated:   # leave blank if you don't want to display last updated
 # -----------------------------------------------------------------------------
 # Social integration
 # -----------------------------------------------------------------------------
-github_username: jay-sarkar
-# twitter_username: # put your twitter username
-linkedin_username: jaysarkar # put your linkedin username
-scholar_authorid: wBRwFqAAAAAJ&hl # put your google scholar author id
-# contact_note: >
- # You can even add a little note about which of these is the best way to reach you.
 
+github_username: Burdantes # your GitHub user name
+gitlab_username: # your GitLab user name
+twitter_username: burdantes # your Twitter handle
+linkedin_username: loqman-salamatian-20a2377a # your LinkedIn user name
+scholar_userid: wfIuIdMAAAAJ # your Google Scholar ID
+orcid_id: # your ORCID ID
+medium_username: # your Medium username
+quora_username: # your Quora username
+publons_id: # your ID on Publons
+research_gate_profile: # your profile on ResearchGate
+blogger_url: # your blogger URL
+work_url: # work page URL
+keybase_username: # your keybase user name
+wikidata_id: # your wikidata id
+dblp_url: # your DBLP profile url
+stackoverflow_id: #your stackoverflow id
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
+<<<<<<< HEAD
 blog_name: Jay's notes
 blog_description: Some notes about ideas I find interesting
+=======
+
+blog_name: Loqman Salamatian Personal Website # blog_name will be displayed in your blog page
+blog_nav_title: blog # your blog must have a title for it to be displayed in the nav bar
+blog_description: Loqman Salamatian's personal website
+permalink: /blog/:year/:title/
+>>>>>>> parent of b94b4bd (Deleting blog)
 
 # Pagination
 paginate: 4
