@@ -2,15 +2,8 @@
 layout: cv
 permalink: /cv/
 title: CV
-description: My CV/resume
+description: My full CV.
 nav: true
-nav_order : 2
-news: false
-social: false
+nav_order : 4
+cv_pdf: Curriculum_Vitae.pdf
 ---
-
-### full CV
-
-My full CV can be found <a class="page-link" href="{{ '/assets/Curriculum_Vitae.pdf' | prepend: site.baseurl | prepend: site.url }}">here</a> .
-
-------
