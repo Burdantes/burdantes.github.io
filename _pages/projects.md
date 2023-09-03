@@ -1,8 +1,8 @@
 ---
 layout: page
-title: projects
+title: Projects
 permalink: /projects/
-description: This page lists some of my projects
+description: This page lists some of the projects I have participated in the past.
 ---
 ## Mapping Russian Influence on Twitter
 
