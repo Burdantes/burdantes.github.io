@@ -38,6 +38,7 @@ Outside the academic realm, I'm an avid collector of jazz records and have a pen
 </ul>
 
 ### Mentoring:
+
 Over recent years, I've had the honor of mentoring several exceptional undergraduate scholars on diverse research topics:.
 <ul>
    <li>Cyrus Illick (Fall 2021 - Spring 2023) on a new protocol to avoid broadcasting storm : starting Ph.D. at Columbia University in Fall 2023 </li>
