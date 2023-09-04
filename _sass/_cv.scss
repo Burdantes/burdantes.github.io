@@ -170,13 +170,14 @@ ul.timeline li {
 
 span.badge-toc {
   color: var(--global-bg-color);
-  background-color: var(--global-theme-color);
+  background-color: purple;
   border-radius: 0.125rem;
   padding: 0.125rem 0.5rem 0.125rem 0.5rem;
   font-weight: 700 !important;
   display: inline-block;
   inline-size: fit-content;
 }
+
 
 ul.timeline li::before {
   content: "";
