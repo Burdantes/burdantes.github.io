@@ -4,7 +4,7 @@
     - name: Full Name
       value: Loqman Salamatian
     - name: Date of Birth
-      value: 22 December 1905
+      value: 22 December 1995
     - name: Languages
       value: English, French, Farsi, German
 
@@ -15,7 +15,7 @@
       institution: Columbia University, New York City, USA
       year: 2020
       description:
-        - Adviced by Pr. Ethan Katz-Bassett, Vishal Misra and Dan Rubenstein
+        - Advised by Pr. Ethan Katz-Bassett, Vishal Misra and Dan Rubenstein
         - title: Research
           contents:
             - Manifold Representation of the Internet
