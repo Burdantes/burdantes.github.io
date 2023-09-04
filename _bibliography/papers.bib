@@ -1,6 +1,7 @@
 ---
 ---
 @article{salamatian2018geometric,
+  abbr = {ArXiv},
   title={A geometric approach for real-time monitoring of dynamic large scale graphs: AS-level graphs illustrated},
   author={Salamatian, Loqman and Kaafar, Dali and Salamatian, Kav{\'e}},
   journal={arXiv preprint arXiv:1806.00676},
@@ -8,6 +9,7 @@
 }
 
 @article{salamatian2021geopolitics,
+abbr = {Journal of Cybersecurity},
   title={The geopolitics behind the routes data travel: a case study of Iran},
   author={Salamatian, Loqman and Douzet, Fr{\'e}d{\'e}rick and Salamatian, Kav{\'e} and Limonier, K{\'e}vin},
   journal={Journal of Cybersecurity},
@@ -20,6 +22,7 @@
 }
 
 @inproceedings{douzet2020measuring,
+  abbr = {Cycon},
   title={Measuring the fragmentation of the Internet: the case of the Border Gateway Protocol (BGP) during the Ukrainian crisis},
   author={Douzet, Fr{\'e}d{\'e}rick and P{\'e}tiniaud, Louis and Salamatian, Loqman and Limonier, Kevin and Salamatian, Kav{\'e} and Alchus, Thibaut},
   booktitle={2020 12th International Conference on Cyber Conflict (CyCon)},
@@ -31,6 +34,7 @@
 }
 
 @article{petiniaud2020role,
+  abbr = {Espace Pol},
   title={Le r{\^o}le de la topologie d’Internet dans les territoires en conflit en Ukraine, une approche g{\'e}opolitique du routage des donn{\'e}es},
   author={P{\'e}tiniaud, Louis and Salamatian, Loqman},
   journal={L’Espace Politique. Revue en ligne de g{\'e}ographie politique et de g{\'e}opolitique},
@@ -40,6 +44,7 @@
 }
 
 @article{limonier2021mapping,
+  abbr = {First Monday},
   title={Mapping the routes of the Internet for geopolitics: the case of Eastern Ukraine},
   author={Limonier, Kevin and Douzet, Fr{\'e}d{\'e}rick and P{\'e}tiniaud, Louis and Salamatian, Loqman and Salamatian, Kave},
   journal={First Monday},
@@ -48,6 +53,7 @@
 }
 
 @article{gerard2020rt,
+  abbr = {Espace Pol},
   title={RT, Sputnik et le mouvement des Gilets jaunes: cartographie des communaut{\'e}s politiques sur Twitter},
   author={G{\'e}rard, Colin and Marotte, Guilhem and Salamatian, Loqman},
   journal={L’Espace Politique. Revue en ligne de g{\'e}ographie politique et de g{\'e}opolitique},
@@ -64,6 +70,7 @@
 }
 
 @article{salamatian2022curvature,
+abbr = {ACM Sigmetrics},
   title={Curvature-based Analysis of Network Connectivity in Private Backbone Infrastructures},
   author={Salamatian, Loqman and Anderson, Scott and Matthews, Joshua and Barford, Paul and Willinger, Walter and Crovella, Mark},
   journal={Proceedings of the ACM on Measurement and Analysis of Computing Systems},
@@ -73,4 +80,45 @@
   year={2022},
   publisher={ACM New York, NY, USA},
   selected={true}
+}
+
+@article{10.1145/3604620,
+abbr = {CACM},
+author = {Salamatian, Loqman and Anderson, Scott and Mathews, Joshua and Barford, Paul and Willinger, Walter and Crovella, Mark},
+title = {A Manifold View of Connectivity in the Private Backbone Networks of Hyperscalers},
+year = {2023},
+issue_date = {August 2023},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {66},
+number = {8},
+issn = {0001-0782},
+url = {https://doi.org/10.1145/3604620},
+doi = {10.1145/3604620},
+abstract = {As hyperscalers such as Google, Microsoft, and Amazon play an increasingly important role in today's Internet, they are also capable of manipulating probe packets that traverse their privately owned and operated backbones. As a result, standard traceroute-based measurement techniques are no longer a reliable means for assessing network connectivity in these global-scale cloud provider infrastructures. In response to these developments, we present a new empirical approach for elucidating connectivity in these private backbone networks. Our approach relies on using only "lightweight" (i.e., simple, easily interpretable, and readily available) measurements, but requires applying "heavyweight" mathematical techniques for analyzing these measurements. In particular, we describe a new method that uses network latency measurements and relies on concepts from Riemannian geometry (i.e., Ricci curvature) to assess the characteristics of the connectivity fabric of a given network infrastructure. We complement this method with a visualization tool that generates a novel manifold view of a network's delay space. We demonstrate our approach by utilizing latency measurements from available vantage points and virtual machines running in datacenters of three large cloud providers to study different aspects of connectivity in their private backbones and show how our generated manifold views enable us to expose and visualize critical aspects of this connectivity.},
+journal = {Commun. ACM},
+month = {jul},
+pages = {95–103},
+numpages = {9}
+}
+
+@article{10.1145/3594255.3594260,
+abbr = {CCR}, 
+author = {Salamatian, Loqman and Arnold, Todd and Cunha, \'{I}talo and Zhu, Jiangchen and Zhang, Yunfan and Katz-Bassett, Ethan and Calder, Matt},
+title = {Who Squats IPv4 Addresses?},
+year = {2023},
+issue_date = {January 2023},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {53},
+number = {1},
+issn = {0146-4833},
+url = {https://doi.org/10.1145/3594255.3594260},
+doi = {10.1145/3594255.3594260},
+abstract = {To mitigate IPv4 exhaustion, IPv6 provides expanded address space, and NAT allows a single public IPv4 address to suffice for many devices assigned private IPv4 address space. Even though NAT has greatly extended the shelf-life of IPv4, some networks need more private IPv4 space than what is officially allocated by IANA due to their size and/or network management practices. Some of these networks resort to using squat space, a term the network operations community uses for large public IPv4 address blocks allocated to organizations but historically never announced to the Internet. While squatting of IP addresses is an open secret, it introduces ethical, legal, and technical problems. In this work we examine billions of traceroutes to identify thousands of organizations squatting. We examine how they are using it and what happened when the US Department of Defense suddenly started announcing what had traditionally been squat space. In addition to shining light on a dirty secret of operational practices, our paper shows that squatting distorts common Internet measurement methodologies, which we argue have to be re-examined to account for squat space.},
+journal = {SIGCOMM Comput. Commun. Rev.},
+month = {apr},
+pages = {48–72},
+numpages = {25},
+keywords = {IPv4 squatting, internet measurements, IPv4 exhaustion, internet topology, CGNATs, IPv4 utilization}
 }

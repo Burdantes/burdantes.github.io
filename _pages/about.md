@@ -44,6 +44,8 @@ Outside the academic realm, I'm an avid collector of jazz records and a big food
 I had the pleasure of serving as a Course Assistant on two occasions for <a href="http://www.cs.columbia.edu/~misra/6180.html" >CSEEW6180 Modeling Performance Evaluation</a> (old website) with Professor Vishal Misra. My responsibilities encompassed drafting and evaluating homework, overseeing the final examinations, and conducting office hours.
 
 
+
+
 <h3>Mentoring:</h3>
 
 Over recent years, I've had the honor of mentoring several exceptional undergraduate scholars on diverse research topics:.
