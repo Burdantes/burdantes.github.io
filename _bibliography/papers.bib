@@ -5,7 +5,34 @@
   title={A geometric approach for real-time monitoring of dynamic large scale graphs: AS-level graphs illustrated},
   author={Salamatian, Loqman and Kaafar, Dali and Salamatian, Kav{\'e}},
   journal={arXiv preprint arXiv:1806.00676},
-  year={2018}
+  year={2018},
+  abstract = {The monitoring of large dynamic networks is a major challenge for
+a wide range of application. The complexity stems from properties
+of the underlying graphs, in which slight local changes can lead to
+sizable variations of global properties, e.g., under certain conditions,
+a single link cut that may be overlooked during monitoring can
+result in splitting the graph into two disconnected components.
+Moreover, it is often difficult to determine whether a change will
+propagate globally or remain local. Traditional graph theory measure such as the centrality or the assortativity of the graph are not
+satisfying to characterize global properties of the graph. In this paper, we tackle the problem of real-time monitoring of dynamic large
+scale graphs by developing a geometric approach that leverages
+notions of geometric curvature and recent development in graph
+embeddings using Ollivier-Ricci curvature [47]. We illustrate the
+use of our method by considering the practical case of monitoring
+dynamic variations of global Internet using topology changes information provided by combining several BGP feeds. In particular,
+we use our method to detect major events and changes via the
+geometry of the embedding of the graph.
+We first adapt the Ricci curvature to characterize the AS level
+graph. The key idea is to detect changes in between consecutive
+snapshots and to separate events that result in considerable geometric alterations, from those that remain local. The variations of
+curvature are evaluated through a set of landmarks as reference
+points. We develop an anomaly tracking mechanism to detect large
+variations of curvature that translate into major variations in the
+geometry of the graph. These changes are then considered as major
+BGP level events. In a second stage, we describe a mechanism for
+identifying the network elements responsible for the set of coordinated changes and isolate their geometric implications. We evaluate
+this system in operational settings and show its performance in
+real-life scenarios}
 }
 
 @article{salamatian2021geopolitics,
@@ -18,11 +45,12 @@ abbr = {Journal of Cybersecurity},
   pages={tyab018},
   year={2021},
   publisher={Oxford University Press},
-  selected={true}
+  selected={true},
+  abstract = {In November 2019, in the wake of political demonstrations against the regime, Iran managed to selectively cut off most traffic from the global Internet while fully operating its own domestic network. It seemingly confirmed the main hypothesis our research had led us to, based on prior observation of data routing: Iran’s architecture of connectivity enables selective censorship of international traffic. This paper examines, through the case of Iran, how states can leverage the Border Gateway Protocol (BGP) as a tool of geopolitical control and what are the trade-offs they face. This question raises a methodological question that we also address: how the analysis of BGP can infer and document these strategies of territorialization of cyberspace. The Internet is a network of networks where each network is an autonomous system. Autonomous systems (ASes) are independent administrative entities controlled by a variety of actors such as governments, companies and universities. Their administrators have to agree and communicate on the path followed by packets travelling across the Internet, which is made possible by BGP. Agreements between ASes are often confidential but BGP requires neighbouring ASes to interact with each other in order to coordinate routing through the constant release of connectivity update messages. These messages announce the availability (or withdrawal) of a sequence of ASes that can be followed to reach an IP address prefix. In our study, we inferred the structure of Iran's connectivity through the capture and analysis of these BGP announcements. We show how the particularities of Iran's BGP and connectivity structure can enable active measures, such as censorship, both internally and externally throughout the network. We argue that Iran has found a way to reconcile a priori conflicting strategic goals: developing a self-sustaining and resilient domestic Internet, but with tight control at its borders. It thus enables the regime to leverage connectivity as a tool of censorship in the face of social instability and as a tool of regional influence in the context of strategic competition.},
 }
 
 @inproceedings{douzet2020measuring,
-  abbr = {Cycon},
+  abbr = {IEEE Cycon},
   title={Measuring the fragmentation of the Internet: the case of the Border Gateway Protocol (BGP) during the Ukrainian crisis},
   author={Douzet, Fr{\'e}d{\'e}rick and P{\'e}tiniaud, Louis and Salamatian, Loqman and Limonier, Kevin and Salamatian, Kav{\'e} and Alchus, Thibaut},
   booktitle={2020 12th International Conference on Cyber Conflict (CyCon)},
@@ -30,7 +58,8 @@ abbr = {Journal of Cybersecurity},
   pages={157--182},
   year={2020},
   organization={IEEE},
-  selected={true}
+  selected={true},
+  abstract = {This paper presents the results of a year-long research project conducted by GEODE (geode.science), a multidisciplinary team made up of geographers, computer scientists and area specialists.We developed a new methodology for mapping cyberspace in its lower layers (infrastructures and routing protocols) in order to measure and represent the level of fragmentation of the Internet in areas of geopolitical tensions using the Border Gateway Protocol (BGP). Our hypothesis was that BGP could be used for geopolitical reasons in the context of a large-scale crisis, leading to a further fragmentation of the Internet. We focused on the Ukrainian crisis.BGP is a core protocol of cyberspace that connects the tens of thousands of autonomous systems (ASes) that compose the Internet. Based on a 35-year-old technology, this protocol is easy to manipulate to re-route Internet traffic or even to cut off entire regions (BGP hijacks). Our results show actions on BGP implemented right after the 2014 Maidan Revolution, when Russian forces took control of the Crimean Peninsula and started to back separatist forces in Eastern Ukraine. In both cases, Russian authorities and separatist forces modified BGP routes in order to divert the local Internet traffic from continental Ukraine – drawing a kind of "digital frontline" consistent with the military one. The study of Donbass and of the Crimean Peninsula leads to important methodological findings to (1) define and map digital borders at the routing level; (2) analyze the strategies of actors conducting actions via BGP; (3) categorize these strategies, from traffic re-routing to cutting-off entire regions for intelligence or military purposes; and (4) anticipate future uses for BGP manipulations by identifying strategic bottlenecks within the network.}
 }
 
 @article{petiniaud2020role,
@@ -40,7 +69,8 @@ abbr = {Journal of Cybersecurity},
   journal={L’Espace Politique. Revue en ligne de g{\'e}ographie politique et de g{\'e}opolitique},
   number={40},
   year={2020},
-  publisher={D{\'e}partement de g{\'e}ographie de l'universit{\'e} de Reims Champagne-Ardenne}
+  publisher={D{\'e}partement de g{\'e}ographie de l'universit{\'e} de Reims Champagne-Ardenne},
+  abstract = {Autonomous systems (AS) are the basic units of Internet global routing. They are group of routers interconnected by the same administrative control (Internet Service Providers, Content Providers, companies, public services etc.) that interconnect to each other to form the Internet as a whole. By establishing connection agreements between themselves via the Border Gateway Protocol (BGP), ASes allow data to flow from one point to another around the globe. In this article, we aim to understand how the aspect of the routing of data can be decisive in how we consider both the relationship between Internet and territory, and the impact of the structure of the Internet on territorial conflicts. Much literature has addressed the relationship between space and the Internet, both in geography and geopolitics. The increasing digitization of various aspects of society (Bakis, 2013 ; Cattaruzza, 2019) was first accompanied by comments about a paradigm shift of the concepts of geography (Virilio, 1997) or sovereignty (Camilleri, Falk, 1992). The relationship between space and Information and Communications Technologies (ICT) has also been considered under the angle of infrastructures and their territorial integration (Lasserre, 2000) More recently, Beaude (2012) and Loveluck (2015) have shown how the complex interactions between Internet and society, produced alternative forms of space. Increasingly, the many dimensions of the Internet and of digitization are considered a salient feature of the social construction of territories, and therefore of geopolitical conflicts (Douzet, 2014). We draw from this literature to illustrate how the network of Autonomous Systems is linked to territorial conflicts. The behavior of autonomous systems, and in particular their integration within the rest of the network, responds to geopolitical constraints. The choice of an AS’s administrators to connect to some ASes and not others, or the way they design and implement routing policies are subject to commercial, political, geographical and legal decisions. The construction of this topology then alters territories, especially disputed ones, and the power rivalries that apply to it. We show that this network is emblematic of the duality of the Internet between topography and topology. This study aims at understanding the role AS topology can play in the traditional power struggle. By selecting the paths through which data flows, administrators of AS bring out territories and new forms of « power-topology » (Allen, 2011). Our methodology combines elements of geopolitics and technical sciences (Internet measurements, network theory) and is based on quantitative approaches. We use data of interdomain connectivity gathered through BGP monitors that allow us to create graphs showing the interconnections between autonomous systems. We use an empirical approach to read the output graphs on a specific case study: disputed territories in Ukraine. The territories of Donbass and Crimea are ideal case studies in that the dispute over them is rather new, which allow us to observe with detail the changes in the topology of their networks over time. They also represent two different types of disputed territories. While Crimea was annexed by the Russian Federation in March 2014, the Donbass region is home to the two self-proclaimed People’s Republics of Donetsk and Luhansk, and is actively fighting against the central government of Ukraine with the help of Russia. By looking at the stakeholders of connectivity in these territories and their evolution, we show how the Internet is embedded into dynamics of changing sovereignty. In fact, the technical infrastructures of the Internet highlight a new vector of Russian power. The evolution of the routing topology indicates that Crimea is now fully dependent on Russia to connect to the Internet, and Donbass is following the same path.}
 }
 
 @article{limonier2021mapping,
@@ -49,7 +79,8 @@ abbr = {Journal of Cybersecurity},
   author={Limonier, Kevin and Douzet, Fr{\'e}d{\'e}rick and P{\'e}tiniaud, Louis and Salamatian, Loqman and Salamatian, Kave},
   journal={First Monday},
   year={2021},
-  selected={true}
+  selected={true},
+  abstract = {In this paper, we argue that data routing is of geopolitical significance. We propose new methodologies to understand and represent the new forms of power rivalries and imbalances that occur within the lower layers of cyberspace, through the analysis of Eastern Ukraine. The Internet is a network of networks where each network is an Autonomous System (ASes). ASes are independent administrative entities controlled by a variety of actors such as governments, companies, and universities. Their administrators have to agree and communicate on paths followed by packets travelling across the Internet, which is made possible by the Border Gateway Protocol (BGP). Agreements between ASes are often confidential but BGP requires neighbouring ASes to interact with each other in order to coordinate routing through the constant release of connectivity update messages. These messages announce the availability (or withdrawal) of a sequence of ASes that can be followed to reach an IP address prefix. We select Eastern Ukraine as a case study as in 2020, six years after the beginning of the war in Donbass, data is available to analyze and map changes to data routing. In our study, we conducted a longitudinal analysis of Ukraine’s connectivity through the capture and analysis of these BGP announcements. Our results show how Donbass ASes progressively migrated from Ukraine’s cyberspace towards Russia, while still sharing connections with Ukrainian ASes. Donbass cyberspace therefore sits at the interface of Ukraine and Russia but has been relegated to the periphery of both networks; it is marginalized from the Ukrainian network but not fully integrated into the Russian network. These evolutions both reflect and affect ongoing geopolitical power rivalries in the physical world and demonstrate their strategic significance. Our methodology can be used to conduct studies in other regions subject to geopolitical open conflicts and to infer the strategies developed by states in anticipation of potential threats.}
 }
 
 @article{gerard2020rt,
@@ -59,27 +90,54 @@ abbr = {Journal of Cybersecurity},
   journal={L’Espace Politique. Revue en ligne de g{\'e}ographie politique et de g{\'e}opolitique},
   number={40},
   year={2020},
-  publisher={D{\'e}partement de g{\'e}ographie de l'universit{\'e} de Reims Champagne-Ardenne}
+  publisher={D{\'e}partement de g{\'e}ographie de l'universit{\'e} de Reims Champagne-Ardenne},
+  abstract = {The Russian Federation has been developing a strategy of informational influence abroad since the beginning of 2010. This strategy, based on a massive presence on social networks, is at the heart of new power struggles between states. In France, Russian state-funded media RT and Sputnik are thus regularly blamed for their editorial policy, which many political and media actors consider as partial or misleading. The Yellow Vests movement, whose members have been accused of being manipulated by Russia and its media, illustrates this observation. While a growing number of publications has focused on the actors of Russian informational influence and the narratives they deploy (Yablokov, 2015; Audinet, 2018, 2020 ; Hutchings, 2020), the question of the reception and the propagation of content produced by these actors on different networks remain unanswered – mainly because of difficulties in accessing to social network data – despite recent efforts (Fisher, 2020). This article therefore proposes to draw up a mapping of the political communities that disseminate the contents of the international Russian media. This cartography is based on data collected on Twitter during the first months of the Yellow Vests movement. The approach we propose here is inspired by the work published by Gaumont et al. which shows that it is possible, through data from Twitter, and especially retweets, to qualify and quantify the activity of political communities, as well as their evolution and reconfiguration over time (Gaumont et al, 2018). Our methodology to map content published by the Russian media is directly in line with the work of Limonier and Pétiniaud (2018), who focused on a part of the "pro-Russian" community of the French-speaking segment of Twitter, as well as on the way this community relayed the MacronLeaks during the between-two rounds of the French presidential election of 2017. Our results first show that content produced by the Russian state-media are relatively popular across a broad spectrum of the French political landscape, from left-leaning to far-right parties. Then, we observe that Yellow Vest communities are distinguished by their weak presence and dispersal within the graph, which confirm the hypothesis that this movement was not formed and structured on Twitter but on Facebook (Sebbah et al, 2018). If the protest movement has indeed been the subject of a very high volume of publications for several months on Twitter, this platform seems to have been only a media and political soundbox, rather than a space for structuring and organizing the different groups of Yellow Vests.}
 }
 
 @article{petiniaud2019geopolitics,
+  abbr = {RIPE Labs},
   title={Geopolitics of routing},
   author={P{\'e}tiniaud, Louis and Salamatian, Loqman},
   journal={RIPE Network Coordination Center: https://labs. ripe. net/Members/louis\_petiniaud/geopolitics-of-routing},
   year={2019}
 }
 
-@article{salamatian2022curvature,
-abbr = {ACM Sigmetrics},
-  title={Curvature-based Analysis of Network Connectivity in Private Backbone Infrastructures},
-  author={Salamatian, Loqman and Anderson, Scott and Matthews, Joshua and Barford, Paul and Willinger, Walter and Crovella, Mark},
-  journal={Proceedings of the ACM on Measurement and Analysis of Computing Systems},
-  volume={6},
-  number={1},
-  pages={1--32},
-  year={2022},
-  publisher={ACM New York, NY, USA},
-  selected={true}
+@inproceedings{10.1145/3517745.3561443,
+author = {Anderson, Scott and Salamatian, Loqman and Bischof, Zachary S. and Dainotti, Alberto and Barford, Paul},
+title = {IGDB: Connecting the Physical and Logical Layers of the Internet},
+year = {2022},
+isbn = {9781450392594},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3517745.3561443},
+doi = {10.1145/3517745.3561443},
+abstract = {Maps of physical and logical Internet connectivity that are informed by and consistent with each other can expand scope and improve accuracy in analysis of performance, robustness and security. In this paper, we describe a methodology for linking physical and logical Internet maps that aims toward a consistent, cross-layer representation. Our approach is constructive and uses geographic location as the key feature for linking physical and logical layers. We begin by building a representation of physical connectivity using online sources to identify locations that house transport hardware (i.e., PoPs, colocation centers, IXPs, etc.), and approximate locations of links between these based on shortest-path rights-of-way. We then utilize standard data sources for generating maps of IP-level and AS-level logical connectivity, and graft these onto physical maps using geographic anchors. We implement our methodology in an open-source framework called the Internet Geographic Database (iGDB), which includes tools for updating measurement data and assuring internal consistency. iGDB is built to be used with ArcGIS, a geographic information system that provides broad capability for spatial analysis and visualization. We describe the details of the iGDB implementation and demonstrate how it can be used in a variety of settings.},
+booktitle = {Proceedings of the 22nd ACM Internet Measurement Conference},
+pages = {433–448},
+numpages = {16},
+keywords = {logical internet infrastructure, physical internet infrastructure, geographic information systems},
+location = {Nice, France},
+series = {IMC '22}
+}
+
+@article{10.1145/3508025,
+abbr = {ACM SIGMETRICS},
+author = {Salamatian, Loqman and Anderson, Scott and Matthews, Joshua and Barford, Paul and Willinger, Walter and Crovella, Mark},
+title = {Curvature-Based Analysis of Network Connectivity in Private Backbone Infrastructures},
+year = {2022},
+issue_date = {March 2022},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {6},
+number = {1},
+url = {https://doi.org/10.1145/3508025},
+doi = {10.1145/3508025},
+abstract = {The main premise of this work is that since large cloud providers can and do manipulate probe packets that traverse their privately owned and operated backbones, standard traceroute-based measurement techniques are no longer a reliable means for assessing network connectivity in large cloud provider infrastructures. In response to these developments, we present a new empirical approach for elucidating private connectivity in today's Internet. Our approach relies on using only "light-weight" ( i.e., simple, easily-interpretable, and readily available) measurements, but requires applying a "heavy-weight" or advanced mathematical analysis. In particular, we describe a new method for assessing the characteristics of network path connectivity that is based on concepts from Riemannian geometry ( i.e., Ricci curvature) and also relies on an array of carefully crafted visualizations ( e.g., a novel manifold view of a network's delay space). We demonstrate our method by utilizing latency measurements from RIPE Atlas anchors and virtual machines running in data centers of three large cloud providers to (i) study different aspects of connectivity in their private backbones and (ii) show how our manifold-based view enables us to expose and visualize critical aspects of this connectivity over different geographic scales.},
+journal = {Proc. ACM Meas. Anal. Comput. Syst.},
+month = {feb},
+articleno = {5},
+numpages = {32},
+keywords = {internet measurement, manifold learning, manifold visualization, topology discovery}
 }
 
 @article{10.1145/3604620,
@@ -103,7 +161,7 @@ numpages = {9}
 }
 
 @article{10.1145/3594255.3594260,
-abbr = {CCR}, 
+abbr = {CCR},
 author = {Salamatian, Loqman and Arnold, Todd and Cunha, \'{I}talo and Zhu, Jiangchen and Zhang, Yunfan and Katz-Bassett, Ethan and Calder, Matt},
 title = {Who Squats IPv4 Addresses?},
 year = {2023},

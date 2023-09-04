@@ -24,7 +24,7 @@ social: true  # includes social icons at the bottom of the page
 I also get a great deal of satisfaction out of teaching and mentoring students so feel free to reach out to me if you are looking for research project or have interrogations about grad school.  
 
 
-Outside the academic realm, I'm an avid collector of jazz records and a big food fanatic. I am also Football Manager player.
+Outside the academic realm, I'm an avid collector of jazz records and a big foodie.
 
 
 
