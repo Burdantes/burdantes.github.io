@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: Loqman Salamatian's Personal Website # the website title (if blank, full name will be used instead)
+title: Loqman **Salamatian** # the website title (if blank, full name will be used instead)
 first_name: Loqman
 middle_name:
 last_name: Salamatian
@@ -13,7 +13,7 @@ footer_text:
 keywords: Loqman Salamatian, Columbia University, Internet Measurement, Mathematical Analysis  # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: assests/img/example_manifold.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: favicon-32x32.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://burdantes.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/
