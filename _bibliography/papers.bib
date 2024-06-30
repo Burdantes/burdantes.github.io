@@ -1,5 +1,41 @@
 ---
 ---
+@article{10.1145/3656005,
+author = {Dozier, Kahlil and Salamatian, Loqman and Rubenstein, Dan},
+title = {Analysis of False Negative Rates for Recycling Bloom Filters (Yes, They Happen!)},
+year = {2024},
+issue_date = {June 2024},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {8},
+number = {2},
+url = {https://doi.org/10.1145/3656005},
+doi = {10.1145/3656005},
+abstract = {Bloom Filters are a desirable data structure for distinguishing new values in sequences of data (i.e., messages), due to their space efficiency, their low false positive rates (incorrectly classifying a new value as a repeat), and never producing false negatives (classifying a repeat value as new). However, as the Bloom Filter's bits are filled, false positive rates creep upward. To keep false positive rates below a reasonable threshold, applications periodically "recycle" the Bloom Filter, clearing the memory and then resuming the tracking of data. After a recycle point, subsequent arrivals of recycled messages are likely to be misclassified as new; recycling induces false negatives. Despite numerous applications of recycling, the corresponding false negative rates have never been analyzed. In this paper, we derive approximations, upper bounds, and lower bounds of false negative rates for several variants of recycling Bloom Filters. These approximations and bounds are functions of the size of memory used to store the Bloom Filter and the distributions on new arrivals and repeat messages, and can be efficiently computed on conventional hardware. We show, via comparison to simulation, that our upper bounds and approximations are extremely tight, and can be efficiently computed for megabyte-sized Bloom Filters on conventional hardware.},
+journal = {Proc. ACM Meas. Anal. Comput. Syst.},
+month = {may},
+articleno = {21},
+numpages = {34},
+keywords = {bloom filter, false negatives, recycling bloom filter}
+}
+
+@inproceedings{10.1145/3626111.3628213,
+author = {Vermeulen, Kevin and Salamatian, Loqman and Kim, Sang Hoon and Calder, Matt and Katz-Bassett, Ethan},
+title = {The Central Problem with Distributed Content: Common CDN Deployments Centralize Traffic In A Risky Way},
+year = {2023},
+isbn = {9798400704154},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3626111.3628213},
+doi = {10.1145/3626111.3628213},
+abstract = {Google, Netflix, Meta, and Akamai serve content to users from offnet servers in thousands of ISPs. These offnets benefit both services and ISPs, via better performance and reduced interdomain and WAN traffic. We argue that this widespread distribution of servers leads to a concentration of traffic and a previously unacknowledged risk, as many ISPs colocate offnets from multiple providers. This trend contributes to many Internet users likely accessing multiple popular services and fetching the majority of their Internet traffic from a single facility -- perhaps even a single rack -- creating shared resources and a correlated risk in cases of failures, attacks, and overload. Alternate ways to access the services often lack sufficient capacity and share resources with more services, creating the potential for cascading failures.},
+booktitle = {Proceedings of the 22nd ACM Workshop on Hot Topics in Networks},
+pages = {70–78},
+numpages = {9},
+location = {Cambridge, MA, USA},
+series = {HotNets '23}
+}
+
 @article{salamatian2018geometric,
   abbr = {ArXiv},
   title={A geometric approach for real-time monitoring of dynamic large scale graphs: AS-level graphs illustrated},
