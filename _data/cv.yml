@@ -38,9 +38,14 @@
 - title: Experience
   type: time_table
   contents:
+    -  title: Student Researcher
+       institution: Google, New York City, USA
+       year: 2024
+       description:
+         - Research on using reverse traceroute to detect user-facing anomalies.
     - title: Consulting
       institution: Cassini, Paris, France
-      year: 2018 - 2020
+      year: 2018 - 2022
       description:
         - Data scientist and write-up of reports to be shared with different customers of Cassini consulting
     - title: Data Scientist in the Analysis Group
