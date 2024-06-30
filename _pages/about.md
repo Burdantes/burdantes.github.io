@@ -18,19 +18,19 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-<div style="text-align: left"> I am a rising fourth year Ph.D. candidate at Columbia University supervised by Pr. Ethan Katz-Bassett, Pr. Vishal Misra and Pr. Daniel Rubenstein.  My research is deeply rooted in the exploration of Internet measurement, models analysis, and Riemannian geometry. I am working on finding new models to understand the interactions between virtual and geographical space. A significant facet of my work revolves around devising innovative models that bridge our understanding between the virtual and geographical space. I am interested in applying theoretical frameworks to substantiate qualitative models supported by thoughtfully crafted measurements. While my work leans more towards the theoretical aspect rather than pure engineering, I like the challenge of constructing systems that bolster theoretical foundations.
+<div style="text-align: left"> I am a fourth-year Ph.D. candidate at Columbia University, under the supervision of Professors Ethan Katz-Bassett, Vishal Misra, and Daniel Rubenstein. My research focuses on Internet measurement, model analysis, and Riemannian geometry, aiming to develop models that bridge virtual and geographical spaces. While my work is primarily theoretical, I enjoy building systems that support these theories.
 
+I also enjoy teaching and mentoring students. Feel free to reach out if you are interested in research projects or have questions about grad school.
 
-I also get a great deal of satisfaction out of teaching and mentoring students so feel free to reach out to me if you are looking for research project or have interrogations about grad school.  
+Outside academia, I am an avid jazz record collector and a big foodie.
 
-
-Outside the academic realm, I'm an avid collector of jazz records and a big foodie.
 
 
 
 <h3>Current research interests:</h3>
 
 <ul>
+<li> Internet Measurement and topology discovery</li>
 <li> Mathematical modeling of the Internet </li>
 <li> Resilient networking </li>
 <li> Mathematical analysis of systems </li>
@@ -41,7 +41,8 @@ Outside the academic realm, I'm an avid collector of jazz records and a big food
 
 <h3>Teaching Service: </h3>
 
-I had the pleasure of serving as a Course Assistant on two occasions for <a href="http://www.cs.columbia.edu/~misra/6180.html" >CSEEW6180 Modeling Performance Evaluation</a> (old website) with Professor Vishal Misra. My responsibilities encompassed drafting and evaluating homework, overseeing the final examinations, and conducting office hours.
+
+I served twice as a Course Assistant for <a href="http://www.cs.columbia.edu/~misra/6180.html" >CSEEW6180 Modeling Performance Evaluation</a> (old website) with Professor Vishal Misra. My duties included drafting and grading homework, overseeing final exams, and conducting office hours.
 
 
 
