@@ -73,26 +73,35 @@
 - title: Honors and Awards
   type: time_table
   contents:
+    - year: 2023
+      items:
+        - Best of CCR
+    - year: 2022
+      items:
+        - Communications of ACM - Research Highlight
+    - year: 2021
+      items:
+        - RACI Grant - RIPE, *Mapping connectivity and digital space in Central Asia*
+    - year: 2020
+      items:
+        - Columbia Dean's fellowship
     - year: 2019
       items:
         - RACI Grant - RIPE, *Geopolitics of routing, what RIPE tells us of geography and power a methodlogical approach*
         - Web Mapping Challenge SYNAPSE
-    - year: 2020
-      items:
-        - Columbia Dean's fellowship
-    - year: 2021
-      items:
-        - RACI Grant - RIPE, *Mapping connectivity and digital space in Central Asia*
-    - year: 2022
-      items:
-        - Communications of ACM - Research Highlight
-    - year: 2023
-      items:
-        - Best of CCR
+
+
+
 
 - title: Talks
   type: time_table
   contents:
+    - year: 2022
+      items:
+        - Google, Curvature-based Analysis of Network Connectivity in Private Backbone Infrastructures, Virtual
+    - year: 2021
+      items:
+        - 34th International Geographical Congress (IGC 2020), The journey, not the destination matters - untangling data and sovereignity in the Far West with Louis Pétiniaud & On a collaborative effort to map the Internet with Louis Pétiniaud, Virtual
     - year: 2019
       items:
         - Oxford Life Connected Life Conference, The geopolitics behind the routes data travel - a case study of Iran, London and Oxford
@@ -102,12 +111,6 @@
       items:
         - Forum International de la Cybersécurité, BGP - protocole technique, outil politique - facteur politique de l’infrastructure, Lille
         - American Political Science Association - Democracy, Difference and Destabilization (APSA), Mapping the Dissemination of Russian Narratives on Social Networks in France, Virtual
-    - year: 2021
-      items:
-        - 34th International Geographical Congress (IGC 2020), The journey, not the destination matters - untangling data and sovereignity in the Far West with Louis Pétiniaud & On a collaborative effort to map the Internet with Louis Pétiniaud, Virtual
-    - year: 2022
-      items:
-        - Google, Curvature-based Analysis of Network Connectivity in Private Backbone Infrastructures, Virtual
 
 - title: Academic Interests
   type: nested_list
