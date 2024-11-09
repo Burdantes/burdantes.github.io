@@ -6,6 +6,9 @@ description: This page lists some of my projects
 nav_order : 3
 nav: true
 ---
+
+# Validating APNIC's User Estimates
+
 # Geopolitics of the Internet
 Inspired by my grandfather, a political activist who took refuge in France, I developed a strong interest in political science. His dream of sparking an intellectual renaissance in a nation shaped by ancient civilization and the pursuit of freedom deeply resonated with me. This led me to mathematical modeling as an efficient tool for abstract reasoning, which became the focus of my first five years at university.
 

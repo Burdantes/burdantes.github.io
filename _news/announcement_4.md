@@ -4,6 +4,6 @@ date: 2024-04-01 15:59:00-0400
 inline: true
 ---
 
-Our paper **Analysis of False Negative Rates for Recycling Bloom Filters (Yes, They Happen!)** has been accepted at ACM SIGMETRICS 2024!
+Our two papers on estimating the upper and lower-bound of false positive and negative rates of Recycling Bloom Filters have been accpeted at IEEE INFOCOM (for the false positive) and ACM Sigmetrics (for the false negative).
 
 
