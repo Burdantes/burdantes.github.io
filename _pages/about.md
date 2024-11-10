@@ -19,7 +19,7 @@ news: true
 selected_papers: false
 social: true
 ---
-
+<h3 style="color: #6a0dad; margin-top: 30px;">About me:</h3>
 <div style="text-align: left; font-size: 1.1em; line-height: 1.6;">
   I am a fifth-year Ph.D. candidate at Columbia University, under the supervision of Professors 
   Ethan Katz-Bassett, Vishal Misra, and Daniel Rubenstein. My research focuses on Internet 
@@ -33,8 +33,7 @@ social: true
   Outside academia, I am an avid jazz record collector and a big foodie.
 </div>
 
-### Current Research Interests:
-
+<h3 style="color: #6a0dad; margin-top: 30px;">Current Research Interests:</h3>
 <div style="margin-left: 20px;">
   <ul style="list-style-type: disc;">
     <li>Internet Measurement and Topology Discovery</li>
@@ -47,8 +46,7 @@ social: true
   </ul>
 </div>
 
-### Teaching Service:
-
+<h3 style="color: #6a0dad; margin-top: 30px;">Teaching Service:</h3>
 <div style="margin-left: 20px;">
   I served twice as a Course Assistant for 
   <a href="http://www.cs.columbia.edu/~misra/6180.html">CSEEW6180 Modeling Performance Evaluation</a> 
@@ -56,8 +54,7 @@ social: true
   exams, and conducting office hours.
 </div>
 
-### Mentoring:
-
+<h3 style="color: #6a0dad; margin-top: 30px;">Mentoring:</h3>
 <div style="margin-left: 20px;">
   Over recent years, I've had the honor of mentoring several exceptional undergraduate scholars on 
   diverse research topics:
