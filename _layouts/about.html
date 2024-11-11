@@ -43,7 +43,7 @@ layout: default
 
         <!-- News -->
         {% if page.news and site.announcements.enabled -%}
-        <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">News</a></h2>
+        <h2><a href="{{ '/news/' | relative_url }}" style="color: #6a0dad;">News</a></h2>
         {%- include news.html limit=true %}
         {%- endif %}
 
@@ -77,7 +77,7 @@ layout: default
 <!-- Added style to control profile image size -->
 <style>
     .profile-img {
-        width: 200px;
+        width: 270px;
         height: auto;
     }
 </style>

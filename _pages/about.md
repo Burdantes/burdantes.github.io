@@ -9,7 +9,7 @@ profile:
   image: prof_pic.jpg
   image_circular: false
 address: >
-  <div style="font-weight: bold; text-align: left;">
+  <div style="text-align: left;">
     Schapiro CEPSR 8th Floor<br>
     530 W 120th St<br>
     New York City, NY, 10027
