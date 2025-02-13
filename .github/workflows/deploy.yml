@@ -14,29 +14,46 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.0.2'
-        bundler-cache: true
-    - name: Install deps
-      run: |
-        npm install -g mermaid.cli
-    - name: Setup deploy options
-      id: setup
-      run: |
-        git config --global user.name "GitHub Action"
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        if [[ ${GITHUB_REF} = refs/pull/*/merge ]]; then # pull request
-          echo "::set-output name=SRC_BRANCH::${GITHUB_HEAD_REF}"
-          echo "::set-output name=NO_PUSH::--no-push"
-        elif [[ ${GITHUB_REF} = refs/heads/* ]]; then # branch, e.g. master, source etc
-          echo "::set-output name=SRC_BRANCH::${GITHUB_REF#refs/heads/}"
-        fi
-        echo "::set-output name=DEPLOY_BRANCH::gh-pages"
-    - name: Deploy website 
-      run:  yes | bash bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }}
-                    --src ${{ steps.setup.outputs.SRC_BRANCH }} 
-                    --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }} 
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Ruby environment
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0.2'  # Ruby version
+          bundler-cache: true    # Enable Bundler caching
+
+      # Step 3: Install missing dependencies
+      - name: Install dependencies
+        run: |
+          gem install bundler  # Ensure Bundler is up-to-date
+          bundle install       # Install all Ruby dependencies
+
+      # Step 4: Install npm dependencies
+      - name: Install npm dependencies
+        run: |
+          npm install -g mermaid.cli  # Install Mermaid CLI globally
+
+      # Step 5: Configure Git for deployment
+      - name: Setup deploy options
+        id: setup
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ ${GITHUB_REF} = refs/pull/*/merge ]]; then # pull request
+            echo "::set-output name=SRC_BRANCH::${GITHUB_HEAD_REF}"
+            echo "::set-output name=NO_PUSH::--no-push"
+          elif [[ ${GITHUB_REF} = refs/heads/* ]]; then # branch, e.g. master, source etc
+            echo "::set-output name=SRC_BRANCH::${GITHUB_REF#refs/heads/}"
+          fi
+          echo "::set-output name=DEPLOY_BRANCH::gh-pages"
+
+      # Step 6: Build and deploy the website
+      - name: Deploy website
+        run: |
+          yes | bash bin/deploy --verbose \
+              ${{ steps.setup.outputs.NO_PUSH }} \
+              --src ${{ steps.setup.outputs.SRC_BRANCH }} \
+              --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }}
