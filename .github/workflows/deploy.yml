@@ -14,46 +14,31 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Ruby environment
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0.2'  # Ruby version
-          bundler-cache: true    # Enable Bundler caching
+          ruby-version: '3.0.2'
+          bundler-cache: true
 
-      # Step 3: Install missing dependencies
-      - name: Install dependencies
+      - name: Update Bundler and Install Dependencies
         run: |
-          gem install bundler  # Ensure Bundler is up-to-date
-          bundle install       # Install all Ruby dependencies
+          gem install bundler -v '~> 2.2.22'
+          bundle install --jobs 4 --retry 3
 
-      # Step 4: Install npm dependencies
       - name: Install npm dependencies
         run: |
-          npm install -g mermaid.cli  # Install Mermaid CLI globally
+          npm install -g mermaid.cli
 
-      # Step 5: Configure Git for deployment
-      - name: Setup deploy options
-        id: setup
+      - name: Configure Git for Deployment
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [[ ${GITHUB_REF} = refs/pull/*/merge ]]; then # pull request
-            echo "::set-output name=SRC_BRANCH::${GITHUB_HEAD_REF}"
-            echo "::set-output name=NO_PUSH::--no-push"
-          elif [[ ${GITHUB_REF} = refs/heads/* ]]; then # branch, e.g. master, source etc
-            echo "::set-output name=SRC_BRANCH::${GITHUB_REF#refs/heads/}"
-          fi
-          echo "::set-output name=DEPLOY_BRANCH::gh-pages"
 
-      # Step 6: Build and deploy the website
-      - name: Deploy website
+      - name: Deploy Website
         run: |
           yes | bash bin/deploy --verbose \
-              ${{ steps.setup.outputs.NO_PUSH }} \
-              --src ${{ steps.setup.outputs.SRC_BRANCH }} \
-              --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }}
+              --src master \
+              --deploy gh-pages
