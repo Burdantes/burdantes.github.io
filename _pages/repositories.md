@@ -43,6 +43,25 @@ APNIC and AnonCDN datasets closely align in most regions, with the largest discr
 **Paper**: <br>
 <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=wfIuIdMAAAAJ&sortby=pubdate&citation_for_view=wfIuIdMAAAAJ:ULOm3_A8WrAC">What's in the Dataset? Unboxing the APNIC per AS User Population Dataset</a><br>
 
+## Squatting on the Internet
+
+<ul>
+  <li><strong>Matt Calder</strong> (Meta)</li>
+  <li><strong>Italo Cunha</strong> (UFMG)</li>
+  <li><strong>Jiangchen Zhu</strong> (Columbia University)</li>
+  <li><strong>Ethan Katz-Bassett</strong> (Columbia University)</li>
+  <li><strong>Todd Arnold</strong> (Army Cyber Institute - West Point)</li>
+</ul>
+In this work, we investigate the long-standing but largely opaque practice of IP address squatting—the use of unannounced but allocated IPv4 space by networks that do not own it. We provide the first large-scale public study of this phenomenon, leveraging more than 11 billion traceroutes from Microsoft’s CDN infrastructure, as well as public measurements from RIPE Atlas and Ark.
+
+We begin by identifying a set of /8 IPv4 prefixes historically left unannounced (i.e., potential squat space), and design heuristics to detect and attribute usage of this space to specific networks. We analyze how squat space is used, revealing extensive deployment in CGNAT configurations and by CPE devices, across hundreds of networks. We then examine what happens when this space is suddenly re-announced by its rightful owner (e.g., the U.S. Department of Defense), observing that many squatting networks continue using the space, often routing internally rather than respecting global announcements.
+
+Finally, we assess the risks and distortions introduced by squatting—showing how it can break traceroute-based mapping, introduce routing inconsistencies, and create operational headaches when legitimate announcements return. To help future research, we propose filtering and attribution strategies to identify squat space and mitigate its effects.
+
+**Paper**: <br>
+<a href="https://dl.acm.org/doi/10.1145/3594255.3594260">Who Squats IPv4 Addresses?</a><br>
+
+
 # Geopolitics of the Internet
 Inspired by my grandfather, a political activist who took refuge in France, I developed a strong interest in political science. His dream of sparking an intellectual renaissance in a nation shaped by ancient civilization and the pursuit of freedom deeply resonated with me. This led me to mathematical modeling as an efficient tool for abstract reasoning, which became the focus of my first five years at university.
 
