@@ -9,6 +9,13 @@ nav: true
 
 # Validating APNIC's User Estimates
 
+In this project, we investgated the APNIC per-AS user population dataset, which has been widely used but never systematically validated. Our goal was to assess how well APNIC’s user estimates reflect actual Internet usage patterns, and to what extent the dataset can be trusted as a proxy for traffic volume or user distribution.
+
+To do this, we compared APNIC’s data to two independent baselines: broadband subscriber counts across 20 countries and AnonCDN’s measurements of user-agents and traffic volume. Despite some outliers—especially in countries with limited ad reach or unusual network dynamics—we found that APNIC’s estimates generally align with both baselines, particularly for major networks.
+
+However, we also show where APNIC falls short. It can misrepresent countries with limited sampling (e.g., Russia, Myanmar), overrepresent VPNs or mobile-heavy networks, and underestimate cloud/CDN providers. To help users avoid pitfalls, we propose techniques to assess the dataset’s reliability—including checking sample counts, monitoring temporal stability, and cross-validating with public datasets like M-Lab or IXP capacity.
+
+Our broader aim is to provide guidance for researchers and policymakers who rely on APNIC’s dataset. While it’s not perfect, with proper filtering and sanity checks, it offers a surprisingly accurate and globally consistent view of network user populations—making it a valuable, if imperfect, resource for studying Internet infrastructure and access trends.
 # Geopolitics of the Internet
 Inspired by my grandfather, a political activist who took refuge in France, I developed a strong interest in political science. His dream of sparking an intellectual renaissance in a nation shaped by ancient civilization and the pursuit of freedom deeply resonated with me. This led me to mathematical modeling as an efficient tool for abstract reasoning, which became the focus of my first five years at university.
 
