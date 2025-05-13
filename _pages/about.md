@@ -67,3 +67,20 @@ social: true
     <li><strong>Kylie Berg</strong> (Summer 2023 - Present): Focused on quantum networking verification.</li>
   </ul>
 </div>
+
+<style>
+  /* Fix float issue on mobile */
+  @media (max-width: 768px) {
+    .profile {
+      float: none !important;
+      display: block;
+      margin: 0 auto 20px auto;
+      text-align: center;
+    }
+
+    .profile-img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+</style>
