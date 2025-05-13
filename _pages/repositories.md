@@ -7,7 +7,17 @@ nav_order : 3
 nav: true
 ---
 
-# Validating APNIC's User Estimates
+# Internet Measurement Projects
+
+## Validating APNIC's User Estimates
+
+<ul>
+  <li><strong>Matt Calder</strong> (Meta)</li>
+  <li><strong>Calvin Ardi</strong> (University of Southern California)</li>
+  <li><strong>Vasileios Giotsas</strong> (Cloudflare)</li>
+  <li><strong>Ethan Katz-Bassett</strong> (Columbia University)</li>
+  <li><strong>Todd Arnold</strong> (Army Cyber Institute - West Point)</li>
+</ul>
 
 In this project, we investgated the APNIC per-AS user population dataset, which has been widely used but never systematically validated. Our goal was to assess how well APNIC’s user estimates reflect actual Internet usage patterns, and to what extent the dataset can be trusted as a proxy for traffic volume or user distribution.
 
@@ -16,6 +26,23 @@ To do this, we compared APNIC’s data to two independent baselines: broadband s
 However, we also show where APNIC falls short. It can misrepresent countries with limited sampling (e.g., Russia, Myanmar), overrepresent VPNs or mobile-heavy networks, and underestimate cloud/CDN providers. To help users avoid pitfalls, we propose techniques to assess the dataset’s reliability—including checking sample counts, monitoring temporal stability, and cross-validating with public datasets like M-Lab or IXP capacity.
 
 Our broader aim is to provide guidance for researchers and policymakers who rely on APNIC’s dataset. While it’s not perfect, with proper filtering and sanity checks, it offers a surprisingly accurate and globally consistent view of network user populations—making it a valuable, if imperfect, resource for studying Internet infrastructure and access trends.
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/apnic_comparison.png" title="world_topology" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+  Comparison of Pearson vs. Kendall-Tau correlations between APNIC user estimates and User-Agent counts/traffic volumes from
+AnonCDN. The top figure shows User-Agents, while the bottom figure shows traffic volume. Countries are categorized based on their agreement
+level in each case. In the User-Agents comparison, most countries exhibit high agreement, particularly in North and South America, Europe,
+and Africa. The most significant outliers are found in the African continent showing notably low Kendall-Tau correlations. For traffic volume,
+APNIC and AnonCDN datasets closely align in most regions, with the largest discrepancies occurring in South and South Eastern Asia
+</div>
+
+**Paper**: <br>
+<a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=wfIuIdMAAAAJ&sortby=pubdate&citation_for_view=wfIuIdMAAAAJ:ULOm3_A8WrAC">What's in the Dataset? Unboxing the APNIC per AS User Population Dataset</a><br>
+
 # Geopolitics of the Internet
 Inspired by my grandfather, a political activist who took refuge in France, I developed a strong interest in political science. His dream of sparking an intellectual renaissance in a nation shaped by ancient civilization and the pursuit of freedom deeply resonated with me. This led me to mathematical modeling as an efficient tool for abstract reasoning, which became the focus of my first five years at university.
 
