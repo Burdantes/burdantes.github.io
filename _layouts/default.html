@@ -7,6 +7,18 @@
     <meta http-equiv="refresh" content="3; url={{ site.baseurl }}/" />
   {%- endif -%}
   {% include head.html %}
+
+  <style>
+    body.fixed-top-nav {
+      padding-top: 70px; /* adjust based on navbar height */
+    }
+
+    @media (max-width: 576px) {
+      body.fixed-top-nav {
+        padding-top: 80px; /* slightly more padding on smaller screens if navbar collapses */
+      }
+    }
+  </style>
   </head>
 
   <!-- Body -->
