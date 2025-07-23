@@ -1,12 +1,12 @@
 ---
-title: "Internet Visualization Exhibition"
+title: "Internet Visualization Exhibition (IVE)"
 permalink: /ive/
 layout: page
 nav: true
 nav_order: 2
 ---
 
-## Internet Visualization Exhibition (IVE)
+The Internet Visualization Exhibition (IVE) is organized by Paul Barford (University of Wisconsin) and myself.
 
 ### Blurb
 
@@ -29,4 +29,5 @@ Submissions may include static visuals, short videos, recordings of interactive 
 - A short description (≤250 words), and
 - Optionally, a 30–60 second recorded explanation.
 
-The goal is to create an engaging, visually rich session that encourages new ways of thinking about Internet infrastructure and behavior. For more information on how to participate, visit [@link], and for submission, visit [@link_form]. Updates and community discussion will also take place in the SIGCOMM #sigcomm25-nonpaper Slack channel. 
+The goal is to create an engaging, visually rich session that encourages new ways of thinking about Internet infrastructure and behavior. For more information on how to participate, please reach out to me (ls3748@columbia.edu), and for submission, visit [this submission form](https://docs.google.com/forms/d/1NAuqwefNez5JSXsE-9NhGJqalm4_J-p3SamjFZjPA2I/edit). Updates and community discussion will also take place in the SIGCOMM #sigcomm25-nonpaper Slack channel. 
+
