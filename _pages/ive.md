@@ -5,7 +5,7 @@ layout: page
 nav: true
 nav_order: 2
 ---
-**Organizers**: Paul Barford (UW-Madison), Loqman Salamatian (Columbia University)
+**Organizers**: Paul Barford (UW-Madison), Loqman Salamatian (Columbia University) as part of SIGCOMM 2025 (Thursday, September 11th)
 
 ## Overview
 
