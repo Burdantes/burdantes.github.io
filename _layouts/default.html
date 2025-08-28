@@ -105,37 +105,55 @@
             onload="console.log('✅ particles.js loaded');"
             onerror="console.error('❌ failed to load /assets/js/particles.js');"></script>
 
-    <!-- Initialize particles -->
-    <script>
-      (function startParticles(){
-        // Ensure container exists
-        var el = document.getElementById('particles-js');
-        if (!el) { console.error('❌ #particles-js not found'); return setTimeout(startParticles, 50); }
+<script>
+  (function startParticles(){
+    var el = document.getElementById('particles-js');
+    if (!el) return setTimeout(startParticles, 50);
+    if (!window.particlesJS) return setTimeout(startParticles, 50);
 
-        // Wait for library
-        if (!window.particlesJS) { return setTimeout(startParticles, 50); }
-
-        console.log('🚀 starting particles…');
-        particlesJS('particles-js', {
-          particles: {
-            number: { value: 70, density: { enable: true, value_area: 900 } },
-            color: { value: '#8aa1b1' },
-            shape: { type: 'circle' },
-            opacity: { value: 0.5 },
-            size: { value: 2.5, random: true },
-            line_linked: { enable: true, distance: 140, opacity: 0.35 },
-            move: { enable: true, speed: 1.2, out_mode: 'out' }
-          },
-          interactivity: {
-            detect_on: 'window',  // hover works even if content overlays
-            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: false } },
-            modes: { repulse: { distance: 120, duration: 0.4 } }
-          },
-          retina_detect: true
-        });
-        console.log('✅ particles started. canvases:',
-          document.querySelectorAll('canvas.particles-js-canvas-el').length);
-      })();
-    </script>
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 110,                      // ↑ more particles
+          density: { enable: true, value_area: 800 }
+        },
+        color: { value: "#374151" },       // dark gray nodes for white bg
+        shape: { type: "circle" },
+        opacity: {
+          value: 0.9,                      // ↑ more visible nodes
+          random: false
+        },
+        size: {
+          value: 3.6,                      // ↑ bigger nodes
+          random: true
+        },
+        line_linked: {
+          enable: true,
+          distance: 130,                   // slightly tighter net
+          color: "#4b5563",                // darker link color
+          opacity: 0.85,                   // ↑ more visible edges
+          width: 1.2                       // ↑ thicker edges
+        },
+        move: {
+          enable: true,
+          speed: 1.0,                      // gentle motion
+          direction: "none",
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        detect_on: "window",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: false }
+        },
+        modes: {
+          repulse: { distance: 140, duration: 0.4 }
+        }
+      },
+      retina_detect: true
+    });
+  })();
+  </script>
   </body>
   </html>
