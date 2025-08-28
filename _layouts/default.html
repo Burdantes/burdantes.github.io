@@ -20,29 +20,29 @@
     }
   </style>
 
-  <!-- Particles background styles -->
   <style>
-    /* container that particles.js attaches to */
+    /* particles container */
     #particles-js{
       position: fixed;
       top:0; left:0; width:100%; height:100%;
-      z-index: 0; /* was -1 */
-      /* allow mouse events so hover 'repulse' can be detected */
+      z-index: 1; /* sits behind content canvas below */
     }
 
     /* the canvas injected by particles.js */
     canvas.particles-js-canvas-el{
       position: fixed !important;
       top:0; left:0; width:100% !important; height:100% !important;
-      z-index: 0 !important;
+      z-index: 1 !important; /* requested */
     }
 
-    /* ensure your actual page content sits above */
+    /* keep your actual page content above */
     header, .container, footer, .navbar, .site-header, .site-footer {
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 2; /* requested */
     }
 
-    body{ background: #0b0e14; }
+    /* optional page bg (remove or change if you prefer transparent) */
+    body { background: #0b0e14; }
   </style>
   </head>
 
@@ -98,34 +98,41 @@
     {% include scripts/progressBar.html %}
 
     <!-- Load local particles.js (self-hosted) -->
-  <script src="/assets/js/particles.min.js"></script>
+    <script src="/assets/js/particles.min.js"
+            onload="console.log('✅ particles.min.js loaded');"
+            onerror="console.error('❌ failed to load /assets/js/particles.min.js');"></script>
 
-  <!-- Initialize particles -->
-  <script>
-    (function startParticles(){
-      // Wait until the library and container are available
-      if (!window.particlesJS || !document.getElementById('particles-js')) {
-        return setTimeout(startParticles, 30);
-      }
+    <!-- Initialize particles -->
+    <script>
+      (function startParticles(){
+        // Ensure container exists
+        var el = document.getElementById('particles-js');
+        if (!el) { console.error('❌ #particles-js not found'); return setTimeout(startParticles, 50); }
 
-      particlesJS('particles-js', {
-        particles: {
-          number: { value: 70, density: { enable: true, value_area: 900 } },
-          color: { value: '#8aa1b1' },
-          shape: { type: 'circle' },
-          opacity: { value: 0.5 },
-          size: { value: 2.5, random: true },
-          line_linked: { enable: true, distance: 140, opacity: 0.35 },
-          move: { enable: true, speed: 1.2, out_mode: 'out' }
-        },
-        interactivity: {
-          detect_on: 'window',                  // more forgiving when content is above
-          events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: false } },
-          modes: { repulse: { distance: 120, duration: 0.4 } }
-        },
-        retina_detect: true
-      });
-    })();
-  </script>
+        // Wait for library
+        if (!window.particlesJS) { return setTimeout(startParticles, 50); }
+
+        console.log('🚀 starting particles…');
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 70, density: { enable: true, value_area: 900 } },
+            color: { value: '#8aa1b1' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5 },
+            size: { value: 2.5, random: true },
+            line_linked: { enable: true, distance: 140, opacity: 0.35 },
+            move: { enable: true, speed: 1.2, out_mode: 'out' }
+          },
+          interactivity: {
+            detect_on: 'window',  // hover works even if content overlays
+            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: false } },
+            modes: { repulse: { distance: 120, duration: 0.4 } }
+          },
+          retina_detect: true
+        });
+        console.log('✅ particles started. canvases:',
+          document.querySelectorAll('canvas.particles-js-canvas-el').length);
+      })();
+    </script>
   </body>
   </html>
