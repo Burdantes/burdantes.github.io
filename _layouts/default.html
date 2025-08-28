@@ -19,23 +19,30 @@
       }
     }
   </style>
+
+  <!-- Particles background styles -->
   <style>
-  #particles-js {
-    position: fixed;
-    top:0; left:0; width:100%; height:100%;
-    z-index: -1;
-    pointer-events: none;
-  }
-  body {
-    background: #0b0e14;
-  }
-</style>
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0; /* sit behind page content but above body background */
+      /* pointer-events: none;  <-- removed so hover 'repulse' works */
+    }
+    body {
+      background: #0b0e14; /* your page bg */
+    }
+    /* ensure your content sits above particles */
+    header, .container, footer, .navbar, .site-header, .site-footer {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
   </head>
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" integrity="sha256-nr1CwRy4t0j7q3fF2r9mQ7m3aP2b0mA2bY+0Wv6H6Hc=" crossorigin="anonymous"></script>
   <!-- Body -->
   <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
     <div id="particles-js"></div>
+
     <!-- Header -->
     {%- include header.html %}
 
@@ -82,29 +89,34 @@
     {% include scripts/mathjax.html %}
     {% include scripts/analytics.html %}
     {% include scripts/progressBar.html %}
-  <script>
-  particlesJS('particles-js', {
-    particles: {
-      number: { value: 70, density: { enable: true, value_area: 900 } },
-      color: { value: "#8aa1b1" },
-      shape: { type: "circle" },
-      opacity: { value: 0.5 },
-      size: { value: 2.5, random: true },
-      line_linked: { enable: true, distance: 140, opacity: 0.35 },
-      move: { enable: true, speed: 1.2 }
-    },
-    interactivity: {
-      detect_on: "canvas",
-      events: {
-        onhover: { enable: true, mode: "repulse" },
-        onclick: { enable: false }
-      },
-      modes: {
-        repulse: { distance: 120, duration: 0.4 }
-      }
-    },
-    retina_detect: true
-  });
-</script>
+
+    <!-- Load particles.js (no SRI integrity attribute) -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <!-- Initialize particles -->
+    <script>
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 70, density: { enable: true, value_area: 900 } },
+          color: { value: "#8aa1b1" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5 },
+          size: { value: 2.5, random: true },
+          line_linked: { enable: true, distance: 140, opacity: 0.35 },
+          move: { enable: true, speed: 1.2 }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: false }
+          },
+          modes: {
+            repulse: { distance: 120, duration: 0.4 }
+          }
+        },
+        retina_detect: true
+      });
+    </script>
   </body>
 </html>
