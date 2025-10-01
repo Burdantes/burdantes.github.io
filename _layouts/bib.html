@@ -104,9 +104,9 @@
           {%- endif %}
           {%- if entry.pdf %}
             {% if entry.pdf contains '://' -%}
-            <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+            <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0 btn-primary" role="button" style="background-color: #dc3545; border-color: #dc3545; margin-right: 5px;">PDF</a>
             {%- else -%}
-            <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+            <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0 btn-primary" role="button" style="background-color: #dc3545; border-color: #dc3545; margin-right: 5px;">PDF</a>
             {%- endif %}
           {%- endif %}
           {%- if entry.supp %}
@@ -131,9 +131,9 @@
           {%- endif %}
           {%- if entry.slides %}
             {% if entry.slides contains '://' -%}
-            <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
+            <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0 btn-success" role="button" style="background-color: #28a745; border-color: #28a745; margin-right: 5px;">Slides</a>
             {%- else -%}
-            <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
+            <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0 btn-success" role="button" style="background-color: #28a745; border-color: #28a745; margin-right: 5px;">Slides</a>
             {%- endif %}
           {%- endif %}
           {%- if entry.website %}
