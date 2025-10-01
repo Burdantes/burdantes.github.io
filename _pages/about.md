@@ -4,17 +4,6 @@ title: About
 permalink: /
 subtitle: <a href="https://www.columbia.edu/">Columbia University</a>
 
-profile:
-  align: right
-  image: prof_pic.jpg
-  image_circular: false
-address: >
-  <div style="text-align: left;">
-    Schapiro CEPSR 8th Floor<br>
-    530 W 120th St<br>
-    New York City, NY, 10027
-  </div>
-
 news: true
 selected_papers: true
 social: true
@@ -64,33 +53,52 @@ social: true
   exams, and conducting office hours.
 </div>
 
-<h3 style="color: #6a0dad; margin-top: 30px;">Mentoring:</h3>
-<div style="margin-left: 20px;">
-  Over recent years, I've had the honor of mentoring several exceptional undergraduate scholars on 
-  diverse research topics:
-  <ul style="list-style-type: disc;">
-    <li><strong>Cyrus Illick</strong> (Fall 2021 - Spring 2023): Developed a new protocol to avoid broadcasting storms. Starting Ph.D. at Columbia University in Fall 2023.</li>
-    <li><strong>Joshua Hahn</strong> (Summer 2022 - Fall 2022): Worked on emulating causal models and understanding how synthetic control recovers underlying latent spaces.</li>
-    <li><strong>Dominic Sobhani</strong> (Summer 2022 - Spring 2023): Developed a transformer architecture to simulate Internet traffic data.</li>
-    <li><strong>Alfonso Luis</strong> (Fall 2022 - Spring 2023): Researched sampling without replacement and Bloom Filters.</li>
-    <li><strong>Seung Joon Rhee</strong> (Summer 2023 - Present): Inferred and geolocated hypergiant peering connections.</li>
-    <li><strong>Kylie Berg</strong> (Summer 2023 - Present): Focused on quantum networking verification.</li>
-  </ul>
+<div class="mentoring-container" style="display: flex; align-items: flex-start; gap: 30px; margin-top: 30px;">
+  <div style="flex: 1;">
+    <h3 style="color: #6a0dad; margin-top: 0;">Mentoring:</h3>
+    <div style="margin-left: 20px;">
+      Over recent years, I've had the honor of mentoring several exceptional undergraduate scholars on 
+      diverse research topics:
+      <ul style="list-style-type: disc;">
+        <li><strong>Cyrus Illick</strong> (Fall 2021 - Spring 2023): Developed a new protocol to avoid broadcasting storms. Starting Ph.D. at Columbia University in Fall 2023.</li>
+        <li><strong>Joshua Hahn</strong> (Summer 2022 - Fall 2022): Worked on emulating causal models and understanding how synthetic control recovers underlying latent spaces.</li>
+        <li><strong>Dominic Sobhani</strong> (Summer 2022 - Spring 2023): Developed a transformer architecture to simulate Internet traffic data.</li>
+        <li><strong>Alfonso Luis</strong> (Fall 2022 - Spring 2023): Researched sampling without replacement and Bloom Filters.</li>
+        <li><strong>Seung Joon Rhee</strong> (Summer 2023 - September 2024): Inferred and geolocated hypergiant peering connections.</li>
+        <li><strong>Kylie Berg</strong> (Summer 2023 - June 2025): Focused on quantum networking verification.</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div style="flex: 0 0 250px; text-align: center;">
+    <img src="/assets/img/prof_pic.jpg" alt="Loqman Salamatian" style="width: 250px; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <div style="text-align: left; margin-top: 15px; font-size: 0.9em; line-height: 1.4;">
+      <strong>Contact Information:</strong><br>
+      Schapiro CEPSR 8th Floor<br>
+      530 W 120th St<br>
+      New York City, NY, 10027
+    </div>
+  </div>
 </div>
 
 <style>
-  /* Fix float issue on mobile */
+  /* Mobile responsiveness for the mentoring section with photo */
   @media (max-width: 768px) {
-    .profile {
-      float: none !important;
-      display: block;
-      margin: 0 auto 20px auto;
-      text-align: center;
+    .mentoring-container {
+      display: block !important;
     }
-
-    .profile-img {
-      max-width: 100%;
-      height: auto;
+    
+    .mentoring-container > div:first-child {
+      margin-bottom: 20px;
+    }
+    
+    .mentoring-container > div:last-child {
+      text-align: center;
+      flex: none !important;
+    }
+    
+    .mentoring-container img {
+      width: 200px !important;
     }
   }
 </style>
