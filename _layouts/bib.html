@@ -23,10 +23,8 @@
           <div class="author">
           {%- for author in entry.author_array -%}
             {%- assign author_is_self = false -%}
-            {%- if author.last == site.scholar.last_name%}
-              {%- if site.scholar.first_name contains author.first -%}
-                {%- assign author_is_self = true -%}
-              {%- endif -%}
+            {%- if author.last == "Salamatian" and author.first == "Loqman" -%}
+              {%- assign author_is_self = true -%}
             {%- endif -%}
             {%- assign coauthor_url = nil -%}
             {%- if site.data.coauthors[author.last] -%}
