@@ -11,9 +11,9 @@ social: true
 <div style="background-color: #f8f9fa; border-left: 4px solid #6a0dad; padding: 15px; margin: 20px 0; border-radius: 5px;">
   <h4 style="color: #6a0dad; margin-top: 0; margin-bottom: 10px;">🎓 On the Job Market</h4>
   <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
-    I am currently on the academic job market and seeking faculty positions in Computer Science, 
+    I am currently on the academic job market and seeking faculty positions in Computer Science or Electrical Engineering, 
     with a focus on Internet measurement, networking, and systems research. I will be defending 
-    my Ph.D. thesis in Spring 2025 and am excited to contribute to the academic community through 
+    my Ph.D. thesis in Spring 2026 and am excited to contribute to the academic community through 
     research, teaching, and mentoring.
   </p>
 </div>
