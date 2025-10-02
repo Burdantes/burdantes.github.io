@@ -41,7 +41,7 @@
       z-index: 2; /* requested */
     }
 
-    /* Darker content area to reduce animation distraction */
+    /* Darker content area to reduce animation distraction - applies to all pages */
     .container {
       background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white overlay */
       border-radius: 15px;
@@ -69,6 +69,13 @@
     .container * {
       position: relative;
       z-index: 1;
+    }
+
+    /* Exclude headers/navbars from the overlay effect */
+    header, .navbar, .site-header, .navbar-brand, .navbar-nav {
+      background-color: transparent !important;
+      backdrop-filter: none !important;
+      box-shadow: none !important;
     }
 
     /* Mobile responsiveness for content area */
