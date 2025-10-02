@@ -71,11 +71,20 @@
       z-index: 1;
     }
 
-    /* Ensure navbar and other containers remain transparent */
-    .navbar, .navbar-brand, .navbar-nav, .navbar-toggler {
-      background-color: transparent !important;
-      backdrop-filter: none !important;
-      box-shadow: none !important;
+    /* Ensure navbar remains visible and transparent */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      backdrop-filter: blur(5px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #6a0dad !important;
     }
 
     /* Mobile responsiveness for content area */
