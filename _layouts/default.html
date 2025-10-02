@@ -41,6 +41,53 @@
       z-index: 2; /* requested */
     }
 
+    /* Darker content area to reduce animation distraction */
+    .container {
+      background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white overlay */
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 20px !important;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px); /* Creates a subtle blur effect */
+    }
+
+    /* Darker overlay for the main content area */
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      border-radius: 25px;
+      z-index: -1;
+    }
+
+    /* Ensure content text remains readable */
+    .container * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Mobile responsiveness for content area */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        margin-top: 10px !important;
+        border-radius: 10px;
+      }
+      
+      .container::before {
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border-radius: 20px;
+      }
+    }
+
     /* optional page bg (remove or change if you prefer transparent) */
     /*  body {*/
     /*  background: #ffffff;*/
@@ -120,7 +167,7 @@
         color: { value: "#374151" },       // dark gray nodes for white bg
         shape: { type: "circle" },
         opacity: {
-          value: 0.9,                      // ↑ more visible nodes
+          value: 0.6,                      // ↑ more visible nodes
           random: false
         },
         size: {
@@ -131,7 +178,7 @@
           enable: true,
           distance: 130,                   // slightly tighter net
           color: "#4b5563",                // darker link color
-          opacity: 0.85,                   // ↑ more visible edges
+          opacity: 0.5,                   // ↑ more visible edges
           width: 1.2                       // ↑ thicker edges
         },
         move: {
