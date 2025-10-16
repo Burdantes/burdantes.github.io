@@ -45,6 +45,17 @@
         border: 1px solid rgba(0, 0, 0, 0.15) !important;
         border-radius: 4px !important;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        cursor: pointer !important;
+      }
+      
+      .navbar-toggler:hover {
+        background-color: rgba(255, 255, 255, 1) !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+      }
+      
+      .navbar-toggler:focus {
+        outline: 2px solid rgba(106, 13, 173, 0.3) !important;
+        outline-offset: 2px !important;
       }
       
       .navbar-toggler .icon-bar {
@@ -190,6 +201,14 @@
         position: relative !important;
       }
       
+      /* Ensure collapsed menu is visible when shown */
+      .navbar-collapse.show {
+        display: block !important;
+        background-color: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(15px) !important;
+        border: 1px solid rgba(0, 0, 0, 0.1) !important;
+      }
+      
       .navbar-nav .nav-link {
         color: #333 !important;
         padding: 8px 12px;
@@ -283,6 +302,55 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"
             onload="console.log('✅ particles.js loaded');"
             onerror="console.error('❌ failed to load /assets/js/particles.js');"></script>
+
+    <!-- Mobile navbar toggle fix -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Ensure navbar toggle works on mobile
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        
+        if (navbarToggler && navbarCollapse) {
+          navbarToggler.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle the collapsed class
+            navbarToggler.classList.toggle('collapsed');
+            
+            // Toggle the collapse class on the navbar-collapse
+            navbarCollapse.classList.toggle('show');
+            
+            // Update aria-expanded attribute
+            const isExpanded = navbarCollapse.classList.contains('show');
+            navbarToggler.setAttribute('aria-expanded', isExpanded);
+            
+            console.log('Navbar toggle clicked, expanded:', isExpanded);
+          });
+          
+          // Close navbar when clicking outside
+          document.addEventListener('click', function(e) {
+            if (!navbarToggler.contains(e.target) && !navbarCollapse.contains(e.target)) {
+              navbarCollapse.classList.remove('show');
+              navbarToggler.classList.add('collapsed');
+              navbarToggler.setAttribute('aria-expanded', 'false');
+            }
+          });
+          
+          // Close navbar when clicking on nav links (for mobile)
+          const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+          navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+              if (window.innerWidth <= 576) {
+                navbarCollapse.classList.remove('show');
+                navbarToggler.classList.add('collapsed');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+              }
+            });
+          });
+        }
+      });
+    </script>
 
 <script>
   (function startParticles(){

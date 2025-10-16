@@ -44,6 +44,10 @@ layout: default
         <!-- Selected papers -->
         {% if page.selected_papers -%}
         <h2><a href="{{ '/publications/' | relative_url }}" style="color: #6a0dad;">Selected Publications</a></h2>
+        <p style="margin-bottom: 20px; font-style: italic; color: #666;">
+          Below are some of my selected publications. For a complete list, see my 
+          <a href="{{ '/publications/' | relative_url }}" style="color: #6a0dad; font-weight: 500;">full publications page</a>.
+        </p>
         {%- include selected_papers.html %}
         {%- endif %}
 

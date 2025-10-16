@@ -32,3 +32,15 @@
 "Planck":
   - firstname: ["Max"]
     url: https://en.wikipedia.org/wiki/Max_Planck
+
+"Katz-Bassett":
+  - firstname: ["Ethan"]
+    url: https://www.columbia.edu/~ebk2141/
+
+"Misra":
+  - firstname: ["Vishal"]
+    url: https://www.cs.columbia.edu/~misra/
+
+"Rubenstein":
+  - firstname: ["Daniel", "Dan"]
+    url: https://www.cs.columbia.edu/~danr/
