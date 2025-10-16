@@ -2,14 +2,10 @@
 layout: page
 title: Teaching & Mentoring
 permalink: /teaching/
-description: Teaching and mentoring experience at Columbia University
+description:
 nav: true
 nav_order: 4
 ---
-
-# Teaching & Mentoring Experience
-
-## Teaching Service
 
 I served twice as a Course Assistant for [CSEEW6180 Modeling Performance Evaluation](http://www.cs.columbia.edu/~misra/6180.html) with Professor Vishal Misra. My duties included:
 
