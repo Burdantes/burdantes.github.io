@@ -21,7 +21,9 @@ social: true
 <h3 style="color: #6a0dad; margin-top: 30px;">About me:</h3>
 <div style="text-align: left; font-size: 1.1em; line-height: 1.6;">
   I am a fifth-year Ph.D. candidate at Columbia University, under the supervision of Professors 
-  Ethan Katz-Bassett, Vishal Misra, and Daniel Rubenstein. My research focuses on Internet 
+  <a href="https://www.columbia.edu/~ebk2141/" target="_blank" style="color: #6a0dad; font-weight: 500; text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderBottomColor='#6a0dad'; this.style.textDecoration='none';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textDecoration='none';">Ethan Katz-Bassett</a>, 
+  <a href="https://www.cs.columbia.edu/~misra/" target="_blank" style="color: #6a0dad; font-weight: 500; text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderBottomColor='#6a0dad'; this.style.textDecoration='none';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textDecoration='none';">Vishal Misra</a>, and 
+  <a href="https://www.cs.columbia.edu/~danr/" target="_blank" style="color: #6a0dad; font-weight: 500; text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderBottomColor='#6a0dad'; this.style.textDecoration='none';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textDecoration='none';">Daniel Rubenstein</a>. My research focuses on Internet 
   measurement, model analysis, and Riemannian geometry, aiming to develop models that bridge 
   virtual and geographical spaces. While my work is primarily theoretical, I enjoy building 
   systems that support these theories.
