@@ -166,29 +166,59 @@
         position: relative !important;
       }
       
-      /* Compact mobile navigation styling */
-      .navbar-nav {
+      /* Override Bootstrap mobile navbar styles */
+      #navbarNav {
+        display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
         justify-content: flex-end !important;
+        align-items: center !important;
+        width: auto !important;
+        height: auto !important;
+        position: static !important;
+        background: none !important;
+        box-shadow: none !important;
+        border: none !important;
         margin: 0 !important;
+        padding: 0 !important;
       }
       
-      .navbar-nav .nav-item {
+      #navbarNav ul {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        width: 100% !important;
+      }
+      
+      #navbarNav li {
+        display: inline-block !important;
         margin: 0 2px !important;
+        float: none !important;
+        width: auto !important;
       }
       
-      .navbar-nav .nav-link {
+      #navbarNav .nav-link {
+        display: inline-block !important;
         color: #333 !important;
         padding: 4px 8px !important;
         font-weight: 500 !important;
         font-size: 0.9rem !important;
         transition: all 0.3s ease !important;
         white-space: nowrap !important;
+        text-decoration: none !important;
+        border: none !important;
+        background: none !important;
       }
       
-      .navbar-nav .nav-link:hover {
+      #navbarNav .nav-link:hover {
         color: #6a0dad !important;
+        background: none !important;
+        text-decoration: none !important;
       }
       
       /* Make navbar more compact on mobile */
