@@ -75,10 +75,10 @@
   contents:
     - year: 2023
       items:
-        - Best of CCR
+        - Best of CCR - "Who Squats IPv4 Addresses?" (SIGCOMM CCR)
     - year: 2022
       items:
-        - Communications of ACM - Research Highlight
+        - Communications of ACM Research Highlight - "A Manifold View of Connectivity in the Private Backbone Networks of Hyperscalers" (Commun. ACM)
     - year: 2021
       items:
         - RACI Grant - RIPE, *Mapping connectivity and digital space in Central Asia*
