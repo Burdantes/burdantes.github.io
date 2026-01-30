@@ -129,4 +129,27 @@
         - Internet Measurement
         - GIS
         - Network Systems
-        - Congestion Control
+
+- title: Research Statement
+  type: contents
+  contents: |
+    <p>My research statement is available for download:</p>
+    <p><a href="/assets/pdf/research_statement.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm z-depth-0 btn-primary" style="background-color: #dc3545; border-color: #dc3545;"><i class="fas fa-file-pdf"></i> Research Statement (PDF)</a></p>
+
+- title: Teaching Statement
+  type: contents
+  contents: |
+    <p>My teaching statement is available for download:</p>
+    <p><a href="/assets/pdf/teaching_statement.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm z-depth-0 btn-primary" style="background-color: #dc3545; border-color: #dc3545;"><i class="fas fa-file-pdf"></i> Teaching Statement (PDF)</a></p>
+
+- title: Research Video
+  type: contents
+  contents: |
+    <p>This video provides an overview of my research:</p>
+    <div class="row mt-3">
+      <div class="col-sm-12 mt-3 mt-md-0">
+        <figure>
+          <iframe src="https://www.youtube.com/embed/vnxhKuDo78o" class="img-fluid rounded z-depth-1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; max-width: 800px; height: 450px;"></iframe>
+        </figure>
+      </div>
+    </div>
