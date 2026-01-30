@@ -13,6 +13,7 @@ social: true
   <p style="margin: 0; font-size: 1.1em; line-height: 1.5;">
     I am currently on the academic job market and seeking faculty positions in Computer Science or Electrical Engineering, 
     with a focus on Internet measurement, networking, and systems research. Feel free to reach out if you hear about any good fit! 
+    For more information, please see my <a href="/faculty-app/" style="color: #6a0dad; font-weight: 500; text-decoration: underline;">faculty application materials</a>.
   </p>
 </div>
 
