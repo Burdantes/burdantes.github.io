@@ -30,11 +30,19 @@ Submissions may include static visuals, short videos, recordings of interactive 
 - Optionally, a 30–60 second recorded explanation.
 
 The goal is to create an engaging, visually rich session that encourages new ways of 
-thinking about Internet infrastructure and behavior.
+thinking about Internet infrastructure and behavior: 
+
 **Important Notes:**
 - This exhibition is **now sponsored by the Internet Society**
 - We will be awarding a **prize for the best visualization**
 - **Physical presence at the conference is not required**
 
- For more information on how to participate, please reach out to me (ls3748@columbia.edu), and for submission, visit [this submission form](https://docs.google.com/forms/d/1NAuqwefNez5JSXsE-9NhGJqalm4_J-p3SamjFZjPA2I/edit). Updates and community discussion will also take place in the SIGCOMM #sigcomm25-nonpaper Slack channel.
+For more information on how to participate, please reach out to me (ls3748@columbia.edu), and for submission, visit [this submission form](https://docs.google.com/forms/d/1NAuqwefNez5JSXsE-9NhGJqalm4_J-p3SamjFZjPA2I/edit). Updates and community discussion will also take place in the SIGCOMM #sigcomm25-nonpaper Slack channel.
 
+### IVE Outcomes
+
+The inaugural Internet Visualization Exhibition (IVE) at ACM SIGCOMM was a success, featuring **19 submissions** that explored Internet visualization from satellites in orbit to antennas in rural Senegal. 
+
+We've created a [video showcasing the range and creativity of the exhibition](https://youtu.be/leN0WRHPXK4), which was presented at the non-paper session.
+
+For a detailed summary of the key findings and lessons learned from the exhibition, please see our [blog post on Internet Society Pulse](https://pulse.internetsociety.org/en/blog/2025/12/seeing-the-unseen-internet-lessons-from-the-internet-visualization-exhibition/). 
