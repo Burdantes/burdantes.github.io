@@ -14,7 +14,7 @@ nav_order: 5
   <!-- Research Statement Card -->
   <div style="border-left: 3px solid #2c3e50; padding: 30px 0 30px 30px; margin-left: 0;">
     <h3 style="margin: 0 0 15px 0; font-size: 1.6em; font-weight: 400; color: #2c3e50; letter-spacing: -0.3px;">Research Statement</h3>
-    <p style="margin: 0 0 25px 0; font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300;">My research statement outlines my research agenda, contributions, and future directions in Internet measurement, networking, and systems research.</p>
+    <p style="margin: 0 0 25px 0; font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300;">My research statement outlines my research agenda, contributions, and future directions.</p>
     <div>
       <a href="/assets/pdf/research_statement.pdf" target="_blank" rel="noopener noreferrer" style="color: #2c3e50; text-decoration: none; border-bottom: 1px solid #2c3e50; padding-bottom: 2px; font-weight: 400; transition: border-color 0.2s ease;" onmouseover="this.style.borderBottomColor='#7f8c8d';" onmouseout="this.style.borderBottomColor='#2c3e50';">
         Download Research Statement (PDF)
@@ -27,7 +27,7 @@ nav_order: 5
   <!-- Teaching Statement Card -->
   <div style="border-left: 3px solid #2c3e50; padding: 30px 0 30px 30px; margin-left: 0;">
     <h3 style="margin: 0 0 15px 0; font-size: 1.6em; font-weight: 400; color: #2c3e50; letter-spacing: -0.3px;">Teaching Statement</h3>
-    <p style="margin: 0 0 25px 0; font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300;">My teaching statement describes my teaching philosophy, experience, and approach to mentoring students in computer science and networking.</p>
+    <p style="margin: 0 0 25px 0; font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300;">My teaching statement describes my teaching philosophy, experience, and approach to mentoring students.</p>
     <div>
       <a href="/assets/pdf/teaching_statement.pdf" target="_blank" rel="noopener noreferrer" style="color: #2c3e50; text-decoration: none; border-bottom: 1px solid #2c3e50; padding-bottom: 2px; font-weight: 400; transition: border-color 0.2s ease;" onmouseover="this.style.borderBottomColor='#7f8c8d';" onmouseout="this.style.borderBottomColor='#2c3e50';">
         Download Teaching Statement (PDF)
@@ -40,7 +40,7 @@ nav_order: 5
   <!-- Research Video Card -->
   <div style="border-left: 3px solid #2c3e50; padding: 30px 0 30px 30px; margin-left: 0;">
     <h3 style="margin: 0 0 15px 0; font-size: 1.6em; font-weight: 400; color: #2c3e50; letter-spacing: -0.3px;">Research Overview Video</h3>
-    <p style="margin: 0 0 30px 0; font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300;">This video provides an overview of my research, explaining the nature and scope of my work in Internet measurement, networking, and systems.</p>
+    <p style="margin: 0 0 30px 0; font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300;">This video provides an overview of my research, explaining the nature and scope of my work.</p>
     <div style="max-width: 800px; width: 100%; margin-top: 20px;">
       <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000;">
         <iframe 

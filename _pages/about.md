@@ -37,25 +37,22 @@ social: true
     <div style="margin-left: 20px;">
       <ul style="list-style-type: none; padding-left: 0;">
         <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Internet Measurement and Topology Discovery
+          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Geometric Modeling of Network Connectivity
         </li>
         <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Mathematical Modeling of the Internet
+          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Topology Inference and Interconnection Discovery
         </li>
         <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Resilient Networking
+          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Performance Tomography and Degradation Detection
         </li>
         <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Mathematical Analysis of Systems
+          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Causal Inference for Network Behavior
         </li>
         <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Computational Social Science on Computer Networks
+          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Measurement-Driven Optimization
         </li>
         <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Riemannian Geometry
-        </li>
-        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Geopolitics of the Internet
+          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Geopolitics of Internet Infrastructure
         </li>
       </ul>
     </div>
