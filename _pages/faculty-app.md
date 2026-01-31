@@ -7,12 +7,9 @@ nav: true
 nav_order: 5
 ---
 
-<div style="border-bottom: 2px solid #2c3e50; padding-bottom: 20px; margin-bottom: 50px;">
-  <h2 style="margin: 0 0 10px 0; font-size: 2.2em; font-weight: 300; letter-spacing: -0.5px; color: #2c3e50;">Faculty Application Materials</h2>
-  <p style="margin: 0; font-size: 1.1em; color: #7f8c8d; font-weight: 300;">Research Statement, Teaching Statement, and Research Overview Video</p>
-</div>
+<p style="margin: 0 0 50px 0; font-size: 1.1em; color: #7f8c8d; font-weight: 300;">Research Statement, Teaching Statement, and Research Overview Video</p>
 
-<div style="display: grid; gap: 40px; margin-top: 40px;">
+<div style="display: grid; gap: 60px; margin-top: 40px;">
   
   <!-- Research Statement Card -->
   <div style="border-left: 3px solid #2c3e50; padding: 30px 0 30px 30px; margin-left: 0;">
@@ -25,6 +22,8 @@ nav_order: 5
     </div>
   </div>
 
+  <div style="border-top: 1px solid #e0e0e0; margin: 0;"></div>
+
   <!-- Teaching Statement Card -->
   <div style="border-left: 3px solid #2c3e50; padding: 30px 0 30px 30px; margin-left: 0;">
     <h3 style="margin: 0 0 15px 0; font-size: 1.6em; font-weight: 400; color: #2c3e50; letter-spacing: -0.3px;">Teaching Statement</h3>
@@ -35,6 +34,8 @@ nav_order: 5
       </a>
     </div>
   </div>
+
+  <div style="border-top: 1px solid #e0e0e0; margin: 0;"></div>
 
   <!-- Research Video Card -->
   <div style="border-left: 3px solid #2c3e50; padding: 30px 0 30px 30px; margin-left: 0;">

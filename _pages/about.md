@@ -17,23 +17,21 @@ social: true
   </p>
 </div>
 
-<h3 style="color: #2c3e50; margin-top: 40px; font-weight: 400; font-size: 1.8em; letter-spacing: -0.3px; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">About me</h3>
-<div style="text-align: left; font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300; margin-top: 20px;">
-  I am a fifth-year Ph.D. candidate at Columbia University, under the supervision of Professors 
-  <a href="https://www.columbia.edu/~ebk2141/" target="_blank" style="color: #2c3e50; font-weight: 400; text-decoration: none; border-bottom: 1px solid #2c3e50; padding-bottom: 2px; transition: border-color 0.2s ease;" onmouseover="this.style.borderBottomColor='#7f8c8d';" onmouseout="this.style.borderBottomColor='#2c3e50';">Ethan Katz-Bassett</a>, 
-  <a href="https://www.cs.columbia.edu/~misra/" target="_blank" style="color: #2c3e50; font-weight: 400; text-decoration: none; border-bottom: 1px solid #2c3e50; padding-bottom: 2px; transition: border-color 0.2s ease;" onmouseover="this.style.borderBottomColor='#7f8c8d';" onmouseout="this.style.borderBottomColor='#2c3e50';">Vishal Misra</a>, and 
-  <a href="https://www.cs.columbia.edu/~danr/" target="_blank" style="color: #2c3e50; font-weight: 400; text-decoration: none; border-bottom: 1px solid #2c3e50; padding-bottom: 2px; transition: border-color 0.2s ease;" onmouseover="this.style.borderBottomColor='#7f8c8d';" onmouseout="this.style.borderBottomColor='#2c3e50';">Daniel Rubenstein</a>. My research focuses on Internet 
-  measurement, model analysis, and Riemannian geometry, aiming to develop models that bridge 
-  virtual and geographical spaces. While my work is primarily theoretical, I enjoy building 
-  systems that support these theories.
-
-  I also enjoy teaching and mentoring students. Feel free to reach out if you are interested in 
-  research projects or have questions about grad school.
-
-  Outside academia, I am an avid jazz record collector and a big foodie.
+<div style="border-left: 3px solid #2c3e50; padding: 30px 0 30px 30px; margin: 40px 0;">
+  <p style="text-align: left; font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300; margin: 0;">
+    I am a fifth-year Ph.D. candidate at Columbia University. My research develops rigorous models that piece together the hidden structure of the Internet from the fragments that can be directly observed. I focus on where visibility is most limited and where that lack of visibility most constrains our ability to improve the network: within private infrastructures, at the borders between networks, where users actually connect, and during performance degradations. The models I develop provide operators, researchers, and policymakers with the insights needed to diagnose problems more efficiently and build a more resilient network.
+  </p>
+  <p style="text-align: left; font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300; margin: 20px 0 0 0;">
+    I work under the supervision of Professors 
+    <a href="https://www.columbia.edu/~ebk2141/" target="_blank" style="color: #2c3e50; font-weight: 400; text-decoration: none; border-bottom: 1px solid #2c3e50; padding-bottom: 2px; transition: border-color 0.2s ease;" onmouseover="this.style.borderBottomColor='#7f8c8d';" onmouseout="this.style.borderBottomColor='#2c3e50';">Ethan Katz-Bassett</a>, 
+    <a href="https://www.cs.columbia.edu/~misra/" target="_blank" style="color: #2c3e50; font-weight: 400; text-decoration: none; border-bottom: 1px solid #2c3e50; padding-bottom: 2px; transition: border-color 0.2s ease;" onmouseover="this.style.borderBottomColor='#7f8c8d';" onmouseout="this.style.borderBottomColor='#2c3e50';">Vishal Misra</a>, and 
+    <a href="https://www.cs.columbia.edu/~danr/" target="_blank" style="color: #2c3e50; font-weight: 400; text-decoration: none; border-bottom: 1px solid #2c3e50; padding-bottom: 2px; transition: border-color 0.2s ease;" onmouseover="this.style.borderBottomColor='#7f8c8d';" onmouseout="this.style.borderBottomColor='#2c3e50';">Daniel Rubenstein</a>.
+  </p>
 </div>
 
-<h3 style="color: #2c3e50; margin-top: 50px; font-weight: 400; font-size: 1.8em; letter-spacing: -0.3px; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Current Research Interests</h3>
+<div style="border-top: 1px solid #e0e0e0; margin: 60px 0;"></div>
+
+<h3 style="color: #2c3e50; margin-top: 0; font-weight: 400; font-size: 1.8em; letter-spacing: -0.3px; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Current Research Interests</h3>
 <div class="research-container" style="display: flex; align-items: flex-start; gap: 40px; margin-top: 30px;">
   <div style="flex: 1;">
     <div style="margin-left: 20px;">
