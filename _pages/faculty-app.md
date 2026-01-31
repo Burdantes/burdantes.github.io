@@ -1,13 +1,22 @@
 ---
 layout: page
-title: Faculty App
+title: Faculty Application Package
 permalink: /faculty-app/
 description:
 nav: true
 nav_order: 5
 ---
 
-<p style="margin: 0 0 50px 0; font-size: 1.1em; color: #7f8c8d; font-weight: 300;">Research Statement, Teaching Statement, and Research Overview Video</p>
+<style>
+  .post-header .post-title {
+    display: none;
+  }
+</style>
+
+<div style="margin-bottom: 30px;">
+  <h1 style="color: #2c3e50; font-weight: 300; font-size: 2.2em; letter-spacing: -0.5px; margin: 0 0 10px 0; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Faculty Application Package</h1>
+  <p style="margin: 15px 0 0 0; font-size: 1.1em; color: #7f8c8d; font-weight: 300;">Research Statement, Teaching Statement, and Research Overview Video</p>
+</div>
 
 <div style="display: grid; gap: 60px; margin-top: 40px;">
   

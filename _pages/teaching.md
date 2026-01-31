@@ -7,6 +7,16 @@ nav: true
 nav_order: 4
 ---
 
+<style>
+  .post-header .post-title {
+    display: none;
+  }
+</style>
+
+<div style="margin-bottom: 30px;">
+  <h1 style="color: #2c3e50; font-weight: 300; font-size: 2.2em; letter-spacing: -0.5px; margin: 0 0 10px 0; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Teaching & Mentoring</h1>
+</div>
+
 <div style="margin-bottom: 60px;">
   <h3 style="color: #2c3e50; margin-top: 0; margin-bottom: 20px; font-weight: 400; font-size: 1.6em; letter-spacing: -0.3px; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Course Assistance</h3>
   <p style="font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300; margin-bottom: 20px;">

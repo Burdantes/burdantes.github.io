@@ -4,6 +4,17 @@ title: Projects
 permalink: /projects/
 description: This page lists some of the projects I have participated in the past.
 ---
+
+<style>
+  .post-header .post-title {
+    display: none;
+  }
+</style>
+
+<div style="margin-bottom: 40px;">
+  <h1 style="color: #2c3e50; font-weight: 300; font-size: 2.2em; letter-spacing: -0.5px; margin: 0 0 10px 0; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Projects</h1>
+</div>
+
 # Geopolitics of the Internet
 Inspired by my grandfather, a political activist who took refuge in France, I developed a strong interest in political science. His dream of sparking an intellectual renaissance in a nation shaped by ancient civilization and the pursuit of freedom deeply resonated with me. This led me to mathematical modeling as an efficient tool for abstract reasoning, which became the focus of my first five years at university.
 
