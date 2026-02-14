@@ -2,8 +2,7 @@
 title: "IVE"
 permalink: /ive/
 layout: page
-nav: true
-nav_order: 2
+nav: false
 ---
 
 <style>
