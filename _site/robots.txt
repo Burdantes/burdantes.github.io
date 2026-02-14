@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://burdantes.github.io/sitemap.xml
