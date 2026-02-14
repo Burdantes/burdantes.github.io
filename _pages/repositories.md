@@ -3,8 +3,14 @@ layout: page
 title: Projects
 permalink: /projects/
 description: This page lists some of my projects
-nav_order : 3
+nav_order: 3
 nav: true
+dropdown: true
+children:
+  - title: Overview
+    permalink: /projects/
+  - title: Starlink Speedtest
+    permalink: /projects/starlink-speedtest/
 ---
 
 <style>
