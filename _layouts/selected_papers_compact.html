@@ -14,7 +14,7 @@
 
 <div class="row mb-3 publication-entry{% if entry.preview %} has-preview{% endif %}">
   {%- if entry.preview %}
-  <div class="col-sm-2 publication-preview">
+  <div class="publication-preview">
     <div class="publication-preview-frame">
       <img
         src="{% if entry.preview contains '://' %}{{ entry.preview }}{% else %}{{ entry.preview | prepend: '/assets/img/' | relative_url }}{% endif %}"
@@ -23,7 +23,7 @@
       >
     </div>
   </div>
-  <div id="{{entry.key}}" class="col-sm-10 publication-details">
+  <div id="{{entry.key}}" class="publication-details">
     {%- if venue_badge != "" -%}
     <div class="abbr publication-badge">{{ venue_badge }}</div>
     {%- endif -%}
