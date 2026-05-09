@@ -1,8 +1,7 @@
 ---
 ---
 <!-- _layouts/selected_papers_compact.html -->
-<div class="row mb-3">
-  <div class="col-sm-2 abbr">
+{%- capture venue_badge -%}
     {%- if entry.abbr -%}
       {%- if site.data.venues[entry.abbr] -%}
       <abbr class="badge" style="background-color: purple;"><a href="{{site.data.venues[entry.abbr].url}}">{{entry.abbr}}</a></abbr>
@@ -10,9 +9,27 @@
       <abbr class="badge" style="background-color: purple;">{{entry.abbr}}</abbr>
       {%- endif -%}
     {%- endif -%}
+{%- endcapture -%}
+{%- assign venue_badge = venue_badge | strip -%}
+
+<div class="row mb-3 publication-entry{% if entry.preview %} has-preview{% endif %}">
+  {%- if entry.preview %}
+  <div class="col-sm-3 publication-preview">
+    <img
+      src="{% if entry.preview contains '://' %}{{ entry.preview }}{% else %}{{ entry.preview | prepend: '/assets/img/' | relative_url }}{% endif %}"
+      alt="{{ entry.title | strip_html | escape }} preview"
+      loading="lazy"
+    >
   </div>
+  <div id="{{entry.key}}" class="col-sm-9 publication-details">
+    {%- if venue_badge != "" -%}
+    <div class="abbr publication-badge">{{ venue_badge }}</div>
+    {%- endif -%}
+  {%- else %}
+  <div class="col-sm-2 abbr">{{ venue_badge }}</div>
 
   <div id="{{entry.key}}" class="col-sm-10">
+  {%- endif %}
     <!-- Title -->
     <div class="title"><strong>{{entry.title}}</strong></div>
     
@@ -65,14 +82,19 @@
     {%- endfor %}
     </div>
 
-    <!-- Compact venue and year -->
-    <div class="periodical">
-      {% if entry.type == "article" -%}
+    {%- capture entry_venue -%}
+      {%- if entry.type == "article" -%}
         <em>{{entry.journal}}</em>
       {%- elsif entry.type == "inproceedings" -%}
         <em>{{entry.booktitle}}</em>
       {%- endif -%}
-      {%- if entry.year -%}, {{entry.year}}{%- endif -%}
+    {%- endcapture -%}
+    {%- assign entry_venue = entry_venue | strip -%}
+
+    <!-- Compact venue and year -->
+    <div class="periodical">
+      {{ entry_venue }}
+      {%- if entry.year -%}{% if entry_venue != "" %}, {% endif %}{{entry.year}}{%- endif -%}
       {%- if entry.status -%} ({{entry.status}}){%- endif -%}
     </div>
 
