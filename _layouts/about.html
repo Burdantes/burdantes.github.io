@@ -4,20 +4,20 @@ layout: default
 
 <!-- about.html -->
 <div class="post">
-    <header class="post-header about-header">
-        <div class="about-heading">
-            <h1 class="post-title">
-                {% if site.title == "blank" -%}
-                <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
-                {%- else -%}
-                {{ site.title }}
-                {%- endif %}
-            </h1>
-            <p class="desc">{{ page.subtitle }}</p>
-        </div>
+    <header class="post-header">
+        <h1 class="post-title">
+            {% if site.title == "blank" -%}
+            <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
+            {%- else -%}
+            {{ site.title }}
+            {%- endif %}
+        </h1>
+        <p class="desc">{{ page.subtitle }}</p>
+    </header>
 
+    <article>
         {% if page.profile %}
-        <div class="profile">
+        <div class="profile about-profile">
             {%- if page.profile.image %}
             {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
             {%- assign profile_image_alt = page.profile.alt | default: page.profile.image -%}
@@ -37,9 +37,7 @@ layout: default
             {%- endif %}
         </div>
         {%- endif %}
-    </header>
 
-    <article>
         <div class="clearfix">
             {{ content }}
         </div>
@@ -81,29 +79,16 @@ layout: default
     </article>
 </div>
 
-<!-- Header profile layout -->
+<!-- Floated profile layout -->
 <style>
-    .about-header {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 2rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .about-heading {
-        flex: 1 1 auto;
-        min-width: 0;
-    }
-
-    .about-header .profile {
-        flex: 0 0 250px;
+    .about-profile {
+        float: right;
         width: 250px;
-        margin: 0 0 1rem 1rem;
+        margin: 0 0 1.25rem 2rem;
         text-align: left;
     }
 
-    .about-header .profile figure {
+    .about-profile figure {
         margin-bottom: 0;
     }
 
@@ -114,7 +99,7 @@ layout: default
         border-radius: 0 !important;
     }
 
-    .about-header .address {
+    .about-profile .address {
         margin-top: 1rem;
         font-family: inherit;
         font-size: 0.95em;
@@ -123,19 +108,16 @@ layout: default
         font-weight: 300;
     }
 
-    .about-header .address strong {
+    .about-profile .address strong {
         color: #2c3e50;
         font-weight: 400;
     }
 
     @media (max-width: 768px) {
-        .about-header {
-            display: block;
-        }
-
-        .about-header .profile {
+        .about-profile {
+            float: none;
             width: 200px;
-            margin: 1.5rem auto 0;
+            margin: 1.5rem auto;
         }
 
         .profile-img {
