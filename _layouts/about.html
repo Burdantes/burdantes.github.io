@@ -4,22 +4,23 @@ layout: default
 
 <!-- about.html -->
 <div class="post">
-    <header class="post-header">
-        <h1 class="post-title">
-            {% if site.title == "blank" -%}
-            <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
-            {%- else -%}
-            {{ site.title }}
-            {%- endif %}
-        </h1>
-        <p class="desc">{{ page.subtitle }}</p>
-    </header>
+    <header class="post-header about-header">
+        <div class="about-heading">
+            <h1 class="post-title">
+                {% if site.title == "blank" -%}
+                <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
+                {%- else -%}
+                {{ site.title }}
+                {%- endif %}
+            </h1>
+            <p class="desc">{{ page.subtitle }}</p>
+        </div>
 
-    <article>
-        {% if page.profile -%}
-        <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+        {% if page.profile %}
+        <div class="profile">
             {%- if page.profile.image %}
             {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+            {%- assign profile_image_alt = page.profile.alt | default: page.profile.image -%}
 
             {% if page.profile.image_circular %}
             {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle profile-img" -%}
@@ -27,7 +28,7 @@ layout: default
             {%- assign profile_image_class = "img-fluid z-depth-1 rounded profile-img" -%}
             {% endif %}
 
-            {% include figure.html path=profile_image_path class=profile_image_class alt=page.profile.image cache_bust=true -%}
+            {% include figure.html path=profile_image_path class=profile_image_class alt=profile_image_alt cache_bust=true -%}
             {% endif -%}
             {%- if page.profile.address %}
             <div class="address">
@@ -36,7 +37,9 @@ layout: default
             {%- endif %}
         </div>
         {%- endif %}
+    </header>
 
+    <article>
         <div class="clearfix">
             {{ content }}
         </div>
@@ -78,10 +81,65 @@ layout: default
     </article>
 </div>
 
-<!-- Added style to control profile image size -->
+<!-- Header profile layout -->
 <style>
+    .about-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-heading {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .about-header .profile {
+        flex: 0 0 250px;
+        width: 250px;
+        margin: 0 0 1rem 1rem;
+        text-align: left;
+    }
+
+    .about-header .profile figure {
+        margin-bottom: 0;
+    }
+
     .profile-img {
-        width: 270px;
+        width: 250px;
+        max-width: 100%;
         height: auto;
+        border-radius: 0 !important;
+    }
+
+    .about-header .address {
+        margin-top: 1rem;
+        font-family: inherit;
+        font-size: 0.95em;
+        line-height: 1.6;
+        color: #555;
+        font-weight: 300;
+    }
+
+    .about-header .address strong {
+        color: #2c3e50;
+        font-weight: 400;
+    }
+
+    @media (max-width: 768px) {
+        .about-header {
+            display: block;
+        }
+
+        .about-header .profile {
+            width: 200px;
+            margin: 1.5rem auto 0;
+        }
+
+        .profile-img {
+            width: 200px;
+        }
     }
 </style>

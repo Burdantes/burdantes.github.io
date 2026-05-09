@@ -3,6 +3,15 @@ layout: about
 title: About
 permalink: /
 subtitle: <a href="https://www.columbia.edu/">Columbia University</a>
+profile:
+  image: prof_pic.jpg
+  image_circular: false
+  alt: Loqman Salamatian
+  address: |
+    <strong>Contact Information</strong><br>
+    Schapiro CEPSR 8th Floor<br>
+    530 W 120th St<br>
+    New York City, NY, 10027
 
 news: true
 selected_papers: true
@@ -32,62 +41,27 @@ social: true
 <div style="border-top: 1px solid #e0e0e0; margin: 60px 0;"></div>
 
 <h3 style="color: #2c3e50; margin-top: 0; font-weight: 400; font-size: 1.8em; letter-spacing: -0.3px; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Current Research Interests</h3>
-<div class="research-container" style="display: flex; align-items: flex-start; gap: 40px; margin-top: 30px;">
-  <div style="flex: 1;">
-    <div style="margin-left: 20px;">
-      <ul style="list-style-type: none; padding-left: 0;">
-        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Geometric Modeling of Network Connectivity
-        </li>
-        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Topology Inference and Interconnection Discovery
-        </li>
-        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Performance Tomography and Degradation Detection
-        </li>
-        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Causal Inference for Network Behavior
-        </li>
-        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Measurement-Driven Optimization
-        </li>
-        <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
-          <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Geopolitics of Internet Infrastructure
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <div style="flex: 0 0 250px; text-align: center;">
-    <img src="/assets/img/prof_pic.jpg" alt="Loqman Salamatian" style="width: 250px; height: auto; border-radius: 0;">
-    <div style="text-align: left; margin-top: 20px; font-size: 0.95em; line-height: 1.6; color: #555; font-weight: 300;">
-      <strong style="color: #2c3e50; font-weight: 400;">Contact Information</strong><br>
-      Schapiro CEPSR 8th Floor<br>
-      530 W 120th St<br>
-      New York City, NY, 10027
-    </div>
+<div style="margin-top: 30px;">
+  <div style="margin-left: 20px;">
+    <ul style="list-style-type: none; padding-left: 0;">
+      <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
+        <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Geometric Modeling of Network Connectivity
+      </li>
+      <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
+        <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Topology Inference and Interconnection Discovery
+      </li>
+      <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
+        <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Performance Tomography and Degradation Detection
+      </li>
+      <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
+        <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Causal Inference for Network Behavior
+      </li>
+      <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
+        <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Measurement-Driven Optimization
+      </li>
+      <li style="margin-bottom: 12px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
+        <span style="position: absolute; left: 0; color: #2c3e50;">—</span>Geopolitics of Internet Infrastructure
+      </li>
+    </ul>
   </div>
 </div>
-
-
-<style>
-  /* Mobile responsiveness for the research section with photo */
-  @media (max-width: 768px) {
-    .research-container {
-      display: block !important;
-    }
-    
-    .research-container > div:first-child {
-      margin-bottom: 20px;
-    }
-    
-    .research-container > div:last-child {
-      text-align: center;
-      flex: none !important;
-    }
-    
-    .research-container img {
-      width: 200px !important;
-    }
-  }
-</style>
