@@ -14,16 +14,17 @@
 
 <div class="row mb-3 publication-entry{% if entry.preview %} has-preview{% endif %}">
   {%- if entry.preview %}
-  <div class="publication-preview">
-    <div class="publication-preview-frame">
+  <div class="publication-preview" style="flex: 0 0 58px; max-width: 58px; padding-left: 15px; padding-right: 8px; margin-bottom: 0.5rem;">
+    <div class="publication-preview-frame" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; padding: 2px; background: var(--global-bg-color); border: 1px solid var(--global-divider-color); border-radius: 4px; overflow: hidden;">
       <img
         src="{% if entry.preview contains '://' %}{{ entry.preview }}{% else %}{{ entry.preview | prepend: '/assets/img/' | relative_url }}{% endif %}"
         alt="{{ entry.title | strip_html | escape }} preview"
         loading="lazy"
+        style="display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;"
       >
     </div>
   </div>
-  <div id="{{entry.key}}" class="publication-details">
+  <div id="{{entry.key}}" class="publication-details" style="flex: 1 1 0; max-width: calc(100% - 58px); padding-left: 0; padding-right: 15px;">
     {%- if venue_badge != "" -%}
     <div class="abbr publication-badge">{{ venue_badge }}</div>
     {%- endif -%}
@@ -85,10 +86,12 @@
     </div>
 
     {%- capture entry_venue -%}
-      {%- if entry.type == "article" -%}
+      {%- if entry.journal -%}
         <em>{{entry.journal}}</em>
-      {%- elsif entry.type == "inproceedings" -%}
+      {%- elsif entry.booktitle -%}
         <em>{{entry.booktitle}}</em>
+      {%- elsif entry.publisher -%}
+        <em>{{entry.publisher}}</em>
       {%- endif -%}
     {%- endcapture -%}
     {%- assign entry_venue = entry_venue | strip -%}
