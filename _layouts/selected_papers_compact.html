@@ -14,8 +14,8 @@
 
 <div class="row mb-3 publication-entry{% if entry.preview %} has-preview{% endif %}">
   {%- if entry.preview %}
-  <div class="publication-preview" style="flex: 0 0 58px; max-width: 58px; padding-left: 15px; padding-right: 8px; margin-bottom: 0.5rem;">
-    <div class="publication-preview-frame" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; padding: 2px; background: var(--global-bg-color); border: 1px solid var(--global-divider-color); border-radius: 4px; overflow: hidden;">
+  <div class="publication-preview" style="flex: 0 0 86px; max-width: 86px; padding-left: 15px; padding-right: 10px; margin-bottom: 0.5rem;">
+    <div class="publication-preview-frame" style="display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; padding: 3px; background: var(--global-bg-color); border: 1px solid var(--global-divider-color); border-radius: 4px; overflow: hidden;">
       <img
         src="{% if entry.preview contains '://' %}{{ entry.preview }}{% else %}{{ entry.preview | prepend: '/assets/img/' | relative_url }}{% endif %}"
         alt="{{ entry.title | strip_html | escape }} preview"
@@ -24,7 +24,7 @@
       >
     </div>
   </div>
-  <div id="{{entry.key}}" class="publication-details" style="flex: 1 1 0; max-width: calc(100% - 58px); padding-left: 0; padding-right: 15px;">
+  <div id="{{entry.key}}" class="publication-details" style="flex: 1 1 0; max-width: calc(100% - 86px); padding-left: 0; padding-right: 15px;">
     {%- if venue_badge != "" -%}
     <div class="abbr publication-badge">{{ venue_badge }}</div>
     {%- endif -%}
