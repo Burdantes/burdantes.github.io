@@ -39,7 +39,7 @@ nav: true
   </li>
   <li style="margin-bottom: 14px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
     <span style="position: absolute; left: 0; color: #2c3e50;">—</span>
-    <strong style="color: #2c3e50; font-weight: 400;">HERMES</strong> — Repurposing user-driven speed tests to monitor Internet performance (NSDI’26 under review).
+    <strong style="color: #2c3e50; font-weight: 400;">HERMES</strong> — Repurposing user-driven speed tests to monitor Internet performance (SIGCOMM’26).
   </li>
   <li style="margin-bottom: 14px; padding-left: 20px; position: relative; color: #555; font-weight: 300; line-height: 1.6;">
     <span style="position: absolute; left: 0; color: #2c3e50;">—</span>
