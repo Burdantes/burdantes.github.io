@@ -18,6 +18,11 @@ nav: true
 </div>
 
 <div style="display: grid; gap: 30px; margin-bottom: 50px;">
+  <a href="/revtr_monitoring/" style="display: block; text-decoration: none; color: inherit; border-left: 3px solid #2c3e50; padding: 25px 0 25px 25px; transition: background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#f8f9fa';" onmouseout="this.style.backgroundColor='transparent';">
+    <h3 style="margin: 0 0 10px 0; font-size: 1.5em; font-weight: 400; color: #2c3e50; letter-spacing: -0.3px;">revTr Health Monitor</h3>
+    <p style="margin: 0; font-size: 1.05em; line-height: 1.6; color: #555; font-weight: 300;">Live dashboard output for reverse traceroute health across M-Lab physical sites.</p>
+  </a>
+
   <a href="/projects/starlink-speedtest/" style="display: block; text-decoration: none; color: inherit; border-left: 3px solid #2c3e50; padding: 25px 0 25px 25px; transition: background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#f8f9fa';" onmouseout="this.style.backgroundColor='transparent';">
     <h3 style="margin: 0 0 10px 0; font-size: 1.5em; font-weight: 400; color: #2c3e50; letter-spacing: -0.3px;">Starlink Speedtest Comparison</h3>
     <p style="margin: 0; font-size: 1.05em; line-height: 1.6; color: #555; font-weight: 300;">Compare Starlink performance using Cloudflare and M-Lab speed-test data—interactive dashboard by geography and destination.</p>
