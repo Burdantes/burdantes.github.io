@@ -28,6 +28,11 @@ nav: true
     <p style="margin: 0; font-size: 1.05em; line-height: 1.6; color: #555; font-weight: 300;">Compare Starlink performance using Cloudflare and M-Lab speed-test data—interactive dashboard by geography and destination.</p>
   </a>
 
+  <a href="/projects/hypergiants-evolution/" style="display: block; text-decoration: none; color: inherit; border-left: 3px solid #2c3e50; padding: 25px 0 25px 25px; transition: background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#f8f9fa';" onmouseout="this.style.backgroundColor='transparent';">
+    <h3 style="margin: 0 0 10px 0; font-size: 1.5em; font-weight: 400; color: #2c3e50; letter-spacing: -0.3px;">Hypergiants Evolution</h3>
+    <p style="margin: 0; font-size: 1.05em; line-height: 1.6; color: #555; font-weight: 300;">Interactive visualizations tracking CDN, IXP, facility, city, country, and continent-level hypergiant infrastructure growth.</p>
+  </a>
+
   <a href="/ive/" style="display: block; text-decoration: none; color: inherit; border-left: 3px solid #2c3e50; padding: 25px 0 25px 25px; transition: background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#f8f9fa';" onmouseout="this.style.backgroundColor='transparent';">
     <h3 style="margin: 0 0 10px 0; font-size: 1.5em; font-weight: 400; color: #2c3e50; letter-spacing: -0.3px;">Internet Visualization Exhibition (IVE)</h3>
     <p style="margin: 0; font-size: 1.05em; line-height: 1.6; color: #555; font-weight: 300;">A venue for researchers and practitioners to share visualizations of Internet structure, behavior, and evolution. Co-organized with Paul Barford.</p>
