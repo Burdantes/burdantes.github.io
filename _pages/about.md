@@ -16,6 +16,7 @@ profile:
 news: true
 selected_papers: true
 social: true
+cv_pdf: Curriculum_Vitae.pdf
 ---
 <div style="border-left: 3px solid #2c3e50; padding: 20px 0 20px 20px; margin: 30px 0;">
   <h4 style="color: #2c3e50; margin-top: 0; margin-bottom: 12px; font-weight: 400; font-size: 1.3em; letter-spacing: -0.3px;">Incoming Assistant Professor at UMD</h4>

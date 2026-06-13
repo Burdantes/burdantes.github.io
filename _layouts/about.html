@@ -30,6 +30,12 @@ layout: default
 
             {% include figure.html path=profile_image_path class=profile_image_class alt=profile_image_alt cache_bust=true -%}
             {% endif -%}
+            {%- if page.cv_pdf %}
+            <a class="about-cv-link" href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}" target="_blank" rel="noopener noreferrer" aria-label="Download CV PDF">
+                <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                <span>CV PDF</span>
+            </a>
+            {%- endif %}
             {%- if page.profile.address %}
             <div class="address">
                 {{ page.profile.address }}
@@ -111,6 +117,32 @@ layout: default
     .about-profile .address strong {
         color: #2c3e50;
         font-weight: 400;
+    }
+
+    .about-cv-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-top: 0.9rem;
+        padding: 0.45rem 0.7rem;
+        border: 1px solid var(--global-divider-color);
+        border-radius: 6px;
+        color: var(--global-text-color);
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1;
+        text-decoration: none;
+        background: var(--global-bg-color);
+    }
+
+    .about-cv-link:hover {
+        color: var(--global-theme-color);
+        border-color: var(--global-theme-color);
+        text-decoration: none;
+    }
+
+    .about-cv-link i {
+        color: #dc3545;
     }
 
     @media (max-width: 768px) {
