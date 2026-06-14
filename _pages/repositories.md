@@ -162,6 +162,7 @@ nav: true
         <p>Live reverse-traceroute health across M-Lab physical sites.</p>
         <div class="project-links">
           <a href="http://136.116.232.100:5050/" target="_blank" rel="noopener noreferrer">Dashboard</a>
+          <a href="https://www.measurementlab.net/blog/revtr_tutorial/" target="_blank" rel="noopener noreferrer">M-Lab tutorial</a>
         </div>
       </div>
     </article>
@@ -183,6 +184,7 @@ nav: true
         <p>Interactive views of CDN, IXP, facility, city, country, and continent-level hypergiant infrastructure growth.</p>
         <div class="project-links">
           <a href="/projects/hypergiants-evolution/">Visualizations</a>
+          <a href="https://pulse.internetsociety.org/en/blog/2025/04/how-cloud-edge-infrastructure-improves-network-performance-in-europe/" target="_blank" rel="noopener noreferrer">ISOC Pulse post</a>
         </div>
       </div>
     </article>
@@ -193,6 +195,7 @@ nav: true
         <p>A venue for Internet structure, behavior, and evolution visualizations, co-organized with Paul Barford.</p>
         <div class="project-links">
           <a href="/ive/">Details</a>
+          <a href="https://pulse.internetsociety.org/en/blog/2025/12/seeing-the-unseen-internet-lessons-from-the-internet-visualization-exhibition/" target="_blank" rel="noopener noreferrer">ISOC Pulse write-up</a>
         </div>
       </div>
     </article>
