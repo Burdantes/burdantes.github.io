@@ -168,6 +168,16 @@ nav: true
     </article>
 
     <article class="project-row">
+      <h3>M-Lab Global Comparison</h3>
+      <div>
+        <p>Built from M-Lab's public NDT speed tests and traceroute data, this dashboard compares Internet performance to Google Cloud virtual servers and physical M-Lab measurement servers worldwide, with latency and traceroute-path views refreshed monthly.</p>
+        <div class="project-links">
+          <a href="http://34.27.164.235:5055/" target="_blank" rel="noopener noreferrer">Dashboard</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-row">
       <h3>Starlink Speedtest Comparison</h3>
       <div>
         <p>Cloudflare and M-Lab speed-test comparisons by geography, destination, and ISP.</p>
