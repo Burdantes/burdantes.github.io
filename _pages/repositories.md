@@ -237,7 +237,7 @@ nav: true
         <p>HERMES repurposes user-driven speed tests to detect performance degradations and localize where problems likely begin.</p>
         <div class="project-links">
           <a href="/publications/">SIGCOMM'26 paper</a>
-          <a href="/assets/pdf/hermes-nsdi-with_authors.pdf">PDF</a>
+          <a href="/assets/pdf/hermes-sigcomm.pdf">PDF</a>
         </div>
       </div>
     </article>
