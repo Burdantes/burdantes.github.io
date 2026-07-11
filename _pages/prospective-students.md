@@ -2,7 +2,7 @@
 layout: page
 title: Prospective Students
 permalink: /prospective-students/
-description: Information for prospective PhD students interested in Internet measurement, networking, and systems research.
+description:
 nav: true
 nav_order: 5
 ---
