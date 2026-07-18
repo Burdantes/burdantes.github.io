@@ -192,8 +192,12 @@ html[data-theme='dark'] {
   --site-chip-bg: rgba(255, 255, 255, 0.06);
 }
 
+body {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
 body.fixed-top-nav {
-  padding-top: 72px;
+  padding-top: 58px;
 }
 
 #particles-js {
@@ -224,14 +228,33 @@ footer,
 }
 
 .site-shell {
-  margin-top: 1.1rem !important;
+  margin-top: 0.35rem !important;
   margin-bottom: 2rem;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1rem, 2.8vw, 2.25rem) clamp(1.25rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem);
   background: linear-gradient(180deg, var(--site-paper-strong), var(--site-paper));
   border: 1px solid var(--site-line);
   border-radius: 2px;
   box-shadow: 0 24px 70px var(--site-shadow);
   backdrop-filter: blur(16px) saturate(1.12);
+}
+
+.site-shell .post-title,
+.site-shell h1,
+.site-shell h2,
+.site-shell h3,
+.site-shell h4,
+.site-shell h5,
+.site-shell h6,
+.cv .card-title {
+  color: var(--site-ink);
+  font-family: "Roboto Slab", Georgia, serif;
+  letter-spacing: 0;
+}
+
+.site-shell p,
+.site-shell li,
+.site-shell td {
+  line-height: 1.65;
 }
 
 // Navbar customization
@@ -411,12 +434,12 @@ footer,
 
 @media (max-width: 576px) {
   body.fixed-top-nav {
-    padding-top: 66px;
+    padding-top: 58px;
   }
 
   .site-shell {
-    margin-top: 0.45rem !important;
-    padding: 1.15rem;
+    margin-top: 0.2rem !important;
+    padding: 1rem;
   }
 
   .site-nav .navbar-nav {
@@ -489,10 +512,10 @@ footer,
 
 .about-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 230px;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: end;
-  padding-bottom: clamp(1.6rem, 4vw, 2.8rem);
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: clamp(1.4rem, 4vw, 2.7rem);
+  align-items: start;
+  padding-bottom: clamp(1.1rem, 3vw, 2rem);
   border-bottom: 1px solid var(--site-line-strong);
 }
 
@@ -517,7 +540,7 @@ footer,
   margin: 0;
   color: var(--site-ink);
   font-family: "Roboto Slab", Georgia, serif;
-  font-size: clamp(2.6rem, 7vw, 5.6rem);
+  font-size: clamp(2.35rem, 6vw, 4.75rem);
   font-weight: 300;
   line-height: 0.95;
   letter-spacing: 0;
@@ -529,7 +552,7 @@ footer,
 
 .about-page .desc {
   display: inline-flex;
-  margin: 1rem 0 0;
+  margin: 0.75rem 0 0;
   padding-top: 0.55rem;
   border-top: 2px solid var(--site-accent);
   color: var(--site-muted);
@@ -544,7 +567,7 @@ footer,
 }
 
 .about-profile {
-  width: 230px;
+  width: 220px;
   margin: 0;
   text-align: left;
 }
@@ -554,7 +577,7 @@ footer,
 }
 
 .about-profile .profile-img {
-  width: 230px;
+  width: 220px;
   max-width: 100%;
   height: auto;
   border: 1px solid var(--site-line-strong);
@@ -606,7 +629,7 @@ footer,
 }
 
 .about-content {
-  margin-top: clamp(1.7rem, 4vw, 2.8rem);
+  margin-top: clamp(1.15rem, 3vw, 2rem);
 }
 
 .home-note,
@@ -618,7 +641,12 @@ footer,
 }
 
 .home-note {
-  margin: 0 0 2rem;
+  margin: 0 0 1.5rem;
+}
+
+.about-hero-note {
+  max-width: 44rem;
+  margin: clamp(1rem, 2.6vw, 1.65rem) 0 0;
 }
 
 .home-note h4 {
@@ -647,7 +675,7 @@ footer,
 }
 
 .home-statement {
-  margin: 2.2rem 0;
+  margin: 0 0 2.2rem;
   border-color: var(--site-accent-cool);
 }
 
@@ -666,8 +694,7 @@ footer,
   margin-top: clamp(2.4rem, 6vw, 4.25rem);
 }
 
-.home-section-title,
-.home-interests h3 {
+.home-section-title {
   display: flex;
   align-items: center;
   gap: 0.85rem;
@@ -680,8 +707,7 @@ footer,
   letter-spacing: 0;
 }
 
-.home-section-title::after,
-.home-interests h3::after {
+.home-section-title::after {
   content: "";
   flex: 1;
   min-width: 2rem;
@@ -702,30 +728,6 @@ footer,
   font-style: normal;
   font-weight: 300;
   line-height: 1.65;
-}
-
-.interest-list-wrap {
-  max-width: 48rem;
-}
-
-.interest-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem 1.1rem;
-  padding: 0;
-  margin: 1.4rem 0 0;
-  list-style: none;
-}
-
-.interest-list li {
-  min-height: 3.35rem;
-  padding: 0.85rem 0.9rem 0.85rem 1.25rem;
-  border-left: 2px solid var(--site-accent-cool);
-  color: var(--site-ink);
-  font-size: 0.94rem;
-  font-weight: 400;
-  line-height: 1.4;
-  background: var(--site-chip-bg);
 }
 
 .about-page .publications,
@@ -782,10 +784,6 @@ footer,
   .home-note,
   .home-statement {
     max-width: none;
-  }
-
-  .interest-list {
-    grid-template-columns: 1fr;
   }
 }
 

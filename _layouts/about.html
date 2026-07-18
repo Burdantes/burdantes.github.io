@@ -17,6 +17,12 @@ layout: default
                 </h1>
                 <p class="desc">{{ page.subtitle }}</p>
             </header>
+            {% if page.hero_note %}
+            <div class="home-note about-hero-note">
+                <h4>{{ page.hero_note.title }}</h4>
+                {{ page.hero_note.text | markdownify }}
+            </div>
+            {% endif %}
         </div>
 
         {% if page.profile %}

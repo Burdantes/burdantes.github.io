@@ -3,6 +3,15 @@ layout: about
 title: About
 permalink: /
 subtitle: <a href="https://www.columbia.edu/">Columbia University</a>
+hero_note:
+  title: Incoming Assistant Professor at UMD
+  text: |
+    I will be joining the [Department of Computer Science](https://www.cs.umd.edu/)
+    at the [University of Maryland, College Park](https://www.umd.edu/) as an
+    Assistant Professor in 2027. **I am actively recruiting PhD applicants**
+    interested in Internet measurement, networking, and systems research. Prospective students
+    should apply through the [UMD Computer Science graduate admissions process](https://www.cs.umd.edu/grad/apply);
+    I describe my research philosophy and fit for prospective students [here](/prospective-students/).
 profile:
   image: prof_pic.jpg
   image_circular: false
@@ -18,18 +27,6 @@ selected_papers: true
 social: true
 cv_pdf: Curriculum_Vitae.pdf
 ---
-<div class="home-note">
-  <h4>Incoming Assistant Professor at UMD</h4>
-  <p>
-    I will be joining the <a href="https://www.cs.umd.edu/">Department of Computer Science</a>
-    at the <a href="https://www.umd.edu/">University of Maryland, College Park</a> as an
-    Assistant Professor in 2027. <strong>I am actively recruiting PhD applicants</strong>
-    interested in Internet measurement, networking, and systems research. Prospective students
-    should apply through the <a href="https://www.cs.umd.edu/grad/apply">UMD Computer Science graduate admissions process</a>;
-    I describe my research philosophy and fit for prospective students <a href="/prospective-students/">here</a>.
-  </p>
-</div>
-
 <div class="home-statement">
   <p>
     My research is about developing rigorous models that piece together the hidden structure of
@@ -47,19 +44,3 @@ cv_pdf: Curriculum_Vitae.pdf
     <a href="https://www.cs.columbia.edu/~danr/" target="_blank">Daniel Rubenstein</a>.
   </p>
 </div>
-
-<div class="home-divider"></div>
-
-<section class="home-section home-interests">
-  <h3>Current Research Interests</h3>
-  <div class="interest-list-wrap">
-    <ul class="interest-list">
-      <li>Geometric Modeling of Network Connectivity</li>
-      <li>Topology Inference and Interconnection Discovery</li>
-      <li>Performance Tomography and Degradation Detection</li>
-      <li>Causal Inference for Network Behavior</li>
-      <li>Measurement-Driven Optimization</li>
-      <li>Geopolitics of Internet Infrastructure</li>
-    </ul>
-  </div>
-</section>
