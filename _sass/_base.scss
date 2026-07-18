@@ -539,7 +539,7 @@ footer,
 .about-page .post-title {
   margin: 0;
   color: var(--site-ink);
-  font-family: "Roboto Slab", Georgia, serif;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: clamp(2.35rem, 6vw, 4.75rem);
   font-weight: 300;
   line-height: 0.95;
@@ -1120,14 +1120,21 @@ ol.bibliography {
     }
 
     .abbr {
-      height: 2rem;
+      height: auto;
+      min-height: 2rem;
       margin-bottom: 0.5rem;
+      min-width: 0;
 
       abbr {
         display: inline-block;
+        box-sizing: border-box;
+        max-width: 100%;
         background-color: var(--global-theme-color);
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding: 0.35rem 0.5rem;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        line-height: 1.15;
+        text-align: center;
 
         a {
           color: white;
