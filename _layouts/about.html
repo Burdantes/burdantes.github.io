@@ -3,21 +3,24 @@ layout: default
 ---
 
 <!-- about.html -->
-<div class="post">
-    <header class="post-header">
-        <h1 class="post-title">
-            {% if site.title == "blank" -%}
-            <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
-            {%- else -%}
-            {{ site.title }}
-            {%- endif %}
-        </h1>
-        <p class="desc">{{ page.subtitle }}</p>
-    </header>
+<div class="post about-page">
+    <section class="about-hero">
+        <div class="about-hero-copy">
+            <p class="about-eyebrow">Internet measurement / network science</p>
+            <header class="post-header">
+                <h1 class="post-title">
+                    {% if site.title == "blank" -%}
+                    <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
+                    {%- else -%}
+                    {{ site.title }}
+                    {%- endif %}
+                </h1>
+                <p class="desc">{{ page.subtitle }}</p>
+            </header>
+        </div>
 
-    <article>
         {% if page.profile %}
-        <div class="profile about-profile">
+        <aside class="profile about-profile">
             {%- if page.profile.image %}
             {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
             {%- assign profile_image_alt = page.profile.alt | default: page.profile.image -%}
@@ -31,7 +34,8 @@ layout: default
             {% include figure.html path=profile_image_path class=profile_image_class alt=profile_image_alt cache_bust=true -%}
             {% endif -%}
             {%- if page.cv_pdf %}
-            <a class="about-cv-link" href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}" target="_blank" rel="noopener noreferrer" aria-label="Download CV PDF">
+            <a class="about-cv-link" href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}"
+               target="_blank" rel="noopener noreferrer" aria-label="Download CV PDF">
                 <i class="fas fa-file-pdf" aria-hidden="true"></i>
                 <span>CV PDF</span>
             </a>
@@ -41,33 +45,41 @@ layout: default
                 {{ page.profile.address }}
             </div>
             {%- endif %}
-        </div>
+        </aside>
         {%- endif %}
+    </section>
 
+    <article class="about-content">
         <div class="clearfix">
             {{ content }}
         </div>
 
         <!-- Selected papers -->
         {% if page.selected_papers -%}
-        <h2><a href="{{ '/publications/' | relative_url }}" style="color: #6a0dad;">Selected Publications</a></h2>
-        <p style="margin-bottom: 20px; font-style: italic; color: #666;">
+        <section class="home-section">
+        <h2 class="home-section-title"><a href="{{ '/publications/' | relative_url }}">Selected Publications</a></h2>
+        <p class="home-section-intro">
           Below are some of my selected publications. For a complete list, see my 
-          <a href="{{ '/publications/' | relative_url }}" style="color: #6a0dad; font-weight: 500;">full publications page</a>.
+          <a href="{{ '/publications/' | relative_url }}">full publications page</a>.
         </p>
         {%- include selected_papers.html %}
+        </section>
         {%- endif %}
 
         <!-- News -->
         {% if page.news and site.announcements.enabled -%}
-        <h2><a href="{{ '/news/' | relative_url }}" style="color: #6a0dad;">Recent News</a></h2>
+        <section class="home-section">
+        <h2 class="home-section-title"><a href="{{ '/news/' | relative_url }}">Recent News</a></h2>
         {%- include news.html limit=true %}
+        </section>
         {%- endif %}
 
         <!-- Latest posts -->
         {% if page.latest_posts -%}
-        <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
+        <section class="home-section">
+        <h2 class="home-section-title"><a href="{{ '/blog/' | relative_url }}">latest posts</a></h2>
         {%- include latest_posts.html %}
+        </section>
         {%- endif %}
 
         <!-- Social -->
@@ -84,76 +96,3 @@ layout: default
         {%- endif %}
     </article>
 </div>
-
-<!-- Floated profile layout -->
-<style>
-    .about-profile {
-        float: right;
-        width: 250px;
-        margin: 0 0 1.25rem 2rem;
-        text-align: left;
-    }
-
-    .about-profile figure {
-        margin-bottom: 0;
-    }
-
-    .profile-img {
-        width: 250px;
-        max-width: 100%;
-        height: auto;
-        border-radius: 0 !important;
-    }
-
-    .about-profile .address {
-        margin-top: 1rem;
-        font-family: inherit;
-        font-size: 0.95em;
-        line-height: 1.6;
-        color: #555;
-        font-weight: 300;
-    }
-
-    .about-profile .address strong {
-        color: #2c3e50;
-        font-weight: 400;
-    }
-
-    .about-cv-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        margin-top: 0.9rem;
-        padding: 0.45rem 0.7rem;
-        border: 1px solid var(--global-divider-color);
-        border-radius: 6px;
-        color: var(--global-text-color);
-        font-size: 0.9rem;
-        font-weight: 400;
-        line-height: 1;
-        text-decoration: none;
-        background: var(--global-bg-color);
-    }
-
-    .about-cv-link:hover {
-        color: var(--global-theme-color);
-        border-color: var(--global-theme-color);
-        text-decoration: none;
-    }
-
-    .about-cv-link i {
-        color: #dc3545;
-    }
-
-    @media (max-width: 768px) {
-        .about-profile {
-            float: none;
-            width: 200px;
-            margin: 1.5rem auto;
-        }
-
-        .profile-img {
-            width: 200px;
-        }
-    }
-</style>
