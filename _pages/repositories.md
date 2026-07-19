@@ -161,6 +161,7 @@ nav: true
       <div>
         <p>Live reverse-traceroute health across M-Lab physical sites.</p>
         <div class="project-links">
+          <a href="/projects/revtr/">Stitching animation</a>
           <a href="http://136.116.232.100:5050/" target="_blank" rel="noopener noreferrer">Dashboard</a>
           <a href="https://www.measurementlab.net/blog/revtr_tutorial/" target="_blank" rel="noopener noreferrer">M-Lab tutorial</a>
         </div>
