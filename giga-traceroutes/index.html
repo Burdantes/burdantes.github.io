@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GIGA Traceroute Studies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Libre+Franklin:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/giga-traceroutes/static/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/giga-traceroutes/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">GIGA<span class="brand-dim"> Traceroute Studies</span></span>
+    </a>
+  </header>
+  <main>
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-routes" aria-hidden="true">
+    <svg viewBox="0 0 1200 400" preserveAspectRatio="none">
+      <path d="M-20,320 C300,120 520,120 620,200 S1000,340 1240,140" />
+      <path d="M-20,120 C220,300 560,260 760,180 S1040,60 1240,260" />
+      <path d="M-20,240 C360,220 500,60 720,120 S980,300 1240,60" />
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <p class="eyebrow">School connectivity, traced hop by hop</p>
+    <h1 class="hero-title">Where does a school's<br><em>Internet</em> actually go?</h1>
+    <p class="hero-lede">
+      We analyze traceroute data from M-Lab speed tests at
+      GIGA-connected schools. For each country we follow the routes packets take
+      to leave the network, cross exchanges and borders, and reach test servers.
+      The result shows how direct, resilient, and local each country's path to
+      the Internet is.
+    </p>
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num">28</span><span class="stat-lab">countries</span></div>
+      <div class="stat"><span class="stat-num">89</span><span class="stat-lab">study months</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-lab">security reports</span></div>
+    </div>
+    <a class="hero-cta" href="#countries">Explore a country ↓</a>
+  </div>
+</section>
+
+<section class="howto">
+  <h2 class="section-kicker">How to read these studies</h2>
+  <ol class="steps">
+    <li class="step">
+      <span class="step-n">1</span>
+      <h3>Pick a country</h3>
+      <p>Open a case study below. Each one collects every analysis we've run for that country.</p>
+    </li>
+    <li class="step">
+      <span class="step-n">2</span>
+      <h3>Slide through time</h3>
+      <p>Use the month slider to move across measurement periods. Some months split into finer date ranges.</p>
+    </li>
+    <li class="step">
+      <span class="step-n">3</span>
+      <h3>Read the analysis</h3>
+      <p>Each section explains what it measures in plain language, with the key figures written out.</p>
+    </li>
+    <li class="step">
+      <span class="step-n">4</span>
+      <h3>Open the plots</h3>
+      <p>Hit “Show plots” to load the interactive charts on demand, so the page stays fast.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="countries" id="countries">
+  <h2 class="section-kicker">Case studies</h2>
+  <div class="country-grid">
+    
+    <a class="country-card" href="/giga-traceroutes/country/al.html" style="--i: 0">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/al.svg" alt="Albania flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇦🇱</span>
+      </span>
+      <span class="cc-name">Albania</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/bz.html" style="--i: 1">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/bz.svg" alt="Belize flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇧🇿</span>
+      </span>
+      <span class="cc-name">Belize</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/bj.html" style="--i: 2">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/bj.svg" alt="Benin flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇧🇯</span>
+      </span>
+      <span class="cc-name">Benin</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/ba.html" style="--i: 3">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/ba.svg" alt="Bosnia and Herzegovina flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇧🇦</span>
+      </span>
+      <span class="cc-name">Bosnia and Herzegovina</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/bw.html" style="--i: 4">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/bw.svg" alt="Botswana flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇧🇼</span>
+      </span>
+      <span class="cc-name">Botswana</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/cg.html" style="--i: 5">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/cg.svg" alt="Congo flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇨🇬</span>
+      </span>
+      <span class="cc-name">Congo</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/dm.html" style="--i: 6">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/dm.svg" alt="Dominica flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇩🇲</span>
+      </span>
+      <span class="cc-name">Dominica</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/fj.html" style="--i: 7">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/fj.svg" alt="Fiji flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇫🇯</span>
+      </span>
+      <span class="cc-name">Fiji</span>
+      <span class="cc-meta">
+        <span class="cc-months">4 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/gd.html" style="--i: 8">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/gd.svg" alt="Grenada flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇬🇩</span>
+      </span>
+      <span class="cc-name">Grenada</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/hn.html" style="--i: 9">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/hn.svg" alt="Honduras flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇭🇳</span>
+      </span>
+      <span class="cc-name">Honduras</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/kz.html" style="--i: 10">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/kz.svg" alt="Kazakhstan flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇰🇿</span>
+      </span>
+      <span class="cc-name">Kazakhstan</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/ke.html" style="--i: 11">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/ke.svg" alt="Kenya flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇰🇪</span>
+      </span>
+      <span class="cc-name">Kenya</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/kg.html" style="--i: 12">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/kg.svg" alt="Kyrgyzstan flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇰🇬</span>
+      </span>
+      <span class="cc-name">Kyrgyzstan</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/ls.html" style="--i: 13">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/ls.svg" alt="Lesotho flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇱🇸</span>
+      </span>
+      <span class="cc-name">Lesotho</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/mw.html" style="--i: 14">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/mw.svg" alt="Malawi flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇲🇼</span>
+      </span>
+      <span class="cc-name">Malawi</span>
+      <span class="cc-meta">
+        <span class="cc-months">4 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/md.html" style="--i: 15">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/md.svg" alt="Moldova flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇲🇩</span>
+      </span>
+      <span class="cc-name">Moldova</span>
+      <span class="cc-meta">
+        <span class="cc-months">4 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/mn.html" style="--i: 16">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/mn.svg" alt="Mongolia flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇲🇳</span>
+      </span>
+      <span class="cc-name">Mongolia</span>
+      <span class="cc-meta">
+        <span class="cc-months">5 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/me.html" style="--i: 17">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/me.svg" alt="Montenegro flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇲🇪</span>
+      </span>
+      <span class="cc-name">Montenegro</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/na.html" style="--i: 18">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/na.svg" alt="Namibia flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇳🇦</span>
+      </span>
+      <span class="cc-name">Namibia</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/rw.html" style="--i: 19">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/rw.svg" alt="Rwanda flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇷🇼</span>
+      </span>
+      <span class="cc-name">Rwanda</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/kn.html" style="--i: 20">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/kn.svg" alt="Saint Kitts and Nevis flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇰🇳</span>
+      </span>
+      <span class="cc-name">Saint Kitts and Nevis</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/lc.html" style="--i: 21">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/lc.svg" alt="Saint Lucia flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇱🇨</span>
+      </span>
+      <span class="cc-name">Saint Lucia</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/vc.html" style="--i: 22">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/vc.svg" alt="Saint Vincent and the Grenadines flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇻🇨</span>
+      </span>
+      <span class="cc-name">Saint Vincent and the Grenadines</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/za.html" style="--i: 23">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/za.svg" alt="South Africa flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇿🇦</span>
+      </span>
+      <span class="cc-name">South Africa</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/lk.html" style="--i: 24">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/lk.svg" alt="Sri Lanka flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇱🇰</span>
+      </span>
+      <span class="cc-name">Sri Lanka</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/tt.html" style="--i: 25">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/tt.svg" alt="Trinidad and Tobago flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇹🇹</span>
+      </span>
+      <span class="cc-name">Trinidad and Tobago</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/uz.html" style="--i: 26">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/uz.svg" alt="Uzbekistan flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇺🇿</span>
+      </span>
+      <span class="cc-name">Uzbekistan</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+    <a class="country-card" href="/giga-traceroutes/country/zm.html" style="--i: 27">
+      <span class="cc-flag">
+        <img src="https://flagcdn.com/zm.svg" alt="Zambia flag" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="flag-fallback" aria-hidden="true">🇿🇲</span>
+      </span>
+      <span class="cc-name">Zambia</span>
+      <span class="cc-meta">
+        <span class="cc-months">3 months</span>
+        <span class="cc-latest">latest · June 2026</span>
+      </span>
+      
+      <span class="cc-go" aria-hidden="true">→</span>
+    </a>
+    
+  </div>
+</section>
+
+<section class="method">
+  <h2 class="section-kicker">What's behind the numbers</h2>
+  <p>
+    Measurements come from M-Lab: NDT speed tests run by real users on school
+    networks, annotated with per-hop routing detail. We filter each
+    dataset to known school IP ranges, reconstruct the forward path to domestic
+    and international test servers, and summarize path length, exchange-point
+    crossings, transit-country dependency, latency decomposition, loss, and
+    performance over time. Security reports add externally observed exposure of
+    school-facing IPs. Every figure on a country page comes from that pipeline.
+  </p>
+</section>
+</main>
+  <footer class="site-foot">
+    <span>GIGA Traceroute Studies</span>
+    <span class="foot-dim">M-Lab measurements · school connectivity research</span>
+  </footer>
+  
+</body>
+</html>
