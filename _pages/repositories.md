@@ -157,6 +157,17 @@ nav: true
     <h2>Tools and resources</h2>
 
     <article class="project-row">
+      <h3>RevTr Stitching Animation</h3>
+      <div>
+        <p>Interactive explanation of how RevTr stitches Record Route measurements into a traceroute atlas, and why ambiguous intersections must remain explicit.</p>
+        <div class="project-links">
+          <a href="/projects/revtr/">Project page</a>
+          <a href="/assets/revtr/revtr-stitching-visual.html" target="_blank" rel="noopener noreferrer">Full animation</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-row">
       <h3>revTr Health Monitor</h3>
       <div>
         <p>Live reverse-traceroute health across M-Lab physical sites.</p>
