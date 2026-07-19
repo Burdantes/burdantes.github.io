@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RevTr Stitching Explainer</title>
+  <title>Why Reverse Traceroute Stitching Can Be Ambiguous</title>
   <style>
     :root {
       --font: "Helvetica Neue", Arial, sans-serif;
@@ -28,7 +28,6 @@
       color: var(--ink);
       background: var(--paper);
       font-family: var(--font);
-      overflow-x: hidden;
     }
 
     button { font: inherit; }
@@ -36,7 +35,7 @@
     .wrap {
       max-width: 1240px;
       margin: 0 auto;
-      padding: 24px 18px 40px;
+      padding: 30px 24px 48px;
     }
 
     .eyebrow {
@@ -49,7 +48,7 @@
 
     h1 {
       margin: 8px 0 10px;
-      font-size: 44px;
+      font-size: clamp(30px, 4vw, 48px);
       line-height: 1.05;
       letter-spacing: 0;
     }
@@ -64,7 +63,6 @@
 
     .toolbar {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
       margin: 16px 0;
     }
@@ -88,9 +86,8 @@
     }
 
     .card {
-      width: 100%;
-      min-width: 0;
-      padding: 18px;
+      min-width: 1060px;
+      padding: 20px;
       overflow: hidden;
       border: 1px solid #c8d0da;
       border-radius: 6px;
@@ -124,7 +121,7 @@
 
     .phasebar {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(6, 1fr);
       margin-bottom: 12px;
       border-top: 1px solid #c8d0da;
       border-bottom: 1px solid #c8d0da;
@@ -620,7 +617,7 @@
 
     .evidence-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       min-height: 92px;
       margin-top: 12px;
       border-top: 1px solid #d7dde5;
@@ -666,7 +663,7 @@
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+      grid-template-columns: repeat(11, minmax(0, 1fr));
       gap: 8px;
       margin-top: 16px;
     }
@@ -712,124 +709,6 @@
       color: var(--muted);
       font-size: 12px;
       line-height: 1.45;
-    }
-
-    @media (max-width: 760px) {
-      .wrap {
-        padding: 18px 10px 32px;
-      }
-
-      h1 {
-        font-size: 32px;
-      }
-
-      .lede {
-        font-size: 15px;
-      }
-
-      .card {
-        padding: 12px;
-      }
-
-      .caption {
-        min-height: 0;
-        font-size: 13px;
-      }
-
-      .phase {
-        min-height: 36px;
-      }
-
-      .narration-box {
-        grid-template-columns: 1fr;
-        gap: 3px;
-      }
-
-      .scene {
-        height: 620px;
-        background-size: 48px 48px, 48px 48px, auto;
-      }
-
-      .endpoint {
-        width: 68px;
-      }
-
-      .endpoint .dot,
-      .vp-icon {
-        width: 42px;
-        height: 42px;
-      }
-
-      .router {
-        width: 70px;
-        height: 52px;
-      }
-
-      .rr-hop {
-        width: 62px;
-        height: 46px;
-      }
-
-      .router .name {
-        font-size: 11px;
-      }
-
-      .router .sub {
-        font-size: 7px;
-      }
-
-      .rr-signatures {
-        right: 1%;
-        top: 80px;
-        width: 230px;
-      }
-
-      .source { top: 532px; }
-      .atlas-vp { top: 50px; }
-      .atlas-a { top: 108px; }
-      .r3 { top: 168px; }
-      .r2 { top: 286px; }
-      .r1 { top: 426px; }
-      .rr-b1 { top: 440px; }
-      .rr-b2 { top: 360px; }
-      .destination { top: 74px; }
-      .u-node { top: 176px; }
-      .v-node { top: 252px; }
-      .candidate-window {
-        top: 140px;
-        height: 350px;
-      }
-      .intersection-class {
-        top: 516px;
-      }
-
-      .signature-row {
-        grid-template-columns: 50px 1fr;
-        font-size: 9px;
-      }
-
-      .reverse-measure-label {
-        right: 1%;
-        top: 352px;
-        max-width: 230px;
-      }
-
-      .final-path-label {
-        max-width: 92%;
-        text-align: center;
-        white-space: normal;
-      }
-
-      .loop-alert,
-      .filter-note {
-        right: 1%;
-        top: 496px;
-        width: 230px;
-      }
-
-      .ground-truth {
-        max-width: 92%;
-      }
     }
   </style>
 </head>

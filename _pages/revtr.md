@@ -1,8 +1,8 @@
 ---
 layout: page
-title: RevTr
+title: RevTr Animated Explanation
 permalink: /projects/revtr/
-description: Interactive animation explaining how RevTr stitches Record Route measurements into a traceroute atlas.
+description: Interactive scenarios explaining how RevTr reconstructs reverse Internet paths.
 nav: false
 ---
 
@@ -77,17 +77,16 @@ nav: false
 </style>
 
 <div class="revtr-project">
-  <h1>RevTr</h1>
+  <h1>RevTr Animated Explanation</h1>
   <p>
     RevTr reconstructs reverse Internet paths by combining directly measured
-    Record Route hops, a traceroute atlas, and alias-resolution evidence. This
-    animation walks through the stitching problem: when several atlas targets
-    return the same Record Route signature, RevTr must preserve ambiguity
-    instead of inventing a precise intersection.
+    Record Route hops, spoofed probes, a traceroute atlas, and alias-resolution
+    evidence. These scenarios walk through the core measurement ideas and the
+    cases where RevTr must preserve ambiguity instead of inventing certainty.
   </p>
 
   <div class="revtr-actions">
-    <a href="/assets/revtr/revtr-stitching-visual.html" target="_blank" rel="noopener noreferrer">Open full animation</a>
+    <a href="/assets/revtr/revtr_scenarios.html" target="_blank" rel="noopener noreferrer">Open full animation</a>
     <a href="http://136.116.232.100:5050/" target="_blank" rel="noopener noreferrer">Health dashboard</a>
     <a href="https://www.measurementlab.net/blog/revtr_tutorial/" target="_blank" rel="noopener noreferrer">M-Lab tutorial</a>
   </div>
@@ -95,8 +94,8 @@ nav: false
   <div class="revtr-animation-frame">
     <iframe
       id="revtrAnimation"
-      src="/assets/revtr/revtr-stitching-visual.html"
-      title="RevTr stitching animation"
+      src="/assets/revtr/revtr_scenarios.html"
+      title="RevTr animated explanation"
       loading="lazy">
     </iframe>
   </div>

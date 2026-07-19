@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why Reverse Traceroute Uses Spoofing</title>
+  <style>
+    :root {
+      --font: "Helvetica Neue", Arial, sans-serif;
+      --ink: #18202a;
+      --muted: #637083;
+      --line: #cdd5df;
+      --panel: #fffefa;
+      --paper: #f6f3ea;
+      --blue: #315f9f;
+      --teal: #247b79;
+      --amber: #b7782a;
+      --purple: #6d5b9b;
+      --green: #3f7b55;
+      --probe: #9a5c16;
+      --shadow: 0 1px 0 rgba(24, 32, 42, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--font);
+    }
+
+    button {
+      font: inherit;
+    }
+
+    sub {
+      font-size: 0.72em;
+      line-height: 0;
+    }
+
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 30px 24px 48px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 8px 0 10px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lede {
+      max-width: 870px;
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+
+    .toolbar button {
+      min-height: 40px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--panel);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .toolbar .primary {
+      border-color: var(--blue);
+      background: #243f6f;
+      color: #fff;
+    }
+
+    .card {
+      padding: 20px;
+      overflow: hidden;
+      border: 1px solid #c8d0da;
+      border-radius: 6px;
+      background: var(--panel);
+    }
+
+    .progress {
+      height: 3px;
+      margin-bottom: 18px;
+      overflow: hidden;
+      background: #e1e6ed;
+    }
+
+    .bar {
+      width: 6.25%;
+      height: 100%;
+      background: var(--blue);
+      transition: width 260ms ease;
+    }
+
+    .phasebar {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      margin-bottom: 12px;
+      border-top: 1px solid #c8d0da;
+      border-bottom: 1px solid #c8d0da;
+    }
+
+    .phase {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      min-height: 42px;
+      padding: 8px 12px;
+      border-right: 1px solid #c8d0da;
+      color: var(--muted);
+    }
+
+    .phase:last-child {
+      border-right: 0;
+    }
+
+    .phase strong {
+      color: #9aa5b3;
+      font-size: 11px;
+    }
+
+    .phase b {
+      color: var(--ink);
+      font-size: 12px;
+    }
+
+    .phase small {
+      font-size: 10px;
+    }
+
+    .phase.active {
+      background: #f1f5f8;
+    }
+
+    .phase.active strong,
+    .phase.active b {
+      color: var(--blue);
+    }
+
+    .narration-box {
+      display: grid;
+      grid-template-columns: 116px minmax(0, 1fr);
+      align-items: center;
+      min-height: 48px;
+      margin-bottom: 12px;
+      padding: 9px 14px;
+      border: 1px solid #ccd4dd;
+      border-left: 4px solid var(--green);
+      border-radius: 2px;
+      background: #f7f8f5;
+    }
+
+    .narration-box span {
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .narration-box strong {
+      min-width: 0;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .scene {
+      position: relative;
+      height: 720px;
+      overflow: hidden;
+      border: 1px solid #c8d0da;
+      border-radius: 2px;
+      background:
+        linear-gradient(#eef1ef 1px, transparent 1px),
+        linear-gradient(90deg, #eef1ef 1px, transparent 1px),
+        #fbfaf6;
+      background-size: 64px 64px, 64px 64px, auto;
+      transition: height 180ms ease;
+    }
+
+    .wires {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .wire {
+      opacity: 0;
+      stroke-linecap: round;
+      stroke-width: 4;
+      transition: opacity 180ms ease;
+    }
+
+    .wire.show {
+      opacity: 1;
+    }
+
+    .wire.forward {
+      stroke: var(--blue);
+    }
+
+    .wire.direct-rr {
+      stroke: var(--probe);
+      stroke-width: 3;
+      stroke-dasharray: 8 7;
+    }
+
+    .wire.spoof {
+      stroke: var(--green);
+      stroke-width: 3.5;
+      stroke-dasharray: 5 6;
+    }
+
+    .wire.reverse {
+      stroke: var(--teal);
+      stroke-width: 5;
+    }
+
+    .wire.atlas {
+      stroke: var(--purple);
+      stroke-width: 3.5;
+    }
+
+    .wire.fallback {
+      stroke: var(--blue);
+      stroke-width: 3.5;
+      stroke-dasharray: 3 6;
+    }
+
+    .wire.symmetry {
+      stroke: var(--amber);
+      stroke-width: 5;
+    }
+
+    .wire.untrusted {
+      stroke: #a34b43;
+      stroke-width: 4;
+      stroke-dasharray: 3 7;
+    }
+
+    .wire.final-reverse {
+      stroke: var(--teal);
+      stroke-width: 5.5;
+    }
+
+    .endpoint,
+    .router {
+      position: absolute;
+      z-index: 5;
+      text-align: center;
+    }
+
+    .endpoint {
+      width: 72px;
+    }
+
+    .endpoint .dot,
+    .vp-icon {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      margin: auto;
+      place-items: center;
+      border: 1.5px solid var(--line);
+      border-radius: 50%;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      font-weight: 800;
+    }
+
+    .dot-label {
+      display: inline;
+      white-space: nowrap;
+    }
+
+    .endpoint > span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .source .dot {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .destination .dot {
+      border-color: var(--amber);
+      color: #9d650d;
+    }
+
+    .vp-icon {
+      position: relative;
+      border-color: var(--green);
+      color: var(--green);
+      font-size: 0;
+    }
+
+    .vp-icon::before,
+    .vp-icon::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .vp-icon::before {
+      width: 22px;
+      height: 22px;
+      border: 1.5px solid currentColor;
+      border-radius: 50%;
+      opacity: 0.72;
+    }
+
+    .vp-icon::after {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .atlas-vp .vp-icon {
+      border-color: var(--purple);
+      color: var(--purple);
+    }
+
+    .router {
+      display: grid;
+      width: 68px;
+      height: 50px;
+      place-content: center;
+      border: 1.5px solid #aeb8c5;
+      border-radius: 5px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .router.compact {
+      width: 52px;
+      height: 42px;
+    }
+
+    .router .name {
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .router .sub {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 8px;
+    }
+
+    .router .provenance {
+      display: none;
+      max-width: 64px;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 7px;
+      line-height: 1.05;
+      text-align: center;
+    }
+
+    .scene .r1 .sub,
+    .scene .r2 .sub,
+    .scene .r3 .sub,
+    .scene .r4 .sub,
+    .scene .r5 .sub,
+    .scene .r6 .sub,
+    .scene.symmetry-measured .p-node .sub,
+    .scene.atlas-intersection .j-node .sub,
+    .scene.atlas-complete .k-node .sub {
+      display: none;
+    }
+
+    .scene .r1 .provenance,
+    .scene .r2 .provenance,
+    .scene .r3 .provenance,
+    .scene .r4 .provenance,
+    .scene .r5 .provenance,
+    .scene .r6 .provenance,
+    .scene.symmetry-measured .p-node .provenance,
+    .scene.atlas-intersection .j-node .provenance,
+    .scene.atlas-complete .k-node .provenance {
+      display: block;
+    }
+
+    .iface {
+      position: absolute;
+      top: 50%;
+      z-index: 7;
+      width: 9px;
+      height: 9px;
+      border: 1.5px solid #8795a8;
+      border-radius: 50%;
+      background: var(--panel);
+      transform: translateY(-50%);
+    }
+
+    .iface.left {
+      left: -5px;
+    }
+
+    .iface.right {
+      right: -5px;
+    }
+
+    .iface.top {
+      left: 50%;
+      top: -5px;
+      transform: translateX(-50%);
+    }
+
+    .iface.bottom {
+      left: 50%;
+      top: auto;
+      bottom: -5px;
+      transform: translateX(-50%);
+    }
+
+    .iface.used {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(36, 123, 121, 0.08);
+    }
+
+    .source {
+      left: 2.5%;
+      top: 184px;
+    }
+
+    .destination {
+      right: 2.5%;
+      top: 184px;
+    }
+
+    .f1 { left: 11%; top: 188px; }
+    .f2 { left: 21%; top: 188px; }
+    .f3 { left: 31%; top: 188px; }
+    .f4 { left: 41%; top: 188px; }
+    .f5 { left: 51%; top: 188px; }
+    .f6 { left: 61%; top: 188px; }
+    .f7 { left: 71%; top: 188px; }
+    .f8 { left: 81%; top: 188px; }
+
+    .vp1 { left: 44%; top: 28px; }
+    .vp2 { left: 88%; top: 630px; }
+    .atlas-vp { left: 4%; top: 44px; }
+
+    .atlas-a { left: 15%; top: 86px; }
+    .k-node { left: 4%; top: 390px; }
+    .j-node { left: 16%; top: 460px; }
+
+    .r1 { left: 84%; top: 280px; }
+    .r2 { left: 74%; top: 346px; }
+    .r3 { left: 64%; top: 412px; }
+    .r4 { left: 54%; top: 478px; }
+    .r5 { left: 44%; top: 544px; }
+    .r6 { left: 34%; top: 610px; }
+    .p-node { left: 25%; top: 530px; }
+
+    .rr-route-node {
+      width: 38px !important;
+      height: 30px !important;
+      border-color: rgba(63, 123, 85, 0.55);
+      background: #f4f8f4;
+    }
+
+    .rr-route-node .name {
+      color: var(--green);
+      font-size: 10px;
+    }
+
+    .q1 { left: 52%; top: 40px; }
+    .q2 { left: 59%; top: 65px; }
+    .q3 { left: 66%; top: 90px; }
+    .q4 { left: 73%; top: 115px; }
+    .q5 { left: 80%; top: 140px; }
+
+    .u1 { left: 84%; top: 570px; }
+    .u2 { left: 82%; top: 515px; }
+    .u3 { left: 79%; top: 450px; }
+
+    .spoof-vp,
+    .atlas-vp {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .scene.forward-visible .forward-node,
+    .scene.show-vp1 .vp1,
+    .scene.show-vp2 .vp2,
+    .scene.rr1-visible .rr1-hop,
+    .scene.rr2-visible .rr2-hop,
+    .scene.atlas-visible .atlas-node,
+    .scene.fallback-visible .fallback-node,
+    .p-node.visible,
+    .reverse-node.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scene.show-vp1 .vp1 .vp-icon,
+    .scene.show-vp2 .vp2 .vp-icon {
+      box-shadow: 0 0 0 4px rgba(63, 123, 85, 0.12);
+    }
+
+    .scene.direct-failed .destination .dot {
+      box-shadow: 0 0 0 4px rgba(183, 120, 42, 0.14);
+    }
+
+    .scene.current-r6 .r6,
+    .scene.current-p .p-node {
+      border-color: var(--green);
+      background: #f1f7f2;
+    }
+
+    .scene.atlas-intersection .j-node {
+      border-color: var(--teal);
+      background: #eef8f7;
+      box-shadow: 0 0 0 4px rgba(36, 123, 121, 0.12);
+    }
+
+    .as-zone {
+      position: absolute;
+      left: 14%;
+      top: 440px;
+      z-index: 2;
+      width: 27%;
+      height: 220px;
+      border: 1.5px dashed var(--amber);
+      background: rgba(183, 120, 42, 0.035);
+      color: var(--amber);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .as-zone span {
+      position: absolute;
+      right: 8px;
+      top: 7px;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .scene.same-as-visible .as-zone {
+      opacity: 1;
+    }
+
+    .rr-failure {
+      position: absolute;
+      z-index: 11;
+      padding: 2px 5px;
+      border: 1px solid rgba(154, 92, 22, 0.45);
+      border-radius: 3px;
+      background: rgba(255, 253, 248, 0.96);
+      color: var(--probe);
+      font-size: 9px;
+      font-weight: 800;
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .fail-k { left: 8%; top: 374px; }
+    .fail-j { left: 20%; top: 444px; }
+    .fail-p { left: 29%; top: 514px; }
+    .fail-r6 { left: 38%; top: 594px; }
+
+    .rr-failure.visible {
+      opacity: 1;
+    }
+
+    .untrusted-note {
+      position: absolute;
+      left: 7%;
+      top: 438px;
+      z-index: 11;
+      padding: 2px 5px;
+      background: rgba(255, 253, 248, 0.96);
+      color: #a34b43;
+      font-size: 9px;
+      font-weight: 800;
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .scene.trust-check-visible .untrusted-note {
+      opacity: 1;
+    }
+
+    .scene-note {
+      position: absolute;
+      z-index: 10;
+      padding: 2px 5px;
+      background: rgba(251, 250, 246, 0.94);
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .scene-note.show {
+      opacity: 1;
+    }
+
+    #longPathNote {
+      left: 39%;
+      top: 154px;
+      color: var(--blue);
+    }
+
+    #spoofNote {
+      right: 5%;
+      top: 112px;
+      color: var(--green);
+    }
+
+    #fallbackNote {
+      left: 18%;
+      top: 370px;
+      color: var(--blue);
+    }
+
+    #atlasNote {
+      left: 4%;
+      top: 238px;
+      color: var(--purple);
+    }
+
+    .interface-key {
+      position: absolute;
+      left: 3%;
+      bottom: 18px;
+      z-index: 10;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .probe-box {
+      min-height: 126px;
+      margin-top: 12px;
+      padding: 10px 12px;
+      border: 1px solid #c8d0da;
+      border-left: 3px solid var(--probe);
+      border-radius: 2px;
+      background: rgba(255, 253, 248, 0.98);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 180ms ease;
+    }
+
+    .probe-box.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .probe-panel {
+      display: none;
+    }
+
+    .probe-panel.active {
+      display: block;
+    }
+
+    .probe-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .probe-head h3 {
+      margin: 0;
+      font-size: 12px;
+    }
+
+    .probe-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .slots {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      border-top: 1px solid #d9e0e7;
+      border-bottom: 1px solid #d9e0e7;
+    }
+
+    .slot {
+      min-width: 0;
+      min-height: 54px;
+      padding: 6px 5px;
+      border-right: 1px solid #e0e5eb;
+      color: #a3acb8;
+      text-align: center;
+    }
+
+    .slot:last-child {
+      border-right: 0;
+    }
+
+    .slot span {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 8px;
+    }
+
+    .slot b {
+      font-size: 10px;
+    }
+
+    .slot.filled {
+      background: #f2f7f4;
+      color: var(--teal);
+    }
+
+    .slot.forward-fill {
+      background: #f4f7fb;
+      color: var(--blue);
+    }
+
+    .slot.active {
+      box-shadow: inset 0 3px 0 var(--green);
+    }
+
+    .probe-result {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.35;
+    }
+
+    .probe-result strong {
+      color: var(--ink);
+    }
+
+    .attempt-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid #d9e0e7;
+      border-bottom: 1px solid #d9e0e7;
+    }
+
+    .attempt {
+      min-height: 58px;
+      padding: 8px 10px;
+      border-right: 1px solid #e0e5eb;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .attempt:last-child {
+      border-right: 0;
+    }
+
+    .attempt b {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--ink);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .step {
+      min-height: 54px;
+      padding: 9px;
+      border: 1px solid #d5dce5;
+      border-radius: 5px;
+      background: var(--panel);
+      font-size: 11px;
+      line-height: 1.35;
+      opacity: 0.36;
+    }
+
+    .step.active {
+      border-color: rgba(49, 95, 159, 0.4);
+      box-shadow: inset 0 3px 0 var(--blue);
+      opacity: 1;
+    }
+
+    .step b {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .caption {
+      min-height: 54px;
+      margin: 0 0 12px;
+      padding: 11px 14px;
+      border-left: 4px solid var(--blue);
+      border-radius: 0 5px 5px 0;
+      background: #f6f7f8;
+      color: #344054;
+      line-height: 1.5;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .swatch {
+      display: inline-block;
+      width: 20px;
+      height: 4px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .scene.final-path-phase {
+      height: 500px;
+    }
+
+    .scene.final-path-phase .forward-node,
+    .scene.final-path-phase .spoof-vp,
+    .scene.final-path-phase .atlas-vp,
+    .scene.final-path-phase .atlas-a,
+    .scene.final-path-phase .rr-route-node,
+    .scene.final-path-phase .rr-failure,
+    .scene.final-path-phase .untrusted-note,
+    .scene.final-path-phase .as-zone,
+    .scene.final-path-phase .scene-note,
+    .scene.final-path-phase .interface-key {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scene.final-path-phase .j-node,
+    .scene.final-path-phase .k-node,
+    .scene.final-path-phase .p-node,
+    .scene.final-path-phase .reverse-node {
+      opacity: 1;
+      pointer-events: auto;
+      border-color: var(--teal);
+      background: #eef8f7;
+      box-shadow: none;
+    }
+
+    .scene.final-path-phase .j-node .sub,
+    .scene.final-path-phase .k-node .sub,
+    .scene.final-path-phase .p-node .sub,
+    .scene.final-path-phase .reverse-node .sub {
+      display: none;
+    }
+
+    .scene.final-path-phase .j-node .provenance,
+    .scene.final-path-phase .k-node .provenance,
+    .scene.final-path-phase .p-node .provenance,
+    .scene.final-path-phase .reverse-node .provenance {
+      display: block;
+    }
+
+    .scene.final-path-phase .source,
+    .scene.final-path-phase .destination {
+      top: 100px;
+    }
+
+    .scene.final-path-phase .r1 { left: 79%; top: 140px; }
+    .scene.final-path-phase .r2 { left: 71%; top: 190px; }
+    .scene.final-path-phase .r3 { left: 62.5%; top: 240px; }
+    .scene.final-path-phase .r4 { left: 54%; top: 290px; }
+    .scene.final-path-phase .r5 { left: 45.5%; top: 340px; }
+    .scene.final-path-phase .r6 { left: 37%; top: 290px; }
+    .scene.final-path-phase .p-node { left: 28.5%; top: 240px; }
+    .scene.final-path-phase .j-node { left: 20%; top: 190px; }
+    .scene.final-path-phase .k-node { left: 11.5%; top: 140px; }
+
+    @media (max-width: 1050px) {
+      .phase small {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="eyebrow">Scenario 2 - Why spoofing matters</div>
+    <h1>Reaching a destination beyond Record Route range</h1>
+    <p class="lede">
+      When a distant destination consumes every RR slot on the forward path, Reverse Traceroute uses a nearby M-Lab vantage point to send the request while spoofing S as the source.
+    </p>
+
+    <div class="toolbar" aria-label="Animation controls">
+      <button class="primary" id="play" type="button">Play</button>
+      <button id="next" type="button">Next step</button>
+      <button id="reset" type="button">Reset</button>
+    </div>
+
+    <section class="card">
+      <div class="progress"><div class="bar" id="bar"></div></div>
+
+      <div class="caption" id="caption"></div>
+
+      <div class="phasebar" aria-label="Measurement phases">
+        <div class="phase active" data-phase="distance"><strong>01</strong><b>Too far</b><small>9 forward hops</small></div>
+        <div class="phase" data-phase="direct"><strong>02</strong><b>Record-Route</b><small>no reverse slot</small></div>
+        <div class="phase" data-phase="spoof"><strong>03</strong><b>Spoofed Record-Route</b><small>nearby VP</small></div>
+        <div class="phase" data-phase="iterate"><strong>04</strong><b>More RR</b><small>8 recorded hops</small></div>
+        <div class="phase" data-phase="fallback"><strong>05</strong><b>RR fails</b><small>regular traceroute</small></div>
+        <div class="phase" data-phase="complete"><strong>06</strong><b>Complete</b><small>Intersected Traceroute</small></div>
+      </div>
+
+      <div class="narration-box" id="narrationBox" aria-live="polite">
+        <span>Current measurement</span>
+        <strong id="narrationText">D<sub>2</sub> is more than eight hops from S</strong>
+      </div>
+
+      <div class="scene" id="scene">
+        <svg class="wires" id="wires" aria-hidden="true"></svg>
+        <div class="as-zone"><span>same AS</span></div>
+
+        <div class="endpoint source"><div class="dot">S</div><span>Source</span></div>
+        <div class="endpoint destination"><div class="dot"><span class="dot-label">D<sub>2</sub></span></div><span>Far destination</span></div>
+
+        <div class="router compact forward-node f1"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">F<sub>1</sub></div></div>
+        <div class="router compact forward-node f2"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">F<sub>2</sub></div></div>
+        <div class="router compact forward-node f3"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">F<sub>3</sub></div></div>
+        <div class="router compact forward-node f4"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">F<sub>4</sub></div></div>
+        <div class="router compact forward-node f5"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">F<sub>5</sub></div></div>
+        <div class="router compact forward-node f6"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">F<sub>6</sub></div></div>
+        <div class="router compact forward-node f7"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">F<sub>7</sub></div></div>
+        <div class="router compact forward-node f8"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">F<sub>8</sub></div></div>
+
+        <div class="endpoint spoof-vp vp1"><div class="vp-icon" aria-hidden="true"></div><span>M-Lab VP<sub>1</sub></span></div>
+        <div class="endpoint spoof-vp vp2"><div class="vp-icon" aria-hidden="true"></div><span>M-Lab VP<sub>2</sub></span></div>
+        <div class="endpoint atlas-vp atlas-node"><div class="vp-icon" aria-hidden="true"></div><span>Atlas VP</span></div>
+
+        <div class="router compact rr-route-node rr1-hop q1"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">Q<sub>1</sub></div></div>
+        <div class="router compact rr-route-node rr1-hop q2"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">Q<sub>2</sub></div></div>
+        <div class="router compact rr-route-node rr1-hop q3"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">Q<sub>3</sub></div></div>
+        <div class="router compact rr-route-node rr1-hop q4"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">Q<sub>4</sub></div></div>
+        <div class="router compact rr-route-node rr1-hop q5"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">Q<sub>5</sub></div></div>
+
+        <div class="router compact rr-route-node rr2-hop u1"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">U<sub>1</sub></div></div>
+        <div class="router compact rr-route-node rr2-hop u2"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">U<sub>2</sub></div></div>
+        <div class="router compact rr-route-node rr2-hop u3"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">U<sub>3</sub></div></div>
+        <div class="router atlas-node atlas-a"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">A</div><div class="sub">atlas</div></div>
+        <div class="router atlas-node fallback-node k-node"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">K</div><div class="sub">atlas</div><div class="provenance">Intersected Traceroute</div></div>
+        <div class="router atlas-node fallback-node reverse-node j-node"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">J</div><div class="sub">router</div><div class="provenance">Intersected Record-Route Atlas</div></div>
+
+        <div class="router reverse-node r1"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">R<sub>1</sub></div><div class="sub">reverse</div><div class="provenance">Spoofed Record-Route</div></div>
+        <div class="router reverse-node r2"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">R<sub>2</sub></div><div class="sub">reverse</div><div class="provenance">Spoofed Record-Route</div></div>
+        <div class="router reverse-node r3"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">R<sub>3</sub></div><div class="sub">reverse</div><div class="provenance">Spoofed Record-Route</div></div>
+        <div class="router reverse-node r4"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">R<sub>4</sub></div><div class="sub">reverse</div><div class="provenance">Spoofed Record-Route</div></div>
+        <div class="router fallback-node p-node"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">P</div><div class="sub">penultimate</div><div class="provenance">Assume Symmetry (Intradomain)</div></div>
+        <div class="router reverse-node r5"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">R<sub>5</sub></div><div class="sub">reverse</div><div class="provenance">Spoofed Record-Route</div></div>
+        <div class="router reverse-node r6"><i class="iface left"></i><i class="iface right"></i><i class="iface top"></i><i class="iface bottom"></i><div class="name">R<sub>6</sub></div><div class="sub">current</div><div class="provenance">Spoofed Record-Route</div></div>
+
+        <div class="rr-failure fail-k">RR &times;</div>
+        <div class="rr-failure fail-j">RR &times;</div>
+        <div class="rr-failure fail-p">RR &times;</div>
+        <div class="rr-failure fail-r6">RR &times;</div>
+        <div class="untrusted-note">Assume Symmetry (Interdomain): rejected</div>
+
+        <div class="scene-note" id="longPathNote">all 8 RR slots are consumed before the reply</div>
+        <div class="scene-note" id="spoofNote">request sent here; source IP = S</div>
+        <div class="scene-note" id="fallbackNote">regular traceroute to current hop R<sub>6</sub></div>
+        <div class="scene-note" id="atlasNote">known route to S</div>
+        <div class="interface-key">Edges terminate at the observed router interfaces.</div>
+      </div>
+
+      <div class="probe-box" id="probeBox">
+        <section class="probe-panel" data-panel="direct">
+          <div class="probe-head"><h3>Direct RR: S &rarr; D<sub>2</sub></h3><p>All eight RR slots are consumed before D<sub>2</sub> replies.</p></div>
+          <div class="slots">
+            <div class="slot"><span>slot 1</span><b>F<sub>1</sub></b></div><div class="slot"><span>slot 2</span><b>F<sub>2</sub></b></div><div class="slot"><span>slot 3</span><b>F<sub>3</sub></b></div>
+            <div class="slot"><span>slot 4</span><b>F<sub>4</sub></b></div><div class="slot"><span>slot 5</span><b>F<sub>5</sub></b></div><div class="slot"><span>slot 6</span><b>F<sub>6</sub></b></div>
+            <div class="slot"><span>slot 7</span><b>F<sub>7</sub></b></div><div class="slot"><span>slot 8</span><b>F<sub>8</sub></b></div>
+          </div>
+          <div class="probe-result"><strong>Result:</strong> the response returns to S, but no RR slot remains for a reverse hop.</div>
+        </section>
+
+        <section class="probe-panel" data-panel="spoof1">
+          <div class="probe-head"><h3>Spoofed RR #1: VP<sub>1</sub> &rarr; D<sub>2</sub>, source = S</h3><p>The reply goes to S, not VP<sub>1</sub>.</p></div>
+          <div class="slots">
+            <div class="slot"><span>slot 1</span><b>Q<sub>1</sub></b></div><div class="slot"><span>slot 2</span><b>Q<sub>2</sub></b></div><div class="slot"><span>slot 3</span><b>Q<sub>3</sub></b></div>
+            <div class="slot"><span>slot 4</span><b>Q<sub>4</sub></b></div><div class="slot"><span>slot 5</span><b>Q<sub>5</sub></b></div><div class="slot"><span>slot 6</span><b>D<sub>2</sub></b></div>
+            <div class="slot"><span>slot 7</span><b>R<sub>1</sub></b></div><div class="slot"><span>slot 8</span><b>R<sub>2</sub></b></div>
+          </div>
+          <div class="probe-result"><strong>Result:</strong> the shorter forward leg leaves slots for two reverse hops.</div>
+        </section>
+
+        <section class="probe-panel" data-panel="spoof2">
+          <div class="probe-head"><h3>Spoofed RR #2: VP<sub>2</sub> &rarr; R<sub>2</sub>, source = S</h3><p>All eight recorded hops are shown.</p></div>
+          <div class="slots">
+            <div class="slot"><span>slot 1</span><b>U<sub>1</sub></b></div><div class="slot"><span>slot 2</span><b>U<sub>2</sub></b></div><div class="slot"><span>slot 3</span><b>U<sub>3</sub></b></div>
+            <div class="slot"><span>slot 4</span><b>R<sub>2</sub></b></div><div class="slot"><span>slot 5</span><b>R<sub>3</sub></b></div><div class="slot"><span>slot 6</span><b>R<sub>4</sub></b></div>
+            <div class="slot"><span>slot 7</span><b>R<sub>5</sub></b></div><div class="slot"><span>slot 8</span><b>R<sub>6</sub></b></div>
+          </div>
+          <div class="probe-result"><strong>Result:</strong> RR extends the measured reverse path to R<sub>6</sub>.</div>
+        </section>
+
+        <section class="probe-panel" data-panel="fallback">
+          <div class="probe-head"><h3>When RR has no informative candidate</h3><p>Traceroute reveals new candidates; RevTr tries RR on each one before considering symmetry.</p></div>
+          <div class="attempt-list">
+            <div class="attempt"><b>1. Regular traceroute</b>S &rarr; K &rarr; J &rarr; P &rarr; R<sub>6</sub> reveals three new candidates.</div>
+            <div class="attempt"><b>2. Try RR again</b>RR to P, J, and K also yields no informative reverse hop.</div>
+            <div class="attempt"><b>3. Check AS boundary</b>R<sub>6</sub>-P and P-J remain within one AS; J-K crosses into another.</div>
+            <div class="attempt"><b>4. Assume Symmetry (Intradomain)</b>Reverse R<sub>6</sub> &rarr; P &rarr; J. Reject Assume Symmetry (Interdomain) on J &rarr; K.</div>
+          </div>
+          <div class="probe-result"><strong>Trust rule:</strong> Assume Symmetry (Intradomain) one link at a time; reject Assume Symmetry (Interdomain).</div>
+        </section>
+      </div>
+
+      <div class="steps">
+        <div class="step active"><b>1 - Long path</b>D<sub>2</sub> is 9 hops away.</div>
+        <div class="step"><b>2 - Direct RR</b>First 4 slots fill.</div>
+        <div class="step"><b>3 - RR full</b>0 reverse hops.</div>
+        <div class="step"><b>4 - Choose VP</b>Closest to D<sub>2</sub>.</div>
+        <div class="step"><b>5 - Spoof S</b>VP<sub>1</sub> sends.</div>
+        <div class="step"><b>6 - Reply</b>Recover R<sub>1</sub>, R<sub>2</sub>.</div>
+        <div class="step"><b>7 - New target</b>Current = R<sub>2</sub>.</div>
+        <div class="step"><b>8 - RR #2</b>8 hops reach R<sub>6</sub>.</div>
+        <div class="step"><b>9 - Stuck</b>RR reveals no next hop.</div>
+        <div class="step"><b>10 - Traceroute</b>Reveal K, J, and P.</div>
+        <div class="step"><b>11 - Retry RR</b>Every new candidate fails.</div>
+        <div class="step"><b>12 - Trust check</b>Same AS only.</div>
+        <div class="step"><b>13 - Assume Symmetry (Intradomain)</b>Use R<sub>6</sub> &rarr; P &rarr; J.</div>
+        <div class="step"><b>14 - Intersected Record-Route Atlas</b>Reach J.</div>
+        <div class="step"><b>15 - Intersected Traceroute</b>Complete J &rarr; K &rarr; S.</div>
+        <div class="step"><b>16 - Final path</b>Only D<sub>2</sub> &rarr; S.</div>
+      </div>
+
+      <div class="legend">
+        <span><i class="swatch" style="background: var(--blue)"></i>Forward traceroute</span>
+        <span><i class="swatch" style="background: repeating-linear-gradient(90deg, var(--probe) 0 7px, transparent 7px 13px)"></i>Direct RR</span>
+        <span><i class="swatch" style="background: repeating-linear-gradient(90deg, var(--green) 0 5px, transparent 5px 11px)"></i>Spoofed Record-Route</span>
+        <span><i class="swatch" style="background: var(--teal)"></i>Recovered reverse path</span>
+        <span><i class="swatch" style="background: var(--purple)"></i>Traceroute atlas</span>
+        <span><i class="swatch" style="background: var(--amber)"></i>Assume Symmetry (Intradomain)</span>
+        <span><i class="swatch" style="background: repeating-linear-gradient(90deg, #a34b43 0 6px, transparent 6px 11px)"></i>Assume Symmetry (Interdomain): rejected</span>
+      </div>
+    </section>
+
+    <div class="note">
+      RevTr 2.0 chooses M-Lab vantage points close to destination-prefix ingresses. If RR still cannot reveal a hop, it uses regular traceroute and keeps one link at a time only when both ends are in the same AS; an interdomain link causes the measurement to abort.
+    </div>
+  </main>
+
+  <script>
+    const scene = document.getElementById("scene");
+    const wires = document.getElementById("wires");
+    const caption = document.getElementById("caption");
+    const narrationText = document.getElementById("narrationText");
+    const bar = document.getElementById("bar");
+    const steps = [...document.querySelectorAll(".step")];
+    const phases = [...document.querySelectorAll(".phase")];
+    const notes = [...document.querySelectorAll(".scene-note")];
+    const probeBox = document.getElementById("probeBox");
+    const panels = [...document.querySelectorAll(".probe-panel")];
+
+    const nodes = {
+      S: document.querySelector(".source"),
+      D: document.querySelector(".destination"),
+      F1: document.querySelector(".f1"), F2: document.querySelector(".f2"),
+      F3: document.querySelector(".f3"), F4: document.querySelector(".f4"),
+      F5: document.querySelector(".f5"), F6: document.querySelector(".f6"),
+      F7: document.querySelector(".f7"), F8: document.querySelector(".f8"),
+      VP1: document.querySelector(".vp1"), VP2: document.querySelector(".vp2"),
+      Q1: document.querySelector(".q1"), Q2: document.querySelector(".q2"),
+      Q3: document.querySelector(".q3"), Q4: document.querySelector(".q4"),
+      Q5: document.querySelector(".q5"), U1: document.querySelector(".u1"),
+      U2: document.querySelector(".u2"), U3: document.querySelector(".u3"),
+      AVP: document.querySelector(".atlas-vp"), A: document.querySelector(".atlas-a"),
+      K: document.querySelector(".k-node"), J: document.querySelector(".j-node"),
+      R1: document.querySelector(".r1"), R2: document.querySelector(".r2"),
+      R3: document.querySelector(".r3"), R4: document.querySelector(".r4"),
+      R5: document.querySelector(".r5"), R6: document.querySelector(".r6"),
+      P: document.querySelector(".p-node")
+    };
+
+    const messages = [
+      "Step 1: D<sub>2</sub> is nine RR-recording hops away from S: F<sub>1</sub> through F<sub>8</sub>, then D<sub>2</sub>.",
+      "Step 2: S sends a direct RR ping to D<sub>2</sub>. F<sub>1</sub> through F<sub>8</sub> consume all eight displayed RR slots.",
+      "Step 3: The direct probe reaches D<sub>2</sub> with the RR header full. Its reply reaches S, but S learns zero reverse hops.",
+      "Step 4: RevTr selects the M-Lab vantage point closest to an ingress of D<sub>2</sub>'s prefix. A shorter request path can preserve RR slots for the reply.",
+      "Step 5: VP<sub>1</sub> sends through Q<sub>1</sub> to Q<sub>5</sub> and D<sub>2</sub> while spoofing source S. The full eight-hop RR then includes R<sub>1</sub> and R<sub>2</sub> on the reply.",
+      "Step 6: All eight RR entries are visible: five VP-side hops, D<sub>2</sub>, then the measured reverse hops R<sub>1</sub> and R<sub>2</sub>.",
+      "Step 7: Reverse Traceroute advances incrementally. R<sub>2</sub> becomes the new current hop, and RevTr selects a nearby VP for the next RR probe.",
+      "Step 8: VP<sub>2</sub>'s complete eight-hop RR is U<sub>1</sub>, U<sub>2</sub>, U<sub>3</sub>, R<sub>2</sub>, R<sub>3</sub>, R<sub>4</sub>, R<sub>5</sub>, and R<sub>6</sub>.",
+      "Step 9: R<sub>6</sub> is not in the atlas, and RR cannot reveal the next reverse hop from any candidate already known.",
+      "Step 10: With RR exhausted, RevTr runs a regular traceroute to R<sub>6</sub>. It reveals new candidates along S &rarr; K &rarr; J &rarr; P &rarr; R<sub>6</sub>.",
+      "Step 11: RevTr does not assume symmetry immediately. It first tries RR on the newly observed P, J, and K; every probe still yields no informative reverse hop.",
+      "Step 12: RevTr checks the routing boundary. R<sub>6</sub>-P and P-J stay within one AS, where symmetry is trustworthy; J-K crosses ASes, where symmetry is not trustworthy.",
+      "Step 13: Assume Symmetry (Intradomain) recovers R<sub>6</sub> &rarr; P &rarr; J one link at a time. Assume Symmetry (Interdomain) on J-K is rejected.",
+      "Step 14: J is the Intersected Record-Route Atlas hop.",
+      "Step 15: The Intersected Traceroute segment J &rarr; K &rarr; S completes the route.",
+      "Step 16: The discovery methods are Destination D<sub>2</sub>; Spoofed Record-Route from R<sub>1</sub> through R<sub>6</sub>; Assume Symmetry (Intradomain) at P; Intersected Record-Route Atlas at J; and Intersected Traceroute from K to S."
+    ];
+
+    const narration = [
+      "D<sub>2</sub> is more than eight hops from S",
+      "The direct RR header starts filling on the forward path",
+      "All 8 RR slots are full; direct RR reveals 0 reverse hops",
+      "Choose the M-Lab VP closest to D<sub>2</sub>'s prefix ingress",
+      "VP<sub>1</sub> sends the request, but spoofs source address S",
+      "RR #1 shows all 8 hops and measures R<sub>1</sub>, R<sub>2</sub>",
+      "Set current hop = R<sub>2</sub> and probe again",
+      "RR #2 shows all 8 hops and measures through R<sub>6</sub>",
+      "RR cannot measure the next hop after R<sub>6</sub>",
+      "Regular traceroute reveals new candidates K, J, and P",
+      "RR on every newly observed hop is still uninformative",
+      "Use Assume Symmetry (Intradomain); reject Assume Symmetry (Interdomain)",
+      "Assume Symmetry (Intradomain) recovers R<sub>6</sub> &rarr; P &rarr; J",
+      "J is the Intersected Record-Route Atlas hop",
+      "Intersected Traceroute supplies J &rarr; K &rarr; S",
+      "Destination &rarr; Spoofed Record-Route &rarr; Assume Symmetry (Intradomain) &rarr; Intersected Record-Route Atlas &rarr; Intersected Traceroute"
+    ];
+
+    const forwardPath = [nodes.S, nodes.F1, nodes.F2, nodes.F3, nodes.F4, nodes.F5, nodes.F6, nodes.F7, nodes.F8, nodes.D];
+    const rrOneRequest = [nodes.VP1, nodes.Q1, nodes.Q2, nodes.Q3, nodes.Q4, nodes.Q5, nodes.D];
+    const rrTwoRequest = [nodes.VP2, nodes.U1, nodes.U2, nodes.U3, nodes.R2];
+    const reverseToR2 = [nodes.D, nodes.R1, nodes.R2];
+    const reverseToR6 = [nodes.D, nodes.R1, nodes.R2, nodes.R3, nodes.R4, nodes.R5, nodes.R6];
+    const symmetryPath = [nodes.R6, nodes.P, nodes.J];
+    const fullReversePath = [nodes.D, nodes.R1, nodes.R2, nodes.R3, nodes.R4, nodes.R5, nodes.R6, nodes.P, nodes.J, nodes.K, nodes.S];
+    const fallbackPath = [nodes.S, nodes.K, nodes.J, nodes.P, nodes.R6];
+    const atlasPath = [nodes.AVP, nodes.A, nodes.J, nodes.K, nodes.S];
+    const reverseNodes = [nodes.R1, nodes.R2, nodes.R3, nodes.R4, nodes.R5, nodes.R6, nodes.J];
+    const failureBadges = [".fail-r6", ".fail-p", ".fail-j", ".fail-k"].map((selector) => document.querySelector(selector));
+
+    let current = 0;
+    let playTimers = [];
+    let revealTimers = [];
+
+    function centerOf(el) {
+      const sceneBox = scene.getBoundingClientRect();
+      const target = el.classList.contains("endpoint") ? el.querySelector(".dot, .vp-icon") : el;
+      const box = target.getBoundingClientRect();
+      return { x: box.left - sceneBox.left + box.width / 2, y: box.top - sceneBox.top + box.height / 2 };
+    }
+
+    function portCenter(port) {
+      const sceneBox = scene.getBoundingClientRect();
+      const box = port.getBoundingClientRect();
+      return { x: box.left - sceneBox.left + box.width / 2, y: box.top - sceneBox.top + box.height / 2 };
+    }
+
+    function anchor(el, toward) {
+      if (el.classList.contains("endpoint")) {
+        const target = el.querySelector(".dot, .vp-icon");
+        const center = centerOf(el);
+        const box = target.getBoundingClientRect();
+        const radius = Math.min(box.width, box.height) / 2;
+        const dx = toward.x - center.x;
+        const dy = toward.y - center.y;
+        const distance = Math.hypot(dx, dy) || 1;
+        return { point: { x: center.x + (dx / distance) * radius, y: center.y + (dy / distance) * radius } };
+      }
+
+      const ports = [...el.querySelectorAll(".iface")];
+      return ports
+        .map((port) => ({ point: portCenter(port), port }))
+        .sort((a, b) => Math.hypot(a.point.x - toward.x, a.point.y - toward.y) - Math.hypot(b.point.x - toward.x, b.point.y - toward.y))[0];
+    }
+
+    function scheduleReveal(fn, delay) {
+      const timer = setTimeout(fn, delay);
+      revealTimers.push(timer);
+    }
+
+    function revealSegment(segment) {
+      segment.ports.forEach((port) => port.classList.add("used"));
+      segment.line.classList.add("show");
+    }
+
+    function drawSegment(from, to, kind, id, visible = true) {
+      const fromCenter = centerOf(from);
+      const toCenter = centerOf(to);
+      const a = anchor(from, toCenter);
+      const b = anchor(to, fromCenter);
+      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      line.setAttribute("x1", a.point.x);
+      line.setAttribute("y1", a.point.y);
+      line.setAttribute("x2", b.point.x);
+      line.setAttribute("y2", b.point.y);
+      line.setAttribute("class", `wire ${kind}`);
+      line.setAttribute("data-id", id);
+      wires.appendChild(line);
+      const segment = { line, ports: [a.port, b.port].filter(Boolean) };
+      if (visible) revealSegment(segment);
+      return segment;
+    }
+
+    function drawPath(path, kind, prefix, animate = false, delay = 220) {
+      for (let i = 0; i < path.length - 1; i += 1) {
+        const segment = drawSegment(path[i], path[i + 1], kind, `${prefix}-${i}`, !animate);
+        if (animate) scheduleReveal(() => revealSegment(segment), i * delay);
+      }
+    }
+
+    function resetScene() {
+      revealTimers.forEach(clearTimeout);
+      revealTimers = [];
+      wires.textContent = "";
+      scene.querySelectorAll(".iface.used").forEach((port) => port.classList.remove("used"));
+      reverseNodes.forEach((node) => node.classList.remove("visible"));
+      nodes.P.classList.remove("visible");
+      failureBadges.forEach((badge) => badge.classList.remove("visible"));
+      notes.forEach((note) => note.classList.remove("show"));
+      scene.className = "scene";
+      probeBox.classList.remove("show");
+      panels.forEach((panel) => panel.classList.remove("active"));
+      document.querySelectorAll(".slot").forEach((slot) => slot.classList.remove("filled", "forward-fill", "active"));
+    }
+
+    function showForward(animate = false) {
+      scene.classList.add("forward-visible");
+      drawPath(forwardPath, "forward", "forward", animate, 150);
+      document.getElementById("longPathNote").classList.add("show");
+    }
+
+    function showReverse(path, animate = false) {
+      path.forEach((node) => {
+        if (node.classList.contains("reverse-node")) node.classList.add("visible");
+        if (node === nodes.P) {
+          nodes.P.classList.add("visible");
+        }
+      });
+      drawPath(path, "reverse", "reverse", animate, 240);
+    }
+
+    function showPanel(name, fillCount = 0, forwardCount = 0, animate = false, delay = 170) {
+      probeBox.classList.add("show");
+      const panel = panels.find((candidate) => candidate.dataset.panel === name);
+      if (!panel) return;
+      panel.classList.add("active");
+      const slots = [...panel.querySelectorAll(".slot")];
+      slots.forEach((slot, index) => {
+        const reveal = () => {
+          slot.classList.toggle("filled", index < fillCount);
+          slot.classList.toggle("forward-fill", index < forwardCount);
+          slot.classList.toggle("active", index === fillCount - 1);
+        };
+        if (animate && index < fillCount) scheduleReveal(reveal, index * delay);
+        else reveal();
+      });
+    }
+
+    function showAtlas(animate = false) {
+      scene.classList.add("atlas-visible", "atlas-intersection");
+      drawPath(atlasPath, "atlas", "atlas", animate, 260);
+      document.getElementById("atlasNote").classList.add("show");
+    }
+
+    function showFallbackTrace(animate = false) {
+      scene.classList.add("fallback-visible", "current-r6");
+      drawPath(fallbackPath, "fallback", "fallback", animate, 240);
+      document.getElementById("fallbackNote").classList.add("show");
+    }
+
+    function showFailureAttempts(animate = false) {
+      failureBadges.forEach((badge, index) => {
+        if (animate) scheduleReveal(() => badge.classList.add("visible"), index * 360);
+        else badge.classList.add("visible");
+      });
+    }
+
+    function showFinalPath(animate = false) {
+      scene.classList.add("final-path-phase");
+      reverseNodes.forEach((node) => node.classList.add("visible"));
+      nodes.P.classList.add("visible");
+      drawPath(fullReversePath, "final-reverse", "final-reverse", animate, 170);
+    }
+
+    function render(step) {
+      current = step;
+      resetScene();
+      steps.forEach((el, index) => el.classList.toggle("active", index === step));
+      const phase = step === 0 ? "distance" : step <= 2 ? "direct" : step <= 5 ? "spoof" : step <= 8 ? "iterate" : step <= 12 ? "fallback" : "complete";
+      phases.forEach((el) => el.classList.toggle("active", el.dataset.phase === phase));
+      bar.style.width = `${((step + 1) / messages.length) * 100}%`;
+      caption.innerHTML = messages[step];
+      narrationText.innerHTML = narration[step];
+
+      if (step === 15) {
+        showFinalPath(true);
+        return;
+      }
+
+      if (step <= 3) {
+        showForward(step === 0);
+      }
+
+      if (step === 1) {
+        drawPath(forwardPath.slice(0, 5), "direct-rr", "direct-part", true, 180);
+        showPanel("direct", 4, 4, true, 180);
+      }
+
+      if (step === 2 || step === 3) {
+        scene.classList.add("direct-failed");
+        drawPath(forwardPath, "direct-rr", "direct-full", step === 2, 140);
+        showPanel("direct", 8, 8, step === 2, 140);
+      }
+
+      if (step === 3) {
+        scene.classList.add("show-vp1");
+      }
+
+      if (step === 4) {
+        scene.classList.add("show-vp1", "rr1-visible");
+        drawPath(rrOneRequest, "spoof", "spoof1-out", true, 180);
+        document.getElementById("spoofNote").classList.add("show");
+        showPanel("spoof1", 8, 6, true, 180);
+      }
+
+      if (step >= 5 && step <= 6) {
+        scene.classList.add("show-vp1", "rr1-visible");
+        drawPath(rrOneRequest, "spoof", "spoof1-out");
+        document.getElementById("spoofNote").classList.add("show");
+        showReverse(reverseToR2, step === 5);
+        showPanel("spoof1", 8, 6);
+        if (step === 6) scene.classList.add("show-vp2");
+      }
+
+      if (step === 7) {
+        scene.classList.add("show-vp2", "rr2-visible");
+        showReverse(reverseToR6, true);
+        drawPath(rrTwoRequest, "spoof", "spoof2-out", true, 180);
+        showPanel("spoof2", 8, 4, true, 180);
+      }
+
+      if (step === 8) {
+        scene.classList.add("show-vp1", "show-vp2", "current-r6");
+        showReverse(reverseToR6);
+        showPanel("fallback");
+      }
+
+      if (step >= 9 && step <= 12) {
+        showReverse(reverseToR6);
+        showFallbackTrace(step === 9);
+        showPanel("fallback");
+        if (step >= 10) showFailureAttempts(step === 10);
+        if (step >= 11) {
+          scene.classList.add("same-as-visible", "trust-check-visible");
+          drawPath([nodes.J, nodes.K], "untrusted", "untrusted-j-k");
+        }
+        if (step === 12) {
+          drawPath(symmetryPath, "symmetry", "symmetry", true, 280);
+        }
+      }
+
+      if (step === 13) {
+        showReverse(reverseToR6);
+        scene.classList.add("same-as-visible");
+        drawPath(symmetryPath, "symmetry", "symmetry");
+        showAtlas(true);
+      }
+
+      if (step === 14) {
+        showReverse(reverseToR6);
+        drawPath(symmetryPath, "symmetry", "symmetry");
+        showAtlas();
+        drawPath([nodes.J, nodes.K, nodes.S], "reverse", "atlas-completion", true, 320);
+      }
+
+      if (step >= 12 && step <= 14) {
+        nodes.P.classList.add("visible");
+        scene.classList.add("symmetry-measured");
+      }
+
+      if (step === 14) scene.classList.add("atlas-complete");
+    }
+
+    function next() {
+      playTimers.forEach(clearTimeout);
+      playTimers = [];
+      render((current + 1) % messages.length);
+    }
+
+    function reset() {
+      playTimers.forEach(clearTimeout);
+      playTimers = [];
+      render(0);
+    }
+
+    function play() {
+      playTimers.forEach(clearTimeout);
+      playTimers = [];
+      render(0);
+      messages.slice(1).forEach((_, index) => {
+        playTimers.push(setTimeout(() => render(index + 1), (index + 1) * 2100));
+      });
+    }
+
+    document.getElementById("play").addEventListener("click", play);
+    document.getElementById("next").addEventListener("click", next);
+    document.getElementById("reset").addEventListener("click", reset);
+    window.addEventListener("resize", () => render(current));
+    render(0);
+  </script>
+</body>
+</html>

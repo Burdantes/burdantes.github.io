@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RevTr Animated Explanation</title>
+  <style>
+    :root {
+      --paper: #f6f3ea;
+      --panel: #fffdf8;
+      --ink: #19212d;
+      --muted: #627084;
+      --line: #cbd4df;
+      --blue: #315f9f;
+      --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-width: 1120px;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font);
+      letter-spacing: 0;
+    }
+
+    button { font: inherit; }
+
+    .shell {
+      width: min(1360px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 30px 0 46px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 42px;
+      line-height: 1.08;
+    }
+
+    .scenario-nav {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 22px;
+      border-bottom: 2px solid var(--blue);
+    }
+
+    .scenario-tab {
+      min-height: 56px;
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      border-bottom: 0;
+      border-radius: 5px 5px 0 0;
+      background: rgba(255, 253, 248, 0.52);
+      color: var(--muted);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .scenario-tab + .scenario-tab { border-left: 0; }
+
+    .scenario-tab:hover { background: rgba(255, 253, 248, 0.9); }
+
+    .scenario-tab[aria-selected="true"] {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .scenario-tab span {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .scenario-tab strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .scenario-title h2 {
+      margin: 22px 0 0;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .scenario-frame-wrap {
+      margin-top: 2px;
+      min-height: 900px;
+    }
+
+    #scenarioFrame {
+      display: block;
+      width: 100%;
+      min-height: 1100px;
+      border: 0;
+      background: transparent;
+    }
+
+    .frame-status {
+      padding: 42px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <h1>RevTr Animated Explanation</h1>
+    </header>
+
+    <nav class="scenario-nav" role="tablist" aria-label="Reverse Traceroute scenarios">
+      <button class="scenario-tab" id="tab-basic" type="button" role="tab" aria-controls="scenarioFrame" aria-selected="true" data-scenario="basic">
+        <span>Scenario 1</span>
+        <strong>Basic reconstruction</strong>
+      </button>
+      <button class="scenario-tab" id="tab-spoofing" type="button" role="tab" aria-controls="scenarioFrame" aria-selected="false" data-scenario="spoofing">
+        <span>Scenario 2</span>
+        <strong>Why spoofing matters</strong>
+      </button>
+      <button class="scenario-tab" id="tab-stitching" type="button" role="tab" aria-controls="scenarioFrame" aria-selected="false" data-scenario="stitching">
+        <span>Scenario 3</span>
+        <strong>Why stitching is difficult</strong>
+      </button>
+    </nav>
+
+    <section class="scenario-title" aria-live="polite">
+      <h2 id="scenarioTitle"></h2>
+    </section>
+
+    <section class="scenario-frame-wrap" aria-label="Selected interactive scenario">
+      <div class="frame-status" id="frameStatus">Loading the selected scenario...</div>
+      <iframe id="scenarioFrame" title="Basic Reverse Traceroute reconstruction" scrolling="no"></iframe>
+    </section>
+  </main>
+
+  <script>
+    const scenarios = {
+      basic: {
+        file: "revtr_mlab_visual.html",
+        frameTitle: "Basic Reverse Traceroute reconstruction",
+        title: "Basic reconstruction"
+      },
+      spoofing: {
+        file: "revtr_spoofing_visual.html",
+        frameTitle: "Why Reverse Traceroute uses spoofing",
+        title: "Why spoofing matters"
+      },
+      stitching: {
+        file: "revtr_stitching_visual.html",
+        frameTitle: "Reverse Traceroute stitching ambiguity",
+        title: "Why stitching is difficult"
+      }
+    };
+
+    const frame = document.getElementById("scenarioFrame");
+    const frameStatus = document.getElementById("frameStatus");
+    const tabs = [...document.querySelectorAll(".scenario-tab")];
+    let activeScenario = "basic";
+    let frameObserver = null;
+
+    function resizeFrame() {
+      try {
+        const doc = frame.contentDocument;
+        if (!doc) return;
+        const height = Math.max(doc.documentElement.scrollHeight, doc.body ? doc.body.scrollHeight : 0);
+        frame.style.height = `${height + 8}px`;
+      } catch (error) {
+        frame.style.height = "1500px";
+      }
+    }
+
+    function prepareEmbeddedScenario() {
+      const doc = frame.contentDocument;
+      if (!doc) return;
+
+      const embeddedStyle = doc.createElement("style");
+      embeddedStyle.textContent = `
+        body { background: transparent !important; }
+        body > .wrap > .eyebrow,
+        body > .wrap > h1,
+        body > .wrap > .lede { display: none !important; }
+        body > .wrap { padding-top: 14px !important; }
+      `;
+      doc.head.appendChild(embeddedStyle);
+
+      if (frameObserver) frameObserver.disconnect();
+      if ("ResizeObserver" in window) {
+        frameObserver = new ResizeObserver(resizeFrame);
+        frameObserver.observe(doc.documentElement);
+      }
+
+      resizeFrame();
+      window.setTimeout(resizeFrame, 120);
+      window.setTimeout(resizeFrame, 700);
+      frameStatus.hidden = true;
+    }
+
+    function renderScenario(key, updateHash = true) {
+      const scenario = scenarios[key] || scenarios.basic;
+      activeScenario = key in scenarios ? key : "basic";
+
+      document.getElementById("scenarioTitle").textContent = scenario.title;
+
+      tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.scenario === activeScenario)));
+      frameStatus.hidden = false;
+      frameStatus.textContent = "Loading the selected scenario...";
+      frame.title = scenario.frameTitle;
+      frame.src = scenario.file;
+
+      if (updateHash) history.replaceState(null, "", `#${activeScenario}`);
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => renderScenario(tab.dataset.scenario));
+      tab.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        event.preventDefault();
+        const currentIndex = tabs.indexOf(tab);
+        const direction = event.key === "ArrowRight" ? 1 : -1;
+        const nextTab = tabs[(currentIndex + direction + tabs.length) % tabs.length];
+        nextTab.focus();
+        nextTab.click();
+      });
+    });
+
+    frame.addEventListener("load", prepareEmbeddedScenario);
+    window.addEventListener("resize", resizeFrame);
+
+    const requestedScenario = location.hash.slice(1);
+    renderScenario(requestedScenario in scenarios ? requestedScenario : "basic", false);
+  </script>
+</body>
+</html>
