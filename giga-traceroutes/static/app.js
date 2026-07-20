@@ -144,7 +144,7 @@ function renderDownload(dl) {
 
 function renderSections(view) {
   sectionsEl.hidden = false;
-  securityPanel.hidden = true;
+  if (securityPanel) securityPanel.hidden = true;  // absent in a public export
   renderDownload(view.download);
   sectionsEl.innerHTML = "";
   view.sections.forEach((sec, i) => {
