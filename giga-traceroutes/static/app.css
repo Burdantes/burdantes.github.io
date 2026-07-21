@@ -394,3 +394,13 @@ details.plots summary:hover { background: #d3efe9; color: var(--data); }
   padding: .04rem .4rem; border-radius: 6px; white-space: nowrap; }
 .ipath-summary .ip-asn { margin: 0 .05rem; }
 .ipath-hops td:first-child { border-left: 3px solid transparent; }
+
+/* ---------- per-section data-source label ---------- */
+.ds-chip {
+  margin-left: auto; align-self: center;         /* right side of the header */
+  font-family: var(--sans); font-size: .67rem; font-weight: 700;
+  padding: .2rem .58rem; border-radius: 999px; white-space: nowrap;
+  border: 1px solid transparent; cursor: default;
+}
+.ds-traceroute { background: var(--data-soft); color: #0d8272; border-color: #b8e6dd; }
+.ds-traceroute-ndt { background: #e8eefb; color: var(--navy-2); border-color: #c9d8f2; }

@@ -161,6 +161,13 @@ function renderSections(view) {
     h.textContent = sec.title;
     head.appendChild(num);
     head.appendChild(h);
+    if (sec.data_source) {
+      const ds = document.createElement("span");
+      ds.className = `ds-chip ds-${sec.data_source.key}`;
+      ds.textContent = sec.data_source.label;
+      ds.title = sec.data_source.tip;
+      head.appendChild(ds);
+    }
     wrap.appendChild(head);
 
     if (sec.blurb) {
