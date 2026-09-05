@@ -8,3 +8,15 @@
 Gemfile.lock
 vendor
 
+
+# Agent scratch / observations
+skill-observations/
+
+# Large media — keep out of the repo
+assets/video/
+
+# R session junk
+.Rhistory
+
+# Internal deploy notes — not for the public site
+revtr_monitoring/GITHUB_PAGES_SETUP.md

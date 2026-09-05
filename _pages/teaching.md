@@ -17,6 +17,13 @@ nav_order: 4
   <h1 style="color: #2c3e50; font-weight: 300; font-size: 2.2em; letter-spacing: -0.5px; margin: 0 0 10px 0; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Teaching & Mentoring</h1>
 </div>
 
+<div>
+  <h3 style="color: #2c3e50; margin-top: 0; margin-bottom: 20px; font-weight: 400; font-size: 1.6em; letter-spacing: -0.3px; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Upcoming Course</h3>
+  <p><strong>Internet Measurement</strong> (Spring 2027, University of Maryland)</p>
+  <p>A research-oriented course on what partial signals can reveal about Internet topology, routing, performance, outages, censorship, traffic, and applications—and where those inferences break down.</p>
+  <p><a href="{{ '/teaching/internet-measurement/' | relative_url }}">Draft syllabus and reading list</a></p>
+</div>
+
 <div style="margin-bottom: 60px;">
   <h3 style="color: #2c3e50; margin-top: 0; margin-bottom: 20px; font-weight: 400; font-size: 1.6em; letter-spacing: -0.3px; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Course Assistance</h3>
   <p style="font-size: 1.05em; line-height: 1.7; color: #555; font-weight: 300; margin-bottom: 20px;">
