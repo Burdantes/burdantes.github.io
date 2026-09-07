@@ -71,6 +71,24 @@ This grading scheme is a planning draft and may change before the course is form
 
 Main readings anchor each week's discussion. Complementary readings extend, challenge, or provide alternative approaches to the same measurement problem.
 
+### Course at a glance
+
+- **Week 1:** Measurement as inference—observables, assumptions, validity, ethics, and the competing interests that shape the Internet.
+- **Week 2:** Paths and topology—traceroute, path asymmetry, load balancing, router ownership, and the limits of topology maps.
+- **Week 3:** Interdomain routing—BGP data, AS relationships, routing dynamics, and control-plane blind spots.
+- **Week 4:** Performance—latency, loss, throughput, network tomography, traffic differentiation, and measurement context.
+- **Week 5:** Outages and reachability—failure detection, partial reachability, routing pathologies, and traffic anomalies.
+- **Week 6:** Internet-wide active measurement—scanning methodology, target selection, research ethics, and vulnerability measurement.
+- **Week 7:** Services and dependencies—hypergiants, interdomain traffic, off-net deployments, and third-party dependencies.
+- **Week 8:** DNS as a measurement signal—resolver infrastructure, DNS traffic, interception, and large-scale DNS measurement.
+- **Spring break:** No class.
+- **Week 9:** Internet traffic engineering—predicting and controlling where traffic enters and leaves large networks.
+- **Week 10:** Censorship and interference—global observatories, DNS manipulation, HTTPS interception, and geopolitical context.
+- **Week 11:** Broadband access and inequity—service availability, access-network structure, speed tests, and public investment.
+- **Week 12:** Hidden and physical infrastructure—geolocation, terrestrial and submarine cables, and infrastructure vulnerability.
+- **Week 13:** Datacenter measurement and AI workloads—traffic characterization, failures, RDMA, and large-scale training systems.
+- **Week 14:** Final project presentations.
+
 ### Week 1: What can be known, and how do we measure it well?
 
 **Main reading**
@@ -80,6 +98,7 @@ Main readings anchor each week's discussion. Complementary readings extend, chal
 **Complementary readings**
 
 - Neil Spring, David Wetherall, and Thomas Anderson. [Reverse Engineering the Internet](https://doi.org/10.1145/972374.972376). *ACM SIGCOMM Computer Communication Review, 2004.*
+- David D. Clark, John Wroclawski, Karen R. Sollins, and Robert Braden. [Tussle in Cyberspace: Defining Tomorrow's Internet](https://doi.org/10.1109/TNET.2005.850224). *IEEE/ACM Transactions on Networking, 2005.*
 - Loqman Salamatian. [The Internet as Sisyphus: Repeating Measurements, Missing Causes](https://burdantes.github.io/assets/pdf/hotnets2025_sisyphus.pdf). *ACM HotNets, 2025.*
 - David Dittrich and Erin Kenneally. [The Menlo Report: Ethical Principles Guiding Information and Communication Technology Research](https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf). *U.S. Department of Homeland Security, 2012.*
 
@@ -95,6 +114,7 @@ Main readings anchor each week's discussion. Complementary readings extend, chal
 - Pietro Marchetta, Valerio Persico, Antonio Pescapé, and Ethan Katz-Bassett. [Don't Trust Traceroute (Completely)](https://doi.org/10.1145/2537148.2537155). *ACM CoNEXT Student Workshop, 2013.*
 - Kevin Vermeulen, Justin P. Rohrer, Robert Beverly, Olivier Fourmaux, and Timur Friedman. [Diamond-Miner: Comprehensive Discovery of the Internet's Topology Diamonds](https://www.usenix.org/conference/nsdi20/presentation/vermeulen). *USENIX NSDI, 2020.*
 - Kevin Vermeulen, Ege Gürmeriçliler, Ítalo Cunha, David R. Choffnes, and Ethan Katz-Bassett. [Internet Scale Reverse Traceroute](https://doi.org/10.1145/3517745.3561422). *ACM IMC, 2022.*
+- Walter Willinger and Matthew Roughan. [Internet Topology Research Redux](https://roughan.info/papers/topology.pdf). *ACM SIGCOMM eBook: Recent Advances in Networking, 2013.*
 
 ### Week 3: Interdomain routing
 
@@ -106,6 +126,8 @@ Main readings anchor each week's discussion. Complementary readings extend, chal
 **Complementary readings**
 
 - Ricardo Oliveira, Dan Pei, Walter Willinger, Beichuan Zhang, and Lixia Zhang. [The (In)Completeness of the Observed Internet AS-Level Structure](https://doi.org/10.1109/TNET.2009.2020798). *IEEE/ACM Transactions on Networking, 2010.*
+- Matthew Roughan, Walter Willinger, Olaf Maennel, Debbie Perouli, and Randy Bush. [10 Lessons from 10 Years of Measuring and Modeling the Internet's Autonomous Systems](https://doi.org/10.1109/JSAC.2011.111006). *IEEE Journal on Selected Areas in Communications, 2011.*
+- Feng Wang, Zhuoqing Morley Mao, Jia Wang, Lixin Gao, and Randy Bush. [A Measurement Study on the Impact of Routing Events on End-to-End Internet Path Performance](https://doi.org/10.1145/1159913.1159956). *ACM SIGCOMM, 2006.*
 - Thomas Alfroy, Thomas Holterbach, Thomas Krenc, Kimberly Claffy, and Cristel Pelsser. [Measuring Internet Routing from the Most Valuable Points](https://arxiv.org/abs/2405.13172). *arXiv preprint, 2024.*
 - Loqman Salamatian, Kevin Vermeulen, Ítalo Cunha, Vasileios Giotsas, and Ethan Katz-Bassett. [metAScritic: Reframing AS-Level Topology Discovery as a Recommendation System](https://doi.org/10.1145/3646547.3688429). *ACM IMC, 2024.*
 
@@ -117,8 +139,11 @@ Main readings anchor each week's discussion. Complementary readings extend, chal
 
 **Complementary readings**
 
+- Christian Kreibich, Nicholas Weaver, Boris Nechaev, and Vern Paxson. [Netalyzr: Illuminating the Edge Network](https://doi.org/10.1145/1879141.1879173). *ACM IMC, 2010.*
 - Kyle MacMillan, Tarun Mangla, James Saxon, Nicole P. Marwell, and Nick Feamster. [A Comparative Analysis of Ookla Speedtest and Measurement Labs Network Diagnostic Test (NDT7)](https://doi.org/10.1145/3579448). *Proceedings of the ACM on Measurement and Analysis of Computing Systems, 2023.*
 - Amogh Dhamdhere, David D. Clark, Alexander Gamero-Garrido, Matthew Luckie, Ricky K. P. Mok, Gautam Akiwate, Kabir Gogia, Vaibhav Bajpai, Alexander C. Snoeren, and Kimberly Claffy. [Inferring Persistent Interdomain Congestion](https://doi.org/10.1145/3230543.3230549). *ACM SIGCOMM, 2018.*
+- Denisa Ghita, Can Karakus, Katerina Argyraki, and Patrick Thiran. [Shifting Network Tomography Toward a Practical Goal](https://doi.org/10.1145/2079296.2079320). *ACM CoNEXT, 2011.*
+- Fangfan Li, Arian Akhavan Niaki, David R. Choffnes, Phillipa Gill, and Alan Mislove. [A Large-Scale Analysis of Deployed Traffic Differentiation Practices](https://doi.org/10.1145/3341302.3342092). *ACM SIGCOMM, 2019.*
 
 ### Week 5: Outages and reachability
 
@@ -131,6 +156,8 @@ Main readings anchor each week's discussion. Complementary readings extend, chal
 **Complementary readings and resources**
 
 - Aaron Schulman and Neil Spring. [Pingin' in the Rain](https://doi.org/10.1145/2068816.2068819). *ACM IMC, 2011.*
+- Vern Paxson. [End-to-End Routing Behavior in the Internet](https://www.cs.princeton.edu/courses/archive/fall10/cos561/papers/e2eRoutingBehavior97.pdf). *IEEE/ACM Transactions on Networking, 1997.*
+- Anukool Lakhina, Mark Crovella, and Christophe Diot. [Diagnosing Network-Wide Traffic Anomalies](https://doi.org/10.1145/1015467.1015492). *ACM SIGCOMM, 2004.*
 - Alberto Dainotti, Claudio Squarcella, Emile Aben, Kimberly C. Claffy, Marco Chiesa, Michele Russo, and Antonio Pescapé. [Analysis of Country-Wide Internet Outages Caused by Censorship](https://doi.org/10.1145/2068816.2068818). *ACM IMC, 2011.*
 - Philipp Richter, Ramakrishna Padmanabhan, Neil Spring, Arthur Berger, and David Clark. [Advancing the Art of Internet Edge Outage Detection](https://doi.org/10.1145/3278532.3278563). *ACM IMC, 2018.*
 - [IODA: Internet Outage Detection and Analysis](https://ioda.inetintel.cc.gatech.edu/about). *Internet Intelligence Lab, Georgia Institute of Technology.*
@@ -145,6 +172,7 @@ Main readings anchor each week's discussion. Complementary readings extend, chal
 **Complementary readings**
 
 - Austin Murdock, Frank Li, Paul Bramsen, Zakir Durumeric, and Vern Paxson. [Target Generation for Internet-wide IPv6 Scanning](https://doi.org/10.1145/3131365.3131405). *ACM IMC, 2017.*
+- Zakir Durumeric, James Kasten, David Adrian, J. Alex Halderman, Michael Bailey, Frank Li, Nicholas Weaver, Johanna Amann, Jethro Beekman, Mathias Payer, and Vern Paxson. [The Matter of Heartbleed](https://doi.org/10.1145/2663716.2663755). *ACM IMC, 2014.*
 - Zakir Durumeric, David Adrian, Phillip Stephens, Eric Wustrow, and J. Alex Halderman. [Ten Years of ZMap](https://doi.org/10.1145/3646547.3689012). *ACM IMC, 2024.*
 
 ### Week 7: Services and dependencies
@@ -153,8 +181,9 @@ Main readings anchor each week's discussion. Complementary readings extend, chal
 
 - Petros Gigis, Matt Calder, Lefteris Manassakis, George Nomikos, Vasileios Kotronis, Xenofontas Dimitropoulos, Ethan Katz-Bassett, and Georgios Smaragdakis. [Seven Years in the Life of Hypergiants' Off-Nets](https://doi.org/10.1145/3452296.3472928). *ACM SIGCOMM, 2021.*
 
-**Complementary reading**
+**Complementary readings**
 
+- Craig Labovitz, Scott Iekel-Johnson, Danny McPherson, Jon Oberheide, and Farnam Jahanian. [Internet Inter-Domain Traffic](https://doi.org/10.1145/1851182.1851194). *ACM SIGCOMM, 2010.*
 - Aqsa Kashaf, Vyas Sekar, and Yuvraj Agarwal. [Analyzing Third Party Service Dependencies in Modern Web Services: Have We Learned from the Mirai-Dyn Incident?](https://doi.org/10.1145/3419394.3423664). *ACM IMC, 2020.*
 
 ### Week 8: DNS as a measurement signal
