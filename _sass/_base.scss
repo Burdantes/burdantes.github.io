@@ -890,6 +890,18 @@ footer.sticky-bottom {
     color: var(--global-theme-color);
     font-size: 5rem;
   }
+
+  .blog-subscribe {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: var(--global-text-color-light);
+
+    a {
+      color: var(--global-theme-color);
+      font-weight: 500;
+    }
+  }
 }
 
 .tag-category-list {

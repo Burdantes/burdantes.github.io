@@ -23,6 +23,7 @@ profile:
     New York City, NY, 10027
 
 news: true
+latest_posts: true
 selected_papers: true
 social: true
 cv_pdf: Curriculum_Vitae.pdf
