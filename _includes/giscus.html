@@ -1,6 +1,8 @@
 <div id="giscus_thread" style="max-width: {{ site.max_width }}; margin: 0 auto;">
   <script>
-    let giscusTheme = localStorage.getItem("theme");
+    // localStorage is empty on a first visit; without a fallback giscus is handed
+    // the string "null" and tries to load https://giscus.app/en/null as a stylesheet.
+    let giscusTheme = localStorage.getItem("theme") || "{{ site.giscus.theme }}";
     let giscusAttributes = {
         "src": "https://giscus.app/client.js",
         "data-repo": "{{ site.giscus.repo }}",
