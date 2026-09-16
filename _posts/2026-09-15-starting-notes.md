@@ -37,26 +37,28 @@ related_posts: false
   ---------------------------------------------------------------------------
 -->
 
-I have wanted a low-ceremony place to write for a while. Papers are the wrong
-container for most of what I think about: they are long, they are slow, and by
-construction they only contain the things that worked. Talks are better but
-ephemeral. So: notes.
+I've wanted a low-ceremony place to write things down for a while. Papers are not
+really the right place for most of it: they take a long time to write, have to
+tell a fairly clean story, and mostly leave out all the things that did not work
+along the way. Talks are a bit better, but then they disappear. So I figured I
+would try notes.
 
-Three kinds of things will show up here.
+I expect to write mostly about three things.
 
-**Academia.** The parts of the job nobody hands you a manual for — reviewing,
-advising, what I look for in a prospective student, how I pick problems, what I
-got wrong about all of the above.
+**Academia.** Things I wish someone had explained to me earlier: reviewing,
+advising, choosing research problems, what I look for in prospective students,
+and things I have changed my mind about.
 
-**Papers.** Short reactions to things I read. Not reviews, and not summaries —
-closer to "here is the one idea in this paper I expect to still be using in five
-years," or occasionally "here is why I think this result does not mean what it
-is being cited for."
+**Papers.** Reactions to papers I find interesting. Probably not reviews or
+summaries, but more often one idea that stuck with me, something I learned from
+the paper, or occasionally something I think is being misunderstood when people
+cite it.
 
-**Experiments.** Measurement is unusually rich in results that are interesting
-but not publishable: the negative result, the artifact that turned out to be the
-real finding, the plot that took a week and answered nothing. Those go here.
+**Experiments.** Internet measurement produces a lot of things that are
+interesting without quite becoming papers: negative results, weird artifacts,
+half-baked ideas, and experiments that took a week only to tell me that the idea
+was wrong. I'd like somewhere to put those too.
 
-No schedule, no newsletter cadence, no promises about length. If you want these
-as they appear, the [RSS feed]({{ '/feed.xml' | relative_url }}) is the way —
-nothing to sign up for.
+I don't have a schedule in mind, and I don't know how long these will be. I'll
+write something when I have something worth writing down. There's an
+[RSS feed]({{ '/feed.xml' | relative_url }}) if you want to follow along.
