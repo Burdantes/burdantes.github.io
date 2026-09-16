@@ -40,10 +40,22 @@ pagination:
           <p>&bull;</p>
         {% endunless %}
       {% endfor %}
-      {% if site.display_categories.size > 0 and site.display_tags.size > 0 %}
+      {%- comment -%}
+        Only link categories that actually have posts: jekyll-archives generates
+        /blog/category/<name>/ solely for non-empty categories, so listing an
+        unused one here produces a 404.
+      {%- endcomment -%}
+      {%- assign live_categories = '' | split: '' -%}
+      {%- for category in site.display_categories -%}
+        {%- assign posts_in_category = site.categories[category] -%}
+        {%- if posts_in_category and posts_in_category.size > 0 -%}
+          {%- assign live_categories = live_categories | push: category -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {% if live_categories.size > 0 and site.display_tags.size > 0 %}
         <p>&bull;</p>
       {% endif %}
-      {% for category in site.display_categories %}
+      {% for category in live_categories %}
         <li>
           <i class="fas fa-tag fa-sm"></i> <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">{{ category }}</a>
         </li>
