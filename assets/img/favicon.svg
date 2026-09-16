@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- burdantes.github.io favicon: a 3x3 connectivity matrix.
+       Solid cells = measured, faded cells = inferred (metAScritic).
+       Geometry tuned for 16px: 7px cells with 2.5px gaps so the grid
+       still separates when each cell is ~3.5 device pixels. -->
+  <rect width="32" height="32" rx="6.5" fill="#12171B"/>
+  <g fill="#FFFFFF">
+    <rect x="3"    y="3"    width="7" height="7" rx="1.6"/>
+    <rect x="12.5" y="3"    width="7" height="7" rx="1.6" opacity=".45"/>
+    <rect x="22"   y="3"    width="7" height="7" rx="1.6"/>
+    <rect x="3"    y="12.5" width="7" height="7" rx="1.6" opacity=".45"/>
+    <rect x="12.5" y="12.5" width="7" height="7" rx="1.6"/>
+    <rect x="22"   y="12.5" width="7" height="7" rx="1.6"/>
+    <rect x="3"    y="22"   width="7" height="7" rx="1.6"/>
+    <rect x="12.5" y="22"   width="7" height="7" rx="1.6"/>
+    <rect x="22"   y="22"   width="7" height="7" rx="1.6" opacity=".45"/>
+  </g>
+</svg>
