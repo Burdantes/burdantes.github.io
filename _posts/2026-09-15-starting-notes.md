@@ -37,11 +37,11 @@ related_posts: false
   ---------------------------------------------------------------------------
 -->
 
-I've wanted a low-ceremony place to write things down for a while. Papers are not
+I've wanted a casual place to write things down for a while. Papers are not
 really the right place for most of it: they take a long time to write, have to
 tell a fairly clean story, and mostly leave out all the things that did not work
-along the way. Talks are a bit better, but then they disappear. So I figured I
-would try notes.
+along the way. Talks are a bit better, but then they disappear and I don't get much opportunities 
+to give talks where I just share thoughts. So I figured I would try notes.
 
 I expect to write mostly about three things.
 
