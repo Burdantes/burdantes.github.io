@@ -118,13 +118,13 @@ nav: false
     margin: 0 0 0.7rem;
   }
 
-  /* Section prose keeps a readable measure, left-aligned. */
+  /* All text fills the content column, like the cards above it. */
   .cpm-section p,
   .cpm-section li {
     color: var(--global-text-color-light, #555);
     font-size: 1rem;
     line-height: 1.7;
-    max-width: 70ch;
+    max-width: none;
   }
 
   .cpm-section {
@@ -133,6 +133,52 @@ nav: false
 
   .cpm-section ul {
     padding-left: 1.2rem;
+  }
+
+  /* Tables fill the column too; narrow screens scroll the table, not the page. */
+  .cpm-tablewrap {
+    margin: 0 0 1.2rem;
+    overflow-x: auto;
+  }
+
+  .cpm .cpm-table {
+    border: 0;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    width: 100%;
+  }
+
+  /* .cpm prefix outranks the theme's own table padding and borders. */
+  .cpm .cpm-table th,
+  .cpm .cpm-table td {
+    border: 0;
+    border-bottom: 1px solid var(--global-divider-color, #ddd);
+    padding: 0.35rem 0.6rem;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .cpm .cpm-table th {
+    white-space: normal;
+    color: var(--global-text-color, #2c3e50);
+    font-weight: 600;
+  }
+
+  .cpm-table td {
+    color: var(--global-text-color-light, #555);
+  }
+
+  .cpm .cpm-table .num {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  .cpm-table .cpm-muted {
+    font-style: italic;
+  }
+
+  .cpm-section p.cpm-provenance {
+    font-size: 0.88rem;
   }
 
   @media (max-width: 760px) {
@@ -194,6 +240,24 @@ nav: false
         The previous month's IPv4 campaign, from a slightly different set of regions.
       </p>
       <a class="cpm-open" href="https://burdantes.github.io/cloud-peering-maps/gcp-2026-08-ipv4.html" target="_blank" rel="noopener noreferrer">Open map →</a>
+    </article>
+
+    <article class="cpm-card">
+      <h2>Google Cloud · IPv4</h2>
+      <div class="cpm-when">March 2026 · 42 regions, 125 zones</div>
+      <div class="cpm-stats">
+        <div><strong>5,879</strong><span>peer ASNs</span></div>
+        <div><strong>3,351</strong><span>cities</span></div>
+        <div><strong>178</strong><span>IXPs</span></div>
+        <div><strong>125</strong><span>zones</span></div>
+      </div>
+      <p>
+        An earlier campaign with a different design: three zones per region,
+        44-byte probes, the <code>.1</code> address of each /24 as target, an
+        unrecorded network tier and older IXP membership lists. Its counts are
+        not directly comparable with the other maps.
+      </p>
+      <a class="cpm-open" href="https://burdantes.github.io/cloud-peering-maps/gcp-2026-03-ipv4.html" target="_blank" rel="noopener noreferrer">Open map →</a>
     </article>
 
     <article class="cpm-card">
@@ -319,6 +383,118 @@ nav: false
       on both tiers, measured side by side, which we have not yet run.
     </p>
   </section>
+
+<!-- trend:start -->
+  <section class="cpm-section">
+    <h2>Since 2020</h2>
+    <p>
+      In 2020, Arnold et al. (<a href="https://doi.org/10.1145/3419394.3423613" target="_blank" rel="noopener noreferrer">Cloud Provider Connectivity in the Flat Internet</a>, IMC 2020)
+      counted the networks four clouds connect to, using traceroutes from inside each cloud. The table sets
+      their neighbor sets beside these campaigns, counted the same way: distinct neighbor ASNs over all
+      vantage points, and the organizations behind them (CAIDA AS-to-organization tables, with the cloud's
+      own organization excluded).
+    </p>
+    <div class="cpm-tablewrap"><table class="cpm-table">
+      <thead><tr><th>Cloud</th><th>2020 ASNs</th><th>Campaign</th><th>ASNs</th><th>Organizations</th><th>Vantage points</th><th>vs 2020</th></tr></thead>
+      <tbody><tr><td>Google Cloud</td><td class="num">7,553</td><td>Mar 2026</td><td class="num">5,879</td><td class="num">5,580</td><td>125 zones</td><td class="num">0.78×</td></tr><tr><td></td><td class="num"></td><td>Aug 2026</td><td class="num">5,208</td><td class="num">4,983</td><td>41 regions</td><td class="num">0.69×</td></tr><tr><td></td><td class="num"></td><td>Sep 2026</td><td class="num">5,365</td><td class="num">5,130</td><td>43 regions</td><td class="num">0.71×</td></tr><tr><td>Microsoft Azure</td><td class="num">3,564</td><td>Sep 2026</td><td class="num">4,649</td><td class="num">4,382</td><td>20 regions</td><td class="num">1.30×</td></tr><tr><td>Amazon Web Services</td><td class="num">1,188</td><td>Aug 2026</td><td class="num">3,434</td><td class="num">3,239</td><td>27 regions</td><td class="num">2.89×</td></tr><tr><td>IBM Cloud</td><td class="num">2,746</td><td colspan="5" class="cpm-muted">no 2026 campaign</td></tr></tbody>
+    </table></div>
+    <p>
+      Google Cloud's count is below its 2020 figure, Microsoft's is about a third higher and Amazon's is
+      close to three times larger. These are not like-for-like measurements: vantage points, target lists
+      and probing differ between 2020 and 2026, and between campaigns, so the ratios are not growth or
+      decline rates. For Google Cloud in particular, the BGP view below moves far less over the same years
+      (-9%) than the traceroute count does.
+    </p>
+    <p>
+      <strong>Turnover.</strong> Counted as organizations through one reference table, the
+      2020 and 2026 sets overlap only partly:
+    </p>
+    <div class="cpm-tablewrap"><table class="cpm-table">
+      <thead><tr><th>Cloud</th><th>2020 orgs</th><th>Still there</th><th>Gone</th><th>New</th><th>Retained</th></tr></thead>
+      <tbody><tr><td>Google Cloud</td><td class="num">6,940</td><td class="num">2,897</td><td class="num">4,043</td><td class="num">2,233</td><td class="num">41.7%</td></tr><tr><td>Microsoft Azure</td><td class="num">3,264</td><td class="num">2,237</td><td class="num">1,027</td><td class="num">2,145</td><td class="num">68.5%</td></tr><tr><td>Amazon Web Services</td><td class="num">1,122</td><td class="num">483</td><td class="num">639</td><td class="num">2,740</td><td class="num">43.0%</td></tr></tbody>
+    </table></div>
+    <p>
+      Google Cloud's September 2026 set retains 41.7% of the 2020
+      organizations, 41.7% of those in a 2023 Google run, and
+      41.5% of that run's non-IXP set: three reference sets,
+      collected in different years with different tooling, agree within a point on how much survives.
+    </p>
+  </section>
+
+  <section class="cpm-section">
+    <h2>Most of it happens at exchanges</h2>
+    <p>
+      A link counts as an IXP link when either end is a listed member port of an exchange's peering LAN;
+      everything else is counted as private interconnection (PNI). Each neighbor is placed by exchange
+      name where it meets the cloud on a fabric, and by the city encoded in its router hostname where
+      it does not.
+    </p>
+    <div class="cpm-tablewrap"><table class="cpm-table">
+      <thead><tr><th>Campaign</th><th>Neighbor ASNs</th><th>Only at an IXP</th><th>At an IXP</th><th>Via PNI</th><th>Both</th><th>Placed</th><th>Placed in several</th></tr></thead>
+      <tbody><tr><td>Google Cloud, Sep 2026</td><td class="num">5,365</td><td class="num">53.2%</td><td class="num">3,465</td><td class="num">2,510</td><td class="num">610</td><td class="num">66.0%</td><td class="num">25.9%</td></tr><tr><td>Google Cloud, Aug 2026</td><td class="num">5,208</td><td class="num">55.0%</td><td class="num">3,439</td><td class="num">2,343</td><td class="num">574</td><td class="num">67.5%</td><td class="num">26.6%</td></tr><tr><td>Microsoft Azure, Sep 2026</td><td class="num">4,649</td><td class="num">57.4%</td><td class="num">3,510</td><td class="num">1,981</td><td class="num">842</td><td class="num">76.2%</td><td class="num">31.2%</td></tr><tr><td>Amazon Web Services, Aug 2026</td><td class="num">3,434</td><td class="num">54.6%</td><td class="num">2,147</td><td class="num">1,560</td><td class="num">273</td><td class="num">64.2%</td><td class="num">26.2%</td></tr><tr><td>Google Cloud IPv6, Sep 2026</td><td class="num">4,763</td><td class="num">35.0%</td><td class="num">2,186</td><td class="num">3,094</td><td class="num">517</td><td class="num">46.5%</td><td class="num">24.1%</td></tr><tr><td>Google Cloud, Mar 2026</td><td class="num">5,879</td><td class="num">29.3%</td><td class="num">3,045</td><td class="num">4,154</td><td class="num">1,320</td><td class="num">53.0%</td><td class="num">20.9%</td></tr></tbody>
+    </table></div>
+    <p>
+      Across the three clouds' IPv4 campaigns, between 53.2% and 57.4% of
+      neighbors are reached only across an exchange; on this measure the three clouds are close. These
+      shares are floors, since a peering-LAN address missing from the membership lists counts as private.
+      Two rows are not comparable to the others: the Google Cloud IPv6 set uses a different address family,
+      target list and routing tier, and the March campaign used an older membership list and a different
+      target list. Microsoft's neighbors are the most often seen in several places: 31.2%
+      of its placed neighbors meet it in more than one place, against about a quarter for the others.
+      Placement leans on exchange membership; private interconnects are placed only when a router
+      hostname names a city, so that side is close to unmeasured. For comparison, the 2023 Google run
+      placed 64.5% of its neighbors and found
+      25.3% of those in several places.
+    </p>
+    <p>
+      <strong>How much do extra vantage points add?</strong> The March campaign probed from three zones
+      in each of 42 regions. Keeping one random zone per region keeps
+      96.6% of the neighbor ASNs (96.0%–97.2% over
+      20 draws) but only about 34% of the links, and
+      the share placed in several locations barely moves (20.4%–20.8%, against
+      20.9% with all zones). Neighbor counts survive
+      single-zone probing nearly intact; link-level counts do not.
+    </p>
+  </section>
+
+  <section class="cpm-section">
+    <h2>What BGP sees</h2>
+    <p>
+      CAIDA's <a href="https://www.caida.org/catalog/datasets/as-relationships/" target="_blank" rel="noopener noreferrer">AS relationships</a>
+      give, every month, the neighbors a cloud's ASNs have in public BGP data, independently of any
+      traceroute. Counted the same way for each month (neighbor ASNs of the cloud's own ASNs, links
+      between them excluded):
+    </p>
+    <div class="cpm-tablewrap"><table class="cpm-table">
+      <thead><tr><th>Cloud</th><th>Sep 2020</th><th>Jun 2023</th><th>Mar 2026</th><th>Aug 2026</th><th>Sep 2026</th><th>2020 → 2026</th></tr></thead>
+      <tbody><tr><td>Google Cloud</td><td class="num">411</td><td class="num">399</td><td class="num">360</td><td class="num">375</td><td class="num">376</td><td class="num">-8.5%</td></tr><tr><td>Microsoft Azure</td><td class="num">318</td><td class="num">294</td><td class="num">307</td><td class="num">307</td><td class="num">307</td><td class="num">-3.5%</td></tr><tr><td>Amazon Web Services</td><td class="num">334</td><td class="num">345</td><td class="num">434</td><td class="num">469</td><td class="num">466</td><td class="num">+39.5%</td></tr><tr><td>IBM Cloud (AS36351)</td><td class="num">3,027</td><td class="num">2,380</td><td class="num">274</td><td class="num">297</td><td class="num">289</td><td class="num">-90.5%</td></tr></tbody>
+    </table></div>
+    <p>
+      BGP sees about 376 neighbors for Google Cloud in September 2026;
+      the traceroutes above see 5,365. Public collectors miss most peering links, because a
+      peer does not pass the cloud's routes on to the networks that feed the collectors, so
+      interconnection has to be measured from inside. IBM's count falls from
+      3,027 to 289; this page does not investigate why.
+    </p>
+    <p>
+      Exchange route servers add a second, narrower view: CAIDA also harvests multilateral peering from
+      a small panel of route-server looking glasses (panel size per month, with
+      the number shared with 2020's panel in brackets: Sep 2020 9 (9), Jun 2023 0 (0), Mar 2026 11 (7), Aug 2026 3 (0), Sep 2026 3 (0)).
+      The March 2026 panel keeps seven of 2020's nine; between those two months Google Cloud's
+      route-server neighbors go from 503 to 0 and IBM's from
+      0 to 589. That says Google is no longer visible on the
+      sampled route servers, not that it left them. The June 2023 snapshot lists no looking glasses, and the
+      August and September 2026 panels share none with 2020, so neither can be read against it.
+    </p>
+    <p class="cpm-provenance">
+      Every number in these three sections is computed from files by
+      <code>scripts/cloud_peering_trend.py</code> (scamper-analysis 97e0e8e): the 2026 campaign
+      peer links, Arnold et al.'s 2020 neighbor sets, the 2023 run's sets, and CAIDA AS-relationship and
+      AS-to-organization files for each month. The 2023 run's placement shares, which need that run's
+      per-link output, are quoted from an earlier analysis of it.
+    </p>
+  </section>
+<!-- trend:end -->
 
   <section class="cpm-section">
     <h2>Reading them carefully</h2>
