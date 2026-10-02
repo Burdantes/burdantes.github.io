@@ -168,6 +168,11 @@ nav: false
     color: var(--global-text-color-light, #555);
   }
 
+  /* Long row labels wrap so the numeric columns keep the full width. */
+  .cpm .cpm-table td:first-child {
+    white-space: normal;
+  }
+
   .cpm .cpm-table .num {
     font-variant-numeric: tabular-nums;
     text-align: right;
@@ -396,10 +401,10 @@ nav: false
     </p>
     <div class="cpm-tablewrap"><table class="cpm-table">
       <thead><tr><th>Cloud</th><th>2020 ASNs</th><th>Campaign</th><th>ASNs</th><th>Organizations</th><th>Vantage points</th><th>vs 2020</th></tr></thead>
-      <tbody><tr><td>Google Cloud</td><td class="num">7,553</td><td>Mar 2026</td><td class="num">5,879</td><td class="num">5,580</td><td>125 zones</td><td class="num">0.78×</td></tr><tr><td></td><td class="num"></td><td>Aug 2026</td><td class="num">5,208</td><td class="num">4,983</td><td>41 regions</td><td class="num">0.69×</td></tr><tr><td></td><td class="num"></td><td>Sep 2026</td><td class="num">5,365</td><td class="num">5,130</td><td>43 regions</td><td class="num">0.71×</td></tr><tr><td>Microsoft Azure</td><td class="num">3,564</td><td>Sep 2026</td><td class="num">4,649</td><td class="num">4,382</td><td>20 regions</td><td class="num">1.30×</td></tr><tr><td>Amazon Web Services</td><td class="num">1,188</td><td>Aug 2026</td><td class="num">3,434</td><td class="num">3,239</td><td>27 regions</td><td class="num">2.89×</td></tr><tr><td>IBM Cloud</td><td class="num">2,746</td><td colspan="5" class="cpm-muted">no 2026 campaign</td></tr></tbody>
+      <tbody><tr><td>Google Cloud</td><td class="num">7,553</td><td>2023</td><td class="num">9,240</td><td class="num">8,765</td><td>115 zones</td><td class="num">1.22×</td></tr><tr><td></td><td class="num"></td><td>Mar 2026</td><td class="num">5,879</td><td class="num">5,580</td><td>125 zones</td><td class="num">0.78×</td></tr><tr><td></td><td class="num"></td><td>Aug 2026</td><td class="num">5,208</td><td class="num">4,983</td><td>41 regions</td><td class="num">0.69×</td></tr><tr><td></td><td class="num"></td><td>Sep 2026</td><td class="num">5,365</td><td class="num">5,130</td><td>43 regions</td><td class="num">0.71×</td></tr><tr><td>Microsoft Azure</td><td class="num">3,564</td><td>Sep 2026</td><td class="num">4,649</td><td class="num">4,382</td><td>20 regions</td><td class="num">1.30×</td></tr><tr><td>Amazon Web Services</td><td class="num">1,188</td><td>Aug 2026</td><td class="num">3,434</td><td class="num">3,239</td><td>27 regions</td><td class="num">2.89×</td></tr><tr><td>IBM Cloud</td><td class="num">2,746</td><td colspan="5" class="cpm-muted">no 2026 campaign</td></tr></tbody>
     </table></div>
     <p>
-      Google Cloud's count is below its 2020 figure, Microsoft's is about a third higher and Amazon's is
+      Google Cloud's 2026 counts are below its 2020 figure and its 2023 count is above it; Microsoft's is about a third higher and Amazon's is
       close to three times larger. These are not like-for-like measurements: vantage points, target lists
       and probing differ between 2020 and 2026, and between campaigns, so the ratios are not growth or
       decline rates. For Google Cloud in particular, the BGP view below moves far less over the same years
@@ -431,7 +436,7 @@ nav: false
     </p>
     <div class="cpm-tablewrap"><table class="cpm-table">
       <thead><tr><th>Campaign</th><th>Neighbor ASNs</th><th>Only at an IXP</th><th>At an IXP</th><th>Via PNI</th><th>Both</th><th>Placed</th><th>Placed in several</th></tr></thead>
-      <tbody><tr><td>Google Cloud, Sep 2026</td><td class="num">5,365</td><td class="num">53.2%</td><td class="num">3,465</td><td class="num">2,510</td><td class="num">610</td><td class="num">66.0%</td><td class="num">25.9%</td></tr><tr><td>Google Cloud, Aug 2026</td><td class="num">5,208</td><td class="num">55.0%</td><td class="num">3,439</td><td class="num">2,343</td><td class="num">574</td><td class="num">67.5%</td><td class="num">26.6%</td></tr><tr><td>Microsoft Azure, Sep 2026</td><td class="num">4,649</td><td class="num">57.4%</td><td class="num">3,510</td><td class="num">1,981</td><td class="num">842</td><td class="num">76.2%</td><td class="num">31.2%</td></tr><tr><td>Amazon Web Services, Aug 2026</td><td class="num">3,434</td><td class="num">54.6%</td><td class="num">2,147</td><td class="num">1,560</td><td class="num">273</td><td class="num">64.2%</td><td class="num">26.2%</td></tr><tr><td>Google Cloud IPv6, Sep 2026</td><td class="num">4,763</td><td class="num">35.0%</td><td class="num">2,186</td><td class="num">3,094</td><td class="num">517</td><td class="num">46.5%</td><td class="num">24.1%</td></tr><tr><td>Google Cloud, Mar 2026</td><td class="num">5,879</td><td class="num">29.3%</td><td class="num">3,045</td><td class="num">4,154</td><td class="num">1,320</td><td class="num">53.0%</td><td class="num">20.9%</td></tr></tbody>
+      <tbody><tr><td>Google Cloud, Sep 2026</td><td class="num">5,365</td><td class="num">53.2%</td><td class="num">3,465</td><td class="num">2,510</td><td class="num">610</td><td class="num">66.0%</td><td class="num">25.9%</td></tr><tr><td>Google Cloud, Aug 2026</td><td class="num">5,208</td><td class="num">55.0%</td><td class="num">3,439</td><td class="num">2,343</td><td class="num">574</td><td class="num">67.5%</td><td class="num">26.6%</td></tr><tr><td>Microsoft Azure, Sep 2026</td><td class="num">4,649</td><td class="num">57.4%</td><td class="num">3,510</td><td class="num">1,981</td><td class="num">842</td><td class="num">76.2%</td><td class="num">31.2%</td></tr><tr><td>Amazon Web Services, Aug 2026</td><td class="num">3,434</td><td class="num">54.6%</td><td class="num">2,147</td><td class="num">1,560</td><td class="num">273</td><td class="num">64.2%</td><td class="num">26.2%</td></tr><tr><td>Google Cloud IPv6, Sep 2026</td><td class="num">4,763</td><td class="num">35.0%</td><td class="num">2,186</td><td class="num">3,094</td><td class="num">517</td><td class="num">46.5%</td><td class="num">24.1%</td></tr><tr><td>Google Cloud, Mar 2026</td><td class="num">5,879</td><td class="num">29.3%</td><td class="num">3,045</td><td class="num">4,154</td><td class="num">1,320</td><td class="num">53.0%</td><td class="num">20.9%</td></tr><tr><td>Google Cloud, 2023, as recorded</td><td class="num">9,240</td><td class="num">37.3%</td><td class="num">5,903</td><td class="num">5,797</td><td class="num">2,460</td><td class="num">65.2%</td><td class="num">25.1%</td></tr><tr><td>Google Cloud, 2023, relabelled IXP-first</td><td class="num">9,974</td><td class="num">41.9%</td><td class="num">7,121</td><td class="num">5,797</td><td class="num">2,944</td><td class="num">72.6%</td><td class="num">23.4%</td></tr></tbody>
     </table></div>
     <p>
       Across the three clouds' IPv4 campaigns, between 53.2% and 57.4% of
@@ -439,12 +444,25 @@ nav: false
       shares are floors, since a peering-LAN address missing from the membership lists counts as private.
       Two rows are not comparable to the others: the Google Cloud IPv6 set uses a different address family,
       target list and routing tier, and the March campaign used an older membership list and a different
-      target list. Microsoft's neighbors are the most often seen in several places: 31.2%
+      target list. Nor are the two 2023 rows, which come from a 2023 run with its own target list and
+      the June 2023 membership list: one keeps the neighbor that run recorded, the other relabels its
+      links with the 2026 rule (a listed member port's ASN wins), which is as close to the 2026 method as
+      its stored links allow. Microsoft's neighbors are the most often seen in several places: 31.2%
       of its placed neighbors meet it in more than one place, against about a quarter for the others.
       Placement leans on exchange membership; private interconnects are placed only when a router
-      hostname names a city, so that side is close to unmeasured. For comparison, the 2023 Google run
-      placed 64.5% of its neighbors and found
-      25.3% of those in several places.
+      hostname names a city, so that side is close to unmeasured.
+    </p>
+    <p>
+      <strong>2023 against 2026.</strong> Google Cloud's share of neighbors reached only at an exchange is
+      37.3% in 2023 as recorded, or 41.9% relabelled, against
+      53.2% in September 2026. The membership lists, target lists and link
+      selection all differ, so this gap is not by itself evidence of a shift toward exchanges. The
+      share of placed neighbors seen in several places moves much less: 25.1%
+      in 2023 as recorded and 25.9% in September 2026.
+      Neighbors seen both at an exchange and over a private link are 26.6% of the 2023
+      set but 11.4% in September 2026. Keeping one zone per region barely moves the 2023
+      figure (26.7%–26.9%), so fewer vantage points do not explain the difference;
+      what does is not established here.
     </p>
     <p>
       <strong>How much do extra vantage points add?</strong> The March campaign probed from three zones
@@ -453,7 +471,9 @@ nav: false
       20 draws) but only about 34% of the links, and
       the share placed in several locations barely moves (20.4%–20.8%, against
       20.9% with all zones). Neighbor counts survive
-      single-zone probing nearly intact; link-level counts do not.
+      single-zone probing nearly intact; link-level counts do not. The 2023 run, which probed from
+      115 zones in 38 regions, agrees independently: one zone per region keeps
+      96.4%–96.8% of its neighbor ASNs.
     </p>
   </section>
 
@@ -488,10 +508,9 @@ nav: false
     </p>
     <p class="cpm-provenance">
       Every number in these three sections is computed from files by
-      <code>scripts/cloud_peering_trend.py</code> (scamper-analysis 97e0e8e): the 2026 campaign
-      peer links, Arnold et al.'s 2020 neighbor sets, the 2023 run's sets, and CAIDA AS-relationship and
-      AS-to-organization files for each month. The 2023 run's placement shares, which need that run's
-      per-link output, are quoted from an earlier analysis of it.
+      <code>scripts/cloud_peering_trend.py</code> (scamper-analysis 5653f89): the 2026 campaign
+      peer links, Arnold et al.'s 2020 neighbor sets, the 2023 run's neighbor sets and its per-link,
+      per-zone records, and CAIDA AS-relationship and AS-to-organization files for each month.
     </p>
   </section>
 <!-- trend:end -->
