@@ -200,6 +200,17 @@ nav: true
     </article>
 
     <article class="project-row">
+      <h3>Cloud Direct-Peering Maps</h3>
+      <div>
+        <p>Where Google Cloud, AWS and Microsoft Azure hand traffic to neighboring networks, mapped city by city from traceroutes run inside each cloud, with IPv4 and IPv6 for Google Cloud and a note on premium versus standard routing.</p>
+        <div class="project-links">
+          <a href="/projects/cloud-peering-maps/">Project page</a>
+          <a href="https://burdantes.github.io/cloud-peering-maps/gcp-2026-09-ipv4-ipv6.html" target="_blank" rel="noopener noreferrer">Google Cloud map</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-row">
       <h3>Hypergiants Evolution</h3>
       <div>
         <p>Interactive views of CDN, IXP, facility, city, country, and continent-level hypergiant infrastructure growth.</p>
