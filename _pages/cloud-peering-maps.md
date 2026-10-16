@@ -173,6 +173,11 @@ nav: false
     white-space: normal;
   }
 
+  /* Explanatory columns wrap so a table with sentences still fits the column. */
+  .cpm .cpm-table td.cpm-wrap {
+    white-space: normal;
+  }
+
   .cpm .cpm-table .num {
     font-variant-numeric: tabular-nums;
     text-align: right;
@@ -210,9 +215,82 @@ nav: false
       own regions, city by city, as seen in traceroutes launched from inside that
       cloud toward the rest of the Internet.
     </p>
+    <p>
+      The <a href="https://burdantes.github.io/cloud-peering-maps/peer-networks.html" target="_blank" rel="noopener noreferrer">neighbor table</a>
+      lists every network seen in October 2026, per provider, with the regions that saw it
+      and the other providers it also connects to.
+    </p>
   </header>
 
   <section class="cpm-maps" aria-label="Maps">
+    <article class="cpm-card">
+      <h2>Google Cloud · IPv4 + IPv6</h2>
+      <div class="cpm-when">October 2026 · 42 regions</div>
+      <div class="cpm-stats">
+        <div><strong>6,679</strong><span>peer ASNs</span></div>
+        <div><strong>2,791</strong><span>cities</span></div>
+        <div><strong>230</strong><span>IXPs</span></div>
+        <div><strong>42</strong><span>regions</span></div>
+      </div>
+      <p>
+        5,195 neighbor ASNs over IPv4 and 4,615 over IPv6, 3,131 of them over both.
+        Probed at 5,000 packets per second, five times September's rate, at which
+        Google rate-limits replies; see what changed below.
+      </p>
+      <a class="cpm-open" href="https://burdantes.github.io/cloud-peering-maps/gcp-2026-10-ipv4-ipv6.html" target="_blank" rel="noopener noreferrer">Open map →</a>
+    </article>
+
+    <article class="cpm-card">
+      <h2>Amazon Web Services · IPv4 + IPv6</h2>
+      <div class="cpm-when">October 2026 · 27 regions</div>
+      <div class="cpm-stats">
+        <div><strong>2,664</strong><span>peer ASNs</span></div>
+        <div><strong>3,460</strong><span>cities</span></div>
+        <div><strong>86</strong><span>IXPs</span></div>
+        <div><strong>27</strong><span>regions</span></div>
+      </div>
+      <p>
+        AWS's first IPv6 measurement: 2,550 neighbor ASNs over IPv4 and 870 over
+        IPv6, 756 over both. Neighbors reached across exchanges are far fewer than
+        in August while all others are unchanged; see below.
+      </p>
+      <a class="cpm-open" href="https://burdantes.github.io/cloud-peering-maps/aws-2026-10-ipv4-ipv6.html" target="_blank" rel="noopener noreferrer">Open map →</a>
+    </article>
+
+    <article class="cpm-card">
+      <h2>Microsoft Azure · IPv4</h2>
+      <div class="cpm-when">October 2026 · 39 regions</div>
+      <div class="cpm-stats">
+        <div><strong>4,665</strong><span>peer ASNs</span></div>
+        <div><strong>3,414</strong><span>cities</span></div>
+        <div><strong>216</strong><span>IXPs</span></div>
+        <div><strong>39</strong><span>regions</span></div>
+      </div>
+      <p>
+        Nearly twice September's regions, with the hot-potato routing preference
+        requested, which only 28 regions honoured. IPv6 was not measured: the probes
+        never left the virtual machines.
+      </p>
+      <a class="cpm-open" href="https://burdantes.github.io/cloud-peering-maps/azure-2026-10-ipv4.html" target="_blank" rel="noopener noreferrer">Open map →</a>
+    </article>
+
+    <article class="cpm-card">
+      <h2>Neighbor networks · all three clouds</h2>
+      <div class="cpm-when">October 2026 · searchable table</div>
+      <div class="cpm-stats">
+        <div><strong>7,800</strong><span>IPv4 ASNs</span></div>
+        <div><strong>1,060</strong><span>in all three</span></div>
+        <div><strong>108</strong><span>regions</span></div>
+        <div><strong>3</strong><span>clouds</span></div>
+      </div>
+      <p>
+        Every neighbor network per provider, with the regions that saw it, whether it
+        was reached across an exchange, and which other clouds also connect to it.
+        Filter, sort and download as CSV.
+      </p>
+      <a class="cpm-open" href="https://burdantes.github.io/cloud-peering-maps/peer-networks.html" target="_blank" rel="noopener noreferrer">Open table →</a>
+    </article>
+
     <article class="cpm-card">
       <h2>Google Cloud · IPv4 + IPv6</h2>
       <div class="cpm-when">September 2026 · 43 regions</div>
@@ -298,13 +376,67 @@ nav: false
   </section>
 
   <section class="cpm-section">
+    <h2>October 2026: what changed</h2>
+    <p>
+      In October all three clouds were measured at the same time, against the same freshly
+      generated targets, for the first time. Each comparison with an earlier month below is
+      over the regions both campaigns measured, earlier month first. None of them isolates a change in the Internet:
+      in each cloud, something about the measurement changed as well.
+    </p>
+    <div class="cpm-tablewrap"><table class="cpm-table">
+      <thead><tr><th>Cloud</th><th>Against</th><th>Regions</th><th>Neighbor ASNs</th><th>Median per region</th><th>What else changed</th></tr></thead>
+      <tbody>
+        <tr><td>Google Cloud, IPv4</td><td>Sep 2026</td><td class="num">42</td><td class="num">5,357 → 5,195</td><td class="num">3,769 → 3,541</td><td class="cpm-wrap">Probing rate 1,000 → 5,000 pps</td></tr>
+        <tr><td>Google Cloud, IPv6</td><td>Sep 2026</td><td class="num">42</td><td class="num">4,754 → 4,615</td><td class="num">4,008 → 3,180</td><td class="cpm-wrap">Probing rate 1,000 → 5,000 pps</td></tr>
+        <tr><td>Google Cloud, IPv4</td><td>Aug 2026</td><td class="num">41</td><td class="num">5,208 → 5,191</td><td class="num">3,694 → 3,541</td><td class="cpm-wrap">Not the rate (both 5,000 pps)</td></tr>
+        <tr><td>Amazon Web Services, IPv4</td><td>Aug 2026</td><td class="num">27</td><td class="num">3,434 → 2,550</td><td class="num">917 → 554</td><td class="cpm-wrap">Nothing known (both 5,000 pps); there is no September AWS campaign</td></tr>
+        <tr><td>Microsoft Azure, IPv4</td><td>Sep 2026</td><td class="num">18</td><td class="num">4,637 → 4,472</td><td class="num">3,849 → 80</td><td class="cpm-wrap">Routing preference: Microsoft network → Internet</td></tr>
+      </tbody>
+    </table></div>
+    <p>
+      <strong>Google Cloud.</strong> About 87% of neighbors are the same in both months. Per-region
+      counts fall by 6% over IPv4 and 21% over IPv6 against September, and by less against August,
+      which used the same probing rate. That pattern is consistent with the probing rate rather than
+      the network: in a side-by-side test on the same targets, Google's routers answered fewer
+      probes at 5,000 than at 1,000 packets per second, and some neighbors went unseen.
+      Separately, a few hundred networks move in each direction, half of them seen from a single region.
+    </p>
+    <p>
+      <strong>Amazon Web Services.</strong> The whole drop is in neighbors reached across an exchange.
+      Summed over regions they fall from 14,032 to 5,517, in 26 of 27 regions; every other neighbor
+      is unchanged (12,631 → 12,434). The exchange membership lists and the mapping code are not the
+      cause: the lost ports are in both months' lists, and re-deriving October with August's method
+      gives the same counts. What changed is that AWS's own routers rarely appear just before an
+      exchange port in October; in Frankfurt, AWS's DE-CIX port and most of its edge routers there
+      vanish from the paths. Whether AWS now routes that traffic differently or those routers stopped
+      answering traceroute is not yet established.
+    </p>
+    <p>
+      <strong>Microsoft Azure.</strong> October asked for the Internet routing preference, Azure's hot-potato
+      option, in every region. Twenty-eight regions behave that way: 21 to 344 neighbors each, mostly
+      transit providers near the region. Eleven regions, in India, Qatar, the UAE, Korea, South Africa,
+      Australia and Arizona, see 2,700 to 3,900 neighbors each at exchanges worldwide, as Microsoft's
+      own network would carry them. Why the preference took effect in some regions and not others is
+      not yet established. The union of neighbors barely moves, but per-region counts cannot be compared
+      with September's.
+    </p>
+    <p>
+      <strong>Across clouds.</strong> Over IPv4, 1,060 networks are neighbors of all three clouds and 7,800
+      of at least one. Google Cloud and Azure share 2,803; Google Cloud and AWS 1,374; AWS and Azure 1,493.
+      Google Cloud has 2,078 neighbors the other two lack, Azure 1,429 and AWS 743.
+    </p>
+  </section>
+
+  <section class="cpm-section">
     <h2>How the maps are built</h2>
     <ul>
       <li>
         From one virtual machine in each cloud region, <a href="https://www.caida.org/catalog/software/scamper/" target="_blank" rel="noopener noreferrer">scamper</a>
         runs ICMP-echo traceroutes to one address in every routed IPv4 /24 (about 12.2 million
-        targets). For Google Cloud IPv6, it probes one address per announced
-        IPv6 prefix (about 254,000 targets).
+        targets). For IPv6 (Google Cloud from September 2026, all three clouds in
+        October) it probes one address per announced IPv6 prefix (about 254,000 to
+        256,000 targets). Probing ran at 5,000 packets per second per vantage point in
+        August and October 2026 and at 1,000 in September.
       </li>
       <li>
         Each hop is assigned to a network: if the address is a member port on
@@ -368,7 +500,8 @@ nav: false
       the Standard Tier and Google Cloud IPv6 on the Premium Tier, because
       Google offers external IPv6 only there; every instance's tier was
       checked and recorded at launch. Azure public IPs used the default
-      routing preference, the Microsoft global network. AWS instances used
+      routing preference, the Microsoft global network, through September; in October
+      they requested the Internet preference instead (see above). AWS instances used
       ordinary public addresses, with no option to set. So on the September
       Google Cloud map the IPv4-versus-IPv6 comparison also compares Standard
       with Premium routing, and the two cannot be separated from these data.
