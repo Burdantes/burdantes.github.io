@@ -244,15 +244,16 @@ nav: false
       <h2>Amazon Web Services · IPv4 + IPv6</h2>
       <div class="cpm-when">October 2026 · 27 regions</div>
       <div class="cpm-stats">
-        <div><strong>2,664</strong><span>peer ASNs</span></div>
-        <div><strong>3,460</strong><span>cities</span></div>
-        <div><strong>86</strong><span>IXPs</span></div>
+        <div><strong>8,176</strong><span>peer ASNs</span></div>
+        <div><strong>7,311</strong><span>cities</span></div>
+        <div><strong>222</strong><span>IXPs</span></div>
         <div><strong>27</strong><span>regions</span></div>
       </div>
       <p>
-        AWS's first IPv6 measurement: 2,550 neighbor ASNs over IPv4 and 870 over
-        IPv6, 756 over both. Neighbors reached across exchanges are far fewer than
-        in August while all others are unchanged; see below.
+        AWS's first IPv6 measurement: 6,102 neighbor ASNs over IPv4 and 5,431 over
+        IPv6, 3,357 over both. Re-mapped on 17 October 2026 to count hand-offs
+        behind AWS routers that answer from unrouted addresses; see what we
+        observed in AWS below.
       </p>
       <a class="cpm-open" href="https://burdantes.github.io/cloud-peering-maps/aws-2026-10-ipv4-ipv6.html" target="_blank" rel="noopener noreferrer">Open map →</a>
     </article>
@@ -278,8 +279,8 @@ nav: false
       <h2>Neighbor networks · all three clouds</h2>
       <div class="cpm-when">October 2026 · searchable table</div>
       <div class="cpm-stats">
-        <div><strong>7,800</strong><span>IPv4 ASNs</span></div>
-        <div><strong>1,060</strong><span>in all three</span></div>
+        <div><strong>9,008</strong><span>IPv4 ASNs</span></div>
+        <div><strong>2,370</strong><span>in all three</span></div>
         <div><strong>108</strong><span>regions</span></div>
         <div><strong>3</strong><span>clouds</span></div>
       </div>
@@ -347,13 +348,15 @@ nav: false
       <h2>Amazon Web Services · IPv4</h2>
       <div class="cpm-when">August 2026 · 27 regions</div>
       <div class="cpm-stats">
-        <div><strong>3,434</strong><span>peer ASNs</span></div>
-        <div><strong>3,126</strong><span>cities</span></div>
-        <div><strong>119</strong><span>IXPs</span></div>
+        <div><strong>6,280</strong><span>peer ASNs</span></div>
+        <div><strong>5,826</strong><span>cities</span></div>
+        <div><strong>204</strong><span>IXPs</span></div>
         <div><strong>27</strong><span>regions</span></div>
       </div>
       <p>
-        AWS commercial regions, measured from one instance each.
+        AWS commercial regions, measured from one instance each. Re-mapped on
+        17 October 2026 from the original traceroutes and datasets with the same
+        rule as October (3,434 neighbor ASNs before).
       </p>
       <a class="cpm-open" href="https://burdantes.github.io/cloud-peering-maps/aws-2026-08-ipv4.html" target="_blank" rel="noopener noreferrer">Open map →</a>
     </article>
@@ -389,7 +392,7 @@ nav: false
         <tr><td>Google Cloud, IPv4</td><td>Sep 2026</td><td class="num">42</td><td class="num">5,357 → 5,195</td><td class="num">3,769 → 3,541</td><td class="cpm-wrap">Probing rate 1,000 → 5,000 pps</td></tr>
         <tr><td>Google Cloud, IPv6</td><td>Sep 2026</td><td class="num">42</td><td class="num">4,754 → 4,615</td><td class="num">4,008 → 3,180</td><td class="cpm-wrap">Probing rate 1,000 → 5,000 pps</td></tr>
         <tr><td>Google Cloud, IPv4</td><td>Aug 2026</td><td class="num">41</td><td class="num">5,208 → 5,191</td><td class="num">3,694 → 3,541</td><td class="cpm-wrap">Not the rate (both 5,000 pps)</td></tr>
-        <tr><td>Amazon Web Services, IPv4</td><td>Aug 2026</td><td class="num">27</td><td class="num">3,434 → 2,550</td><td class="num">917 → 554</td><td class="cpm-wrap">Nothing known (both 5,000 pps); there is no September AWS campaign</td></tr>
+        <tr><td>Amazon Web Services, IPv4</td><td>Aug 2026</td><td class="num">27</td><td class="num">6,280 → 6,102</td><td class="num">1,662 → 1,470</td><td class="cpm-wrap">Both re-mapped with the rule below (both 5,000 pps); there is no September AWS campaign</td></tr>
         <tr><td>Microsoft Azure, IPv4</td><td>Sep 2026</td><td class="num">18</td><td class="num">4,637 → 4,472</td><td class="num">3,849 → 80</td><td class="cpm-wrap">Routing preference: Microsoft network → Internet</td></tr>
       </tbody>
     </table></div>
@@ -402,14 +405,11 @@ nav: false
       Separately, a few hundred networks move in each direction, half of them seen from a single region.
     </p>
     <p>
-      <strong>Amazon Web Services.</strong> The whole drop is in neighbors reached across an exchange.
-      Summed over regions they fall from 14,032 to 5,517, in 26 of 27 regions; every other neighbor
-      is unchanged (12,631 → 12,434). The exchange membership lists and the mapping code are not the
-      cause: the lost ports are in both months' lists, and re-deriving October with August's method
-      gives the same counts. What changed is that AWS's own routers rarely appear just before an
-      exchange port in October; in Frankfurt, AWS's DE-CIX port and most of its edge routers there
-      vanish from the paths. Whether AWS now routes that traffic differently or those routers stopped
-      answering traceroute is not yet established.
+      <strong>Amazon Web Services.</strong> Counted the earlier way, AWS lost 60% of the neighbors it
+      reaches across exchanges between August and October (3,434 → 2,550 neighbors in all), while every
+      other neighbor was unchanged. That drop was not a change in AWS's interconnection; see the next
+      section. Counted as described there, both months agree: 6,280 and 6,102 neighbors, exchange
+      neighbors within 1% of each other, and no region but one losing more than a fifth of them.
     </p>
     <p>
       <strong>Microsoft Azure.</strong> October asked for the Internet routing preference, Azure's hot-potato
@@ -421,9 +421,50 @@ nav: false
       with September's.
     </p>
     <p>
-      <strong>Across clouds.</strong> Over IPv4, 1,060 networks are neighbors of all three clouds and 7,800
-      of at least one. Google Cloud and Azure share 2,803; Google Cloud and AWS 1,374; AWS and Azure 1,493.
-      Google Cloud has 2,078 neighbors the other two lack, Azure 1,429 and AWS 743.
+      <strong>Across clouds.</strong> Over IPv4, 2,370 networks are neighbors of all three clouds and 9,008
+      of at least one. AWS and Azure share 3,375; Google Cloud and AWS 3,146; Google Cloud and Azure 2,803.
+      AWS has 1,951 neighbors the other two lack, Google Cloud 1,616 and Azure 857. The AWS sets use the
+      rule described next; the Google Cloud and Azure maps have not yet been re-mapped with it, which on
+      samples adds about a tenth to Google Cloud's neighbors and little to Azure's.
+    </p>
+  </section>
+
+  <section class="cpm-section">
+    <h2>What we observed in AWS</h2>
+    <p>
+      AWS's routers mostly answer traceroute from addresses that are not routed on the Internet:
+      the reserved 240.0.0.0/4 block, the 100.64.0.0/10 shared address space, and public space AWS
+      holds but does not announce in BGP. A neighbor is counted when a hop in the cloud's network is
+      followed by a hop in another network, and a hop with no BGP origin belongs to no network, so a
+      hand-off behind one of these routers was never counted. On 200,000 traceroutes from us-east-1
+      in each month, the hop just before traffic left AWS was unrouted in about 60% of cases.
+    </p>
+    <p>
+      The same routers also explain the August-to-October drop. AWS reached as many exchange members
+      in October as in August (376 against 352 in that sample), but the router just before the
+      exchange port answered from AWS's announced space 9% of the time in August and 1% in October,
+      so fewer of those hand-offs could be counted (77 → 21 members).
+    </p>
+    <p>
+      Both AWS maps were therefore re-mapped from the original traceroutes with one change: walking
+      out from the instance, a hop with no BGP origin counts as AWS's until the first hop that belongs
+      to another network, provided no hop between it and the instance, or the last confirmed AWS hop,
+      went unanswered. One example: from us-east-1, AWS reaches Columbia University through
+      NYSERNet's port at Equinix Ashburn (AWS 240.64.108.130 → 100.100.4.22 → NYSERNet 206.126.236.146
+      → Columbia); NYSERNet is now counted as an AWS neighbor and Columbia, one network further, is not.
+      Neighbor counts roughly double: 3,434 → 6,280 in August and 2,550 → 6,102 in October over IPv4,
+      and 870 → 5,431 over IPv6.
+    </p>
+    <p>
+      <strong>A caveat we are fixing.</strong> Neighbors sometimes number their own routers from public
+      space they do not announce either, and the rule counts such a router as AWS's when it directly
+      follows one. In two Canadian regions, for instance, a NYSERNet router directly follows AWS's, so
+      Columbia appears as an AWS neighbor there. On a preliminary check of one region (us-east-1,
+      October, IPv4) this does not change much: 87% of the links through such routers still name the
+      right neighbor network, and about 86 of that region's 1,145 neighbors (7.5%) are affected. The
+      next campaign attributes these addresses to whoever holds them in the regional Internet
+      registries, so a NYSERNet router counts as NYSERNet's. The "Since 2020" and exchange tables
+      further down are generated from the earlier August count (3,434) and have not been regenerated.
     </p>
   </section>
 
