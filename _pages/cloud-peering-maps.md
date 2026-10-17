@@ -449,22 +449,46 @@ nav: false
       Both AWS maps were therefore re-mapped from the original traceroutes with one change: walking
       out from the instance, a hop with no BGP origin counts as AWS's until the first hop that belongs
       to another network, provided no hop between it and the instance, or the last confirmed AWS hop,
-      went unanswered. One example: from us-east-1, AWS reaches Columbia University through
-      NYSERNet's port at Equinix Ashburn (AWS 240.64.108.130 → 100.100.4.22 → NYSERNet 206.126.236.146
-      → Columbia); NYSERNet is now counted as an AWS neighbor and Columbia, one network further, is not.
-      Neighbor counts roughly double: 3,434 → 6,280 in August and 2,550 → 6,102 in October over IPv4,
-      and 870 → 5,431 over IPv6.
+      went unanswered. A typical path, from us-east-1 (Virginia) to a host at WU Vienna:
+    </p>
+    <div class="cpm-tablewrap"><table class="cpm-table">
+      <thead><tr><th>Hop</th><th>Address</th><th>RTT</th><th>Whose</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>240.64.221.129</td><td class="num">1.8 ms</td><td class="cpm-wrap">AWS router, reserved 240.0.0.0/4 space: no BGP origin</td></tr>
+        <tr><td>2</td><td>240.3.184.33</td><td class="num">1.4 ms</td><td class="cpm-wrap">AWS router, reserved 240.0.0.0/4 space: no BGP origin</td></tr>
+        <tr><td>3</td><td>149.112.69.20</td><td class="num">4.7 ms</td><td class="cpm-wrap">Hurricane Electric's port at the CIX-NoVA exchange: the hand-off</td></tr>
+        <tr><td>4–6</td><td>184.105.213.174 …</td><td class="num">98 ms</td><td class="cpm-wrap">Hurricane Electric's backbone, Paris then Vienna</td></tr>
+        <tr><td>7–8</td><td>193.171.13.17 …</td><td class="num">105 ms</td><td class="cpm-wrap">ACOnet, then WU Vienna</td></tr>
+      </tbody>
+    </table></div>
+    <p>
+      Neither AWS hop has an ASN, so the hand-off to Hurricane Electric at hop 3 was not counted
+      before; it is now. Neighbor counts roughly double: 3,434 → 6,280 in August and 2,550 → 6,102 in
+      October over IPv4, and 870 → 5,431 over IPv6.
     </p>
     <p>
-      <strong>A caveat we are fixing.</strong> Neighbors sometimes number their own routers from public
-      space they do not announce either, and the rule counts such a router as AWS's when it directly
-      follows one. In two Canadian regions, for instance, a NYSERNet router directly follows AWS's, so
-      Columbia appears as an AWS neighbor there. On a preliminary check of one region (us-east-1,
-      October, IPv4) this does not change much: 87% of the links through such routers still name the
-      right neighbor network, and about 86 of that region's 1,145 neighbors (7.5%) are affected. The
-      next campaign attributes these addresses to whoever holds them in the regional Internet
-      registries, so a NYSERNet router counts as NYSERNet's. The "Since 2020" and exchange tables
-      further down are generated from the earlier August count (3,434) and have not been regenerated.
+      <strong>A mistake that slipped through, which we are fixing.</strong> Not every address without
+      a BGP origin is AWS's. Neighbors also number routers from public space they hold but do not
+      announce, and when such a router directly follows an AWS one, the rule takes it for AWS's. From
+      ca-central-1 (Montréal), traceroutes toward Columbia University leave AWS for NYSERNet, the New
+      York research network that connects Columbia:
+    </p>
+    <div class="cpm-tablewrap"><table class="cpm-table">
+      <thead><tr><th>Hop</th><th>Address</th><th>Whose</th><th>Counted as</th></tr></thead>
+      <tbody>
+        <tr><td>…</td><td>240.x, 100.100.x</td><td class="cpm-wrap">AWS routers, no BGP origin</td><td class="cpm-wrap">AWS (right)</td></tr>
+        <tr><td>next</td><td>199.109.114.26</td><td class="cpm-wrap">NYSERNet's router (columbia-nyc32-55a1-cdn.nysernet.net), in public space NYSERNet holds but does not announce</td><td class="cpm-wrap">AWS (wrong)</td></tr>
+        <tr><td>next</td><td>128.59.255.103</td><td class="cpm-wrap">Columbia University (AS14)</td><td class="cpm-wrap">AWS's neighbor (wrong: NYSERNet is)</td></tr>
+      </tbody>
+    </table></div>
+    <p>
+      So Columbia appears as an AWS neighbor from the two Canadian regions, although it reaches AWS only
+      through NYSERNet. On a preliminary check of one region (us-east-1, October, IPv4) this kind of
+      mistake does not change much of the connectivity: 87% of the links through such routers still name
+      the right neighbor network, and about 86 of the region's 1,145 neighbors (7.5%) are affected. The
+      next campaign attributes these addresses to whoever holds them in the regional Internet registries,
+      so a NYSERNet router counts as NYSERNet's. The "Since 2020" and exchange tables further down are
+      generated from the earlier August count (3,434) and have not been regenerated.
     </p>
   </section>
 
