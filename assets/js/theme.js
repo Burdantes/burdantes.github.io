@@ -1,6 +1,8 @@
 // Has to be in the head tag, otherwise a flicker effect will occur.
 
 let toggleTheme = (theme) => {
+  // Animate only on a user toggle; animating the initial setTheme() made the page flicker on load.
+  transTheme();
   if (theme == "dark") {
     setTheme("light");
   } else {
@@ -9,7 +11,6 @@ let toggleTheme = (theme) => {
 };
 
 let setTheme = (theme) => {
-  transTheme();
   setHighlight(theme);
   setGiscusTheme(theme);
 
