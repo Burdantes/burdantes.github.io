@@ -13,13 +13,13 @@ toc:
 
 Internet measurement has a slightly strange relationship with rigor.
 
-The purpose of measurement is to learn something about the Internet that we cannot observe directly. We collect observations that we can make and use them as evidence about the thing we actually want to know.
+Much of Internet measurement is about learning something that we cannot observe directly. We collect observations that we can make and use them as evidence about the thing we actually want to know.
 
-Suppose, for example, that we want to know which networks carry traffic between two points on the Internet. We cannot observe that path directly, so we run traceroute. Traceroute gives us a sequence of responses from IP addresses. We map those addresses to networks and turn them into an AS-level path.
+Suppose, for example, that we want to know which networks carry traffic between two points on the Internet. We cannot observe that network-level path directly, so we run a traceroute. Traceroute sends a series of packets toward the destination with progressively larger limits on how many network hops they can traverse. When a packet reaches that limit, the router that discards it typically sends a response revealing one of its IP addresses. Repeating this process lets traceroute recover a sequence of IP addresses associated with routers along the path. We then map each of those addresses to the network that operates it, turning the observed IP-level path into an inferred AS-level path.
 
 There are really two steps here. First, we observed something: a sequence of responses to traceroute probes. Then we translated those observations into something else: a path through a sequence of networks. The second object is closer to the question we wanted to answer, and much easier to reason about.
 
-This translation is useful precisely because it leaves things out. Once we have an AS path, we no longer have to reason about individual interfaces, routers, or links. But in deciding what to leave out, we have also made assumptions about which details do not matter and what the remaining observations represent.
+This translation is useful precisely because it leaves things out. Once we have an AS path, we no longer have to reason about individual interfaces. But in deciding what to leave out, we have also made assumptions about which details do not matter and what the remaining observations represent.
 
 This gives us two rather different sources of uncertainty.
 
@@ -31,7 +31,7 @@ Running more traceroutes can give us increasing confidence that a particular seq
 
 I will call the uncertainty introduced by this second step translation error.
 
-The distinction matters because the two kinds of uncertainty need not decrease together. In fact, translation errors are often structured. Routers that do not respond to traceroute are not necessarily distributed uniformly across the Internet. IP-to-AS mappings fail systematically for particular kinds of addresses. IXPs, siblings, and third-party addresses create ambiguity exactly where the convenient correspondence between an IP address and a network starts to break down.
+The distinction is central in Internet measurement because the two kinds of uncertainty need not decrease together. In fact, translation errors are often structured. Routers that do not respond to traceroute are not necessarily distributed uniformly across the Internet. IP-to-AS mappings fail systematically for particular kinds of addresses. IXPs, siblings, and third-party addresses create ambiguity exactly where the convenient correspondence between an IP address and a network starts to break down.
 
 In those cases, collecting more data can characterize the object produced by our measurement process ever more precisely without making that object a better representation of the underlying system.
 

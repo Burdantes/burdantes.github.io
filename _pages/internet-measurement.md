@@ -16,11 +16,13 @@ nav: false
 
 ## Course description
 
-The Internet is not directly observable. Its structure and behavior must be inferred from partial, indirect, and sometimes contradictory signals.
+This course examines how we measure the Internet, what those measurements can and cannot reveal, and how they can be used to understand the systems and services that depend on it. The Internet is not directly observable: its structure and properties must be inferred from partial and often indirect signals. This makes Internet measurement both technically challenging and socially important.
 
-This course examines how we measure the Internet, what those measurements can and cannot reveal, and how they can be used to understand the systems and services that depend on it. We will study paths and topology, interdomain routing, performance, outages, Internet-wide scanning, services and DNS, traffic engineering, censorship, broadband access, physical infrastructure, and datacenter workloads.
+We will study how researchers and operators measure key aspects of the Internet, including (i) network topology, (ii) interdomain routing, (iii) performance, (iv) outages, (v) censorship, (vi) traffic patterns, and (vii) application behavior. For each topic, we will ask: What question are we precisely trying to answer? What data can we actually observe? What assumptions connect the observations to the underlying system? When do different measurement methods produce conflicting answers, and how should we interpret them?
 
-For every topic, we will ask: What question are we precisely trying to answer? What data can we actually observe? What assumptions connect those observations to the underlying system? When methods disagree, what does the disagreement teach us?
+A central theme of the course is inference from "leakage": the fragments of information that networks and services expose through their normal operation. We will ask how these partial signals can be rigorously combined to reason about infrastructure that is otherwise hidden, and where those inferences break down. We will also explore how AI agents may change this process by reasoning across heterogeneous observations, forming hypotheses, and deciding what to measure next.
+
+Along the way, we will consider measurement not only as a way to improve the Internet, but also as a way to study who has reliable access to it, who controls it, and how its design shapes the services and communities that depend on it.
 
 Our recurring approach will be:
 
