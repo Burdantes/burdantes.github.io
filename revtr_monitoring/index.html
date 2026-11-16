@@ -508,8 +508,9 @@
         const sites = sitesData.sites || [];
         if (!siteMap) {
           siteMap = L.map('siteMap', { scrollWheelZoom: true }).setView([20, 0], 2);
-          L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; OpenStreetMap &copy; CARTO',
+          L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap contributors',
+            maxNativeZoom: 16,
             maxZoom: 18,
           }).addTo(siteMap);
           siteMarkers = L.layerGroup().addTo(siteMap);
