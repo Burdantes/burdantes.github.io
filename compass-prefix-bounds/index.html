@@ -66,6 +66,8 @@
   a { color: var(--accent); }
   mjx-container { font-size: 105% !important; }
 
+  .paper-links { font-size: 1rem; color: var(--ink-soft); }
+  .paper-links a { font-weight: 600; }
   .eyebrow { font: 500 0.78rem/1.2 var(--mono); letter-spacing: 0.06em; color: var(--ink-soft); text-transform: uppercase; }
   .lede { font-size: 1.12rem; }
   .chip { display: inline-flex; align-items: center; justify-content: center; min-width: 1.6em; height: 1.35em; padding: 0 0.35em;
@@ -150,6 +152,7 @@
     <div class="eyebrow">COMPASS · prefix realization · explainer animations</div>
     <h1>How many prefixes does an assignment need?</h1>
     <p class="lede">COMPASS decides which ingress each group of users should enter the network through, as if it could route every group directly. In practice it can only steer traffic with BGP prefixes: a prefix is announced at some set of ingresses, and each user then takes its favourite ingress among those. This page collects what we can prove about the fewest prefixes needed to reproduce an intended assignment exactly. Each result comes with a short animation that walks through its proof.</p>
+    <p class="paper-links">Full write-up: <a href="compass-prefix-bounds.pdf">PDF</a> &middot; <a href="compass-prefix-bounds.tex" download>LaTeX source</a></p>
     <nav class="toc" aria-label="Sections">
       <a href="#setting">The setting</a><a href="#glance">At a glance</a><a href="#lemma1">Coloring</a><a href="#fig3">Building the graph</a>
       <a href="#thm2">Rank alone fails</a><a href="#prop3">Identical rankings</a><a href="#topk">Top-K sets</a>
