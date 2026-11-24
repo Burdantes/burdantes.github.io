@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  html { color-scheme: light; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>COMPASS Prefix Bounds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" async></script>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --ink: #1b2130;
+    --ink-soft: #4a5263;
+    --rule: #dde1e8;
+    --accent: #1f3fbf;          /* blue 2: the target, as in the animations */
+    --accent-soft: #e7ecfa;
+    --pref: #c4620a;            /* orange 1: a preferred ingress */
+    --pref-soft: #fbeee2;
+    --ok: #2b7a45;
+    --ok-soft: #e4f2e8;
+    --warn: #a3302f;
+    --warn-soft: #f8e5e4;
+    --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+    --sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #12151c; --surface: #1a1e27; --ink: #e6e8ee; --ink-soft: #a7aebd; --rule: #2c3240;
+      --accent: #93a6ff; --accent-soft: #232b48; --pref: #f0a35a; --pref-soft: #3a2a1c;
+      --ok: #7fcf98; --ok-soft: #1c3124; --warn: #f08b88; --warn-soft: #3a2020;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #12151c; --surface: #1a1e27; --ink: #e6e8ee; --ink-soft: #a7aebd; --rule: #2c3240;
+    --accent: #93a6ff; --accent-soft: #232b48; --pref: #f0a35a; --pref-soft: #3a2a1c;
+    --ok: #7fcf98; --ok-soft: #1c3124; --warn: #f08b88; --warn-soft: #3a2020;
+  }
+
+  body { background: var(--bg); color: var(--ink); font: 17px/1.6 var(--sans); }
+  .page { max-width: 1200px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 64px; display: grid; gap: 56px; }
+  .narrow { display: grid; gap: 16px; }
+  h1, h2 { font-family: var(--serif); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.2; }
+  h1 { font-size: clamp(2rem, 4.5vw, 2.8rem); letter-spacing: -0.01em; }
+  h2 { font-size: 1.65rem; }
+  h3 { margin: 0; font: 600 0.8rem/1.3 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+  p { margin: 0; }
+  a { color: var(--accent); }
+  mjx-container { font-size: 105% !important; }
+
+  .eyebrow { font: 500 0.78rem/1.2 var(--mono); letter-spacing: 0.06em; color: var(--ink-soft); text-transform: uppercase; }
+  .lede { font-size: 1.12rem; }
+  .chip { display: inline-flex; align-items: center; justify-content: center; min-width: 1.6em; height: 1.35em; padding: 0 0.35em;
+          border: 1.5px solid; border-radius: 4px; font: 600 0.8rem/1 var(--mono); vertical-align: 0.08em; }
+  .chip.pref { color: var(--pref); background: var(--pref-soft); }
+  .chip.tgt { color: var(--accent); background: var(--accent-soft); }
+
+  nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+  nav.toc a { text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--rule);
+              padding: 6px 12px; border-radius: 999px; font-size: 0.92rem; }
+  nav.toc a:hover, nav.toc a:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+
+  /* glossary */
+  dl.terms { margin: 0; display: grid; grid-template-columns: minmax(9rem, max-content) 1fr; gap: 10px 22px;
+             background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px; }
+  dl.terms dt { font-weight: 600; }
+  dl.terms dd { margin: 0; color: var(--ink); }
+  @media (max-width: 560px) { dl.terms { grid-template-columns: 1fr; gap: 2px 0; } dl.terms dd { margin-bottom: 10px; } }
+
+  .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; min-width: 820px; font-size: 0.96rem; }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-weight: 600; color: var(--ink-soft); font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  tr:last-child td { border-bottom: 0; }
+  td a { text-decoration: none; font-weight: 600; white-space: nowrap; }
+  .kind { display: inline-block; font: 500 0.76rem/1.5 var(--mono); padding: 1px 8px; border-radius: 4px; white-space: nowrap; }
+  .kind.exact { color: var(--accent); background: var(--accent-soft); }
+  .kind.budget { color: var(--ok); background: var(--ok-soft); }
+  .kind.lower { color: var(--warn); background: var(--warn-soft); }
+  .kind.range { color: var(--ink-soft); background: var(--rule); }
+  td.vsm { font-size: 0.92rem; }
+  td.vsm.beat { color: var(--ok); font-weight: 600; }
+  td.vsm.cap { color: var(--ink-soft); }
+
+  /* one result, full width: text first, then the animation */
+  section.result { display: grid; gap: 22px; padding-top: 36px; border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
+  section.result .text { order: 0; }
+  section.result figure { order: 1; }
+  figure { margin: 0; display: grid; gap: 10px; }
+  video { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; background: #fff; border: 1px solid var(--rule); border-radius: 8px; display: block; }
+  .chapters { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .chapters button { font: 0.86rem/1.3 var(--sans); color: var(--ink); background: var(--surface); border: 1px solid var(--rule);
+                     border-radius: 6px; padding: 5px 10px; cursor: pointer; display: inline-flex; gap: 8px; align-items: baseline; }
+  .chapters button span { font: 500 0.76rem/1 var(--mono); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .chapters button:hover, .chapters button:focus-visible { border-color: var(--accent); outline: none; }
+  .chapters button[aria-current="true"] { border-color: var(--accent); background: var(--accent-soft); }
+  .chapters button[aria-current="true"] span { color: var(--accent); }
+
+  .text { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 36px; align-content: start; }
+  .text > .ref, .text > h2, .text > .statement, .text > .takeaway { grid-column: 1 / -1; }
+  @media (max-width: 760px) { .text { grid-template-columns: 1fr; } }
+  .ref { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+  .statement { background: var(--surface); border: 1px solid var(--rule); border-left: 3px solid var(--accent);
+               padding: 12px 16px; border-radius: 0 8px 8px 0; display: grid; gap: 8px; }
+  .block { display: grid; gap: 5px; }
+  .block ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
+  .takeaway { border-top: 1px solid var(--rule); padding-top: 12px; font-weight: 600; display: grid; gap: 4px; }
+  .takeaway h3 { color: var(--ok); }
+
+  .ex-table td.best { color: var(--ok); font-weight: 600; }
+  .ex-table td.truth { font-weight: 700; }
+  .ex-table td, .ex-table th { text-align: center; font-variant-numeric: tabular-nums; }
+  .ex-table td:first-child, .ex-table th:first-child { text-align: left; }
+  .examples { display: grid; gap: 14px; }
+  .example { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 20px;
+             display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 36px; }
+  .example > h3 { grid-column: 1 / -1; font: 600 1.15rem/1.3 var(--serif); text-transform: none; letter-spacing: 0; color: var(--ink); }
+  @media (max-width: 760px) { .example { grid-template-columns: 1fr; } }
+  .ex-fig { grid-column: 1 / -1; width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 8px; background: #fff; }
+  .sim-fig { width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 8px; background: #fff; }
+  .findings { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+  .reading { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; display: grid; gap: 12px; }
+  .reading ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+  footer { font-size: 0.9rem; color: var(--ink-soft); }
+  footer code { font-family: var(--mono); font-size: 0.85em; }
+</style>
+
+</head>
+<body>
+<main class="page">
+  <header class="narrow">
+    <div class="eyebrow">COMPASS · prefix realization · explainer animations</div>
+    <h1>How many prefixes does an assignment need?</h1>
+    <p class="lede">COMPASS decides which ingress each group of users should enter the network through, as if it could route every group directly. In practice it can only steer traffic with BGP prefixes: a prefix is announced at some set of ingresses, and each user then takes its favourite ingress among those. This page collects what we can prove about the fewest prefixes needed to reproduce an intended assignment exactly. Each result comes with a short animation that walks through its proof.</p>
+    <nav class="toc" aria-label="Sections">
+      <a href="#setting">The setting</a><a href="#glance">At a glance</a><a href="#lemma1">Coloring</a><a href="#fig3">Building the graph</a>
+      <a href="#thm2">Rank alone fails</a><a href="#prop3">Identical rankings</a><a href="#topk">Top-K sets</a>
+      <a href="#thm4">Local competition</a><a href="#cor5">Local agreement</a><a href="#cor6">Outliers aside</a><a href="#prop7">Flattening sandwich</a><a href="#thm8">Rank plus size</a><a href="#examples">Worked examples</a><a href="#kdist">K in practice</a>
+    </nav>
+  </header>
+
+  <section class="narrow" id="setting" aria-labelledby="setting-h">
+    <h2 id="setting-h">The setting</h2>
+    <dl class="terms">
+      <dt>Ingress</dt><dd>A place where traffic enters the network, such as a site or a peering point. Written \(A, B, C, \dots\)</dd>
+      <dt>User group</dt><dd>Users that are routed together, written \(U\). Each group ranks the ingresses in a strict order of preference that does not depend on the prefix. \(B \succ_U A\) means \(U\) prefers \(B\) to \(A\).</dd>
+      <dt>Target</dt><dd>The ingress COMPASS wants a group to use. An intended pair \((U, A)\) is called an <em>assignment</em>. In the animations a <span class="chip tgt">2</span> marks a target and a <span class="chip pref">1</span> marks an ingress the group likes better.</dd>
+      <dt>Prefix</dt><dd>Each assignment is placed on one prefix. A group whose traffic is split across several targets contributes one assignment per target, and these may sit on different prefixes; this assumes the group can be steered more finely than BGP's single route per prefix, for example through DNS. A prefix is announced at the targets of all assignments placed on it, and nowhere else. Every group then goes to the announcing ingress it ranks highest.</dd>
+      <dt>Conflict</dt><dd>Assignments \((U, A)\) and \((U', B)\) conflict if \(U\) prefers \(B\) to \(A\), or \(U'\) prefers \(A\) to \(B\). On a shared prefix both \(A\) and \(B\) are announced, so one of the groups would leave its target. Two assignments with the same target never conflict.</dd>
+      <dt>Conflict graph \(G\)</dt><dd>One vertex per assignment, one edge per conflict.</dd>
+      <dt>Coloring, \(\chi(G)\)</dt><dd>Give every vertex a color so that no edge joins two vertices of the same color. One color is one prefix. \(\chi(G)\), the chromatic number, is the fewest colors that work.</dd>
+      <dt>Rank \(K\)</dt><dd>At most \(K - 1\) of the ingresses COMPASS uses are ranked above any group's target. \(K = 2\) means each group prefers at most one used ingress to its target. Ingresses nobody is assigned to never count, since they never announce. The global results use \(\bar K\) instead, the rank among all ingresses.</dd>
+      <dt>\(M\)</dt><dd>The number of different ingresses used as targets. One prefix per used ingress always works, so \(\chi(G) \le M\).</dd>
+    </dl>
+    <figure class="setting-fig">
+      <video controls preload="metadata" playsinline data-src="setting_concepts.mp4" aria-label="Animation: the setting on a four-group example"></video>
+      <ol class="chapters" data-chapters="0:Ingresses and groups|11:Rankings|20:Targets|28:A prefix is a menu|46:A conflict|62:The conflict graph|74:Colors are prefixes|88:M and K"></ol>
+    </figure>
+  </section>
+
+  <section class="narrow" id="glance" aria-labelledby="glance-h">
+    <h2 id="glance-h">Results at a glance</h2>
+    <p>"Exact" gives the precise number of prefixes. "Upper bound" means at most this many prefixes are needed; the true number can be smaller. "Lower bound" shows how many prefixes some instances need.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Assumption</th><th>Guarantee</th><th>Kind</th><th>Compared with \(M\)</th><th>Section</th></tr></thead>
+        <tbody>
+          <tr><td>The prefix model above</td><td>Fewest prefixes \(= \chi(G)\)</td><td><span class="kind exact">exact</span></td><td>\(\chi(G) \le M\) always</td><td><a href="#lemma1">Coloring</a></td></tr>
+          <tr><td>Rank \(K\) only, even \(K = 2\)</td><td>Some instances need exactly \(\lceil \log_2 n \rceil\) prefixes, for any \(n\)</td><td><span class="kind lower">lower bound</span></td><td>&mdash;</td><td><a href="#thm2">Rank alone fails</a></td></tr>
+          <tr><td>Rank \(K\), any preferences</td><td>\(\chi(G) \le L_{K-1}(M)\): about \(\log_2 M\) for \(K = 2\), \(O(K^2 \log M)\) in general</td><td><span class="kind budget">upper bound</span></td><td class="vsm beat">logarithmic in \(M\)</td><td><a href="#thm8">Rank plus size</a></td></tr>
+          <tr><td>Any instance</td><td>\(\lceil \log_2 \chi(F) \rceil \le \chi(G) \le \chi(F)\)</td><td><span class="kind range">range</span></td><td>&mdash;</td><td><a href="#prop7">Flattening sandwich</a></td></tr>
+          <tr><td>Everyone has the same ranking</td><td>\(\chi(G) = M \le K\)</td><td><span class="kind exact">exact</span></td><td class="vsm cap">equals \(M\); bounds \(M\) itself</td><td><a href="#prop3">Identical rankings</a></td></tr>
+          <tr><td>Everyone has the same top-\(\bar K\) set, in any order</td><td>\(\chi(G) \le M \le \bar K\)</td><td><span class="kind budget">upper bound</span></td><td class="vsm cap">bounds \(M\) itself</td><td><a href="#prop3">Identical rankings</a></td></tr>
+          <tr><td>Groups fall into \(\tau\) top-\(\bar K\) sets</td><td>\(\chi(G) \le M \le M_{\bar K} \le \tau \bar K\); two sets sharing \(m\) ingresses: \(2\bar K - m\)</td><td><span class="kind budget">upper bound</span></td><td class="vsm cap">bounds \(M\) itself</td><td><a href="#topk">Top-K sets</a></td></tr>
+          <tr><td>Each ingress has at most \(R\) competitors</td><td>\(\chi(G) \le \min\{M, 2R + 1\}\)</td><td><span class="kind budget">upper bound</span></td><td class="vsm beat">can be far below \(M\)</td><td><a href="#thm4">Local competition</a></td></tr>
+          <tr><td>Groups at each ingress agree on what beats it</td><td>\(\chi(G) \le \min\{M, 2K - 1\}\)</td><td><span class="kind budget">upper bound</span></td><td class="vsm beat">can be far below \(M\)</td><td><a href="#cor5">Local agreement</a></td></tr>
+          <tr><td>Everyone's ranking extends one common order whose ties have at most \(w\) ingresses</td><td>\(\chi(G) \le \min\{M, 2K + 2w - 3\}\)</td><td><span class="kind budget">upper bound</span></td><td class="vsm beat">can be far below \(M\)</td><td><a href="#cor5">Local agreement</a></td></tr>
+          <tr><td>A few ingresses \(S\) have many competitors</td><td>\(\chi(G) \le |S| + 2R_S + 1\)</td><td><span class="kind budget">upper bound</span></td><td class="vsm beat">can be far below \(M\)</td><td><a href="#cor6">Outliers aside</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>One prefix per used ingress always works, so \(M\) is an upper bound in every case. The results come in two kinds. <strong>Global agreement</strong> (identical rankings, shared top-\(\bar K\) sets) never beats \(M\): it explains why \(M\) itself is small, \(M \le K\) or \(M \le M_{\bar K}\), because the groups' preferences leave few ingresses to target. <strong>Local agreement</strong> (few competitors per ingress) is what can go below \(M\): an assignment may use hundreds of ingresses, and \(2R + 1\) or \(2K - 1\) prefixes still suffice when each ingress has few competitors.</p>
+  </section>
+
+  <!-- Lemma 1 -->
+  <section class="result" id="lemma1" aria-labelledby="lemma1-h">
+    <figure>
+      <video controls preload="metadata" playsinline data-src="lemma1_exact_realization.mp4" aria-label="Animation: exact realization is graph coloring"></video>
+      <ol class="chapters" data-chapters="0:Statement|13:Plan|21.5:Rankings and conflict graph|35:No conflict keeps routes|60:A conflict redirects|75:Prefixes are colors|86:Recap"></ol>
+    </figure>
+    <div class="text">
+      <div class="ref"><span class="eyebrow">Paper: Lemma 1</span><span class="kind exact">exact</span></div>
+      <h2 id="lemma1-h">Fewest prefixes = fewest colors</h2>
+      <div class="statement"><p>A way of placing assignments on prefixes keeps every group on its target exactly when no prefix holds two conflicting assignments. So the fewest prefixes needed is \(\chi(G)\).</p></div>
+      <div class="block"><h3>Why</h3><p>A group leaves its target only if its prefix is also announced at an ingress it prefers. That ingress is announced because another assignment on the same prefix targets it, and that is exactly a conflict edge.</p></div>
+      <div class="block"><h3>In the animation</h3><p>Four groups, three ingresses, with full rankings. A 2-prefix plan with no conflict inside a prefix is checked group by group: each one lands on its target. Then two conflicting assignments are forced onto one prefix, and one group is redirected.</p></div>
+      <div class="takeaway"><h3>Takeaway</h3><p>Counting prefixes is counting colors. Every other result on this page is a statement about \(\chi(G)\).</p></div>
+    </div>
+  </section>
+
+  <!-- Figure 3 -->
+  <section class="result" id="fig3" aria-labelledby="fig3-h">
+    <figure>
+      <video controls preload="metadata" playsinline data-src="fig3_grid_to_graph.mp4" aria-label="Animation: building the conflict graph from the ranking grid"></video>
+      <ol class="chapters" data-chapters="0:The grid|12:Cells become vertices|17:One shared prefix|30.5:Column by column|49.5:The finished graph|53.5:An odd cycle|56.3:Why 2 prefixes fail"></ol>
+    </figure>
+    <div class="text">
+      <div class="ref"><span class="eyebrow">Paper: Figure 3</span></div>
+      <h2 id="fig3-h">Building the conflict graph from a ranking grid</h2>
+      <div class="statement"><p>Ingresses \(A_1, \dots, A_5\). For every pair \(i &lt; j\) there is one group \(U_{ij}\) that ranks \(A_i\) first and is assigned its second choice \(A_j\). Its assignment is the vertex \((i, j)\).</p></div>
+      <div class="block"><h3>How to read the grid</h3><p>Rows are groups, columns are ingresses. An orange 1 and a blue 2 in the same column mean one group prefers the ingress another group targets, so their two vertices are joined. Going column by column builds every edge.</p></div>
+      <div class="block"><h3>In the animation</h3><p>Blue cells turn into vertices, one worked example shows a shared prefix failing, and each column adds its edges. The finished graph has no triangle but contains a cycle of length 5, and an odd cycle cannot be colored with 2 colors.</p></div>
+      <div class="takeaway"><h3>Takeaway</h3><p>Every group gets its second choice, yet 3 prefixes are needed.</p></div>
+    </div>
+  </section>
+
+  <!-- Theorem 2 -->
+  <section class="result" id="thm2" aria-labelledby="thm2-h">
+    <figure>
+      <video controls preload="metadata" playsinline data-src="sec4_log_bound_proof.mp4" aria-label="Animation: rank alone does not bound the number of prefixes"></video>
+      <ol class="chapters" data-chapters="0:Theorem|13.5:Plan|23:The instance|35:Announcement sets|59:One witness|75:All pairs|85:2 prefixes fail|96:3 prefixes fit|109:Letting n grow|118:Recap"></ol>
+    </figure>
+    <div class="text">
+      <div class="ref"><span class="eyebrow">Paper: Theorem 2</span><span class="kind lower">lower bound</span></div>
+      <h2 id="thm2-h">Rank alone cannot bound the number of prefixes</h2>
+      <div class="statement"><p>For every \(n \ge 2\), the grid above extended to \(n\) ingresses gives an instance where every group gets its second choice (\(K = 2\)), yet \(\chi(G_n) = \lceil \log_2 n \rceil\). So no bound on the number of prefixes can depend on \(K\) alone.</p></div>
+      <div class="block"><h3>Why</h3><p>Take any plan with \(c\) prefixes and let \(C_j\) be the set of prefixes announced at ingress \(A_j\). Group \(U_{ij}\) prefers \(A_i\), so its prefix must be announced at \(A_j\) but not at \(A_i\). Hence \(C_i \ne C_j\) for every pair: all \(n\) ingresses have different announcement patterns. With \(c\) prefixes there are only \(2^c\) on/off patterns, so \(n \le 2^c\). That many prefixes also suffice: write \(i - 1\) and \(j - 1\) in binary and put \(U_{ij}\) on the prefix numbered by the lowest bit where \(i - 1\) has a 0 and \(j - 1\) has a 1. The animation shows the lower bound.</p></div>
+      <div class="block"><h3>In the animation</h3><p>The claim, a three-step plan, one worked pair, all ten pairs for \(n = 5\), and then the count: 2 prefixes give 4 patterns for 5 ingresses, which is too few.</p></div>
+      <div class="takeaway"><h3>Takeaway</h3><p>With every group at rank 2, the prefix count still grows like \(\log_2 n\). It never grows faster than about \(\log_2 M\): see <a href="#thm8">Rank plus size</a>.</p></div>
+    </div>
+  </section>
+
+  <!-- Proposition 3 -->
+  <section class="result" id="prop3" aria-labelledby="prop3-h">
+    <figure>
+      <video controls preload="metadata" playsinline data-src="prop3_identical_rankings.mp4" aria-label="Animation: identical rankings and a shared top-K set"></video>
+      <ol class="chapters" data-chapters="0:Statement|13:Plan|28:M ≤ K|37:The clique|54:One prefix per ingress|64:Part 2: same top-K set|71:Reordering two groups|79:Targets stay in the set|86:Upper bound survives|92:Why equality fails|106:Side by side|111:Recap"></ol>
+    </figure>
+    <div class="text">
+      <div class="ref"><span class="eyebrow">Paper: Proposition 3</span><span class="kind exact">exact</span><span class="kind budget">upper bound</span></div>
+      <h2 id="prop3-h">Identical rankings, then a shared top-\(\bar K\) set</h2>
+      <div class="statement">
+        <p>If every group ranks the ingresses in the same order and every target has rank at most \(K\), then \(\chi(G) = M \le K\).</p>
+        <p>If the groups only share the same set of top \(\bar K\) ingresses among all ingresses, in any order, then \(\chi(G) \le M \le \bar K\), and fewer prefixes may suffice.</p>
+      </div>
+      <div class="block"><h3>Why</h3>
+        <ul>
+          <li>Every target lies in the shared top \(K\), so at most \(K\) ingresses are used: \(M \le K\).</li>
+          <li>One prefix per used ingress always works: \(\chi(G) \le M\).</li>
+          <li>With one common order, the group at the lower-ranked of two used ingresses always prefers the higher one. Every pair conflicts, so \(M\) prefixes are needed.</li>
+          <li>With different orders, some pairs stop conflicting and that last step fails.</li>
+        </ul>
+      </div>
+      <div class="block"><h3>In the animation</h3><p>Part 1 proves the identical case on six groups with \(K = 3\). Part 2 reorders two groups, shows that the top-3 set stays the same while the order changes, and checks each pair of ingresses to see which conflicts disappear. Here 2 prefixes suffice instead of 3.</p></div>
+      <div class="takeaway"><h3>Takeaway</h3><p>A shared top-\(\bar K\) set keeps the upper bound; only a shared order makes it exact.</p></div>
+    </div>
+  </section>
+
+  <!-- Top-K diversity -->
+  <section class="result" id="topk" aria-labelledby="topk-h">
+    <figure>
+      <video controls preload="metadata" playsinline data-src="prop_topk_diversity.mp4" aria-label="Animation: counting the union of several top-K sets"></video>
+      <ol class="chapters" data-chapters="0:Statement|13:Plan|21.5:Split by top-K̄ set|36:Targets inside the bands|50:Upper bound|57:Conflicts across groups|60.5:Optimal coloring|64:Varying the overlap|80:Recap"></ol>
+    </figure>
+    <div class="text">
+      <div class="ref"><span class="eyebrow">Paper: §5, global agreement</span><span class="kind budget">upper bound</span></div>
+      <h2 id="topk-h">Several top-\(\bar K\) sets: count their union</h2>
+      <div class="statement"><p>Rank here counts all ingresses (\(\bar K\)). Sort the groups by their set of top \(\bar K\) ingresses, giving \(\tau\) sets \(T_1, \dots, T_\tau\), and let \(M_{\bar K} = |T_1 \cup \dots \cup T_\tau|\). Then \(\chi(G) \le M \le M_{\bar K} \le \tau \bar K\). For two sets that share \(m\) ingresses, \(\chi(G) \le 2\bar K - m\).</p></div>
+      <div class="block"><h3>Why</h3><p>This is the shared-set argument applied to each block of groups. Each target is in its own group's top-\(\bar K\) set, so every used ingress is in the union, and one prefix per used ingress works. Two sets of size \(K\) sharing \(m\) ingresses cover \(2\bar K - m\) ingresses.</p></div>
+      <div class="block"><h3>In the animation</h3><p>Every group has its own order; only the top-3 sets are shared within a block. The two blocks still conflict through the ingress they share, and the best coloring uses 2 prefixes against an upper bound of 5. Then the second set slides over the first and the grid updates at each overlap \(m = 0, 1, 2, 3\).</p></div>
+      <div class="takeaway"><h3>Takeaway</h3><p>The upper bound counts distinct top-\(\bar K\) ingresses; the true need can be much smaller.</p></div>
+    </div>
+  </section>
+
+  <!-- Theorem 4 -->
+  <section class="result" id="thm4" aria-labelledby="thm4-h">
+    <figure>
+      <video controls preload="metadata" playsinline data-src="thm4_local_diversity_proof.mp4" aria-label="Animation: few competitors per ingress gives few prefixes"></video>
+      <ol class="chapters" data-chapters="0:Theorem|14:From groups to ingresses|48:Plan|58.5:Threat graph|86:Counting conflicts|102:Peel and rebuild|146:Only an upper bound|152:From rank K to R|165:Recap"></ol>
+    </figure>
+    <div class="text">
+      <div class="ref"><span class="eyebrow">Paper: Theorem 4</span><span class="kind budget">upper bound</span></div>
+      <h2 id="thm4-h">Few competitors per ingress, few prefixes</h2>
+      <div class="statement"><p>For a used ingress \(A\), let \(H(A)\) be the used ingresses that at least one group assigned to \(A\) prefers to \(A\). If \(|H(A)| \le R\) for every used ingress, then \(\chi(G) \le \min\{M, 2R + 1\}\).</p></div>
+      <div class="block"><h3>What \(H(A)\) means</h3><p>It is the list of ingresses that must not announce \(A\)'s prefix, or some of \(A\)'s groups would leave. \(R\) bounds how many competitors any ingress has.</p></div>
+      <div class="block"><h3>Why</h3>
+        <ul>
+          <li>Merge all assignments with the same target into one vertex per ingress. Coloring this ingress graph \(F\) gives a valid plan, so \(\chi(G) \le \chi(F)\).</li>
+          <li>Draw an arrow \(A \to B\) when \(B \in H(A)\). Every ingress has at most \(R\) outgoing arrows.</li>
+          <li>Charge each conflict to the ingress whose groups would defect. Any set \(X\) of ingresses then holds at most \(R|X|\) conflicts, so some ingress in \(X\) has at most \(2R\).</li>
+          <li>Remove such an ingress, repeat, then add the ingresses back in reverse. Each returning ingress sees at most \(2R\) colors already used by its neighbours, so one of \(2R + 1\) is free.</li>
+        </ul>
+      </div>
+      <div class="block"><h3>In the animation</h3><p>It opens by merging the group-level graph into the ingress graph, then runs the three steps on a 7-ingress example. Near the end it notes that \(F\) can need more colors than \(G\), and shows how agreement among an ingress's groups turns the rank \(K\) into a bound on \(R\).</p></div>
+      <div class="takeaway"><h3>Takeaway</h3><p>The upper bound grows with local competition \(R\), not with the number of ingresses \(M\).</p></div>
+    </div>
+  </section>
+
+  <!-- Corollary 5 -->
+  <section class="result" id="cor5" aria-labelledby="cor5-h">
+    <figure>
+      <video controls preload="metadata" playsinline data-src="cor5_local_agreement.mp4" aria-label="Animation: local agreement gives 2K minus 1"></video>
+      <ol class="chapters" data-chapters="0:Statement|13:Plan|21.5:Agreement bounds H(A)|44:No global ranking needed|52:Apply the bound|66:When agreement fails|86:Recap"></ol>
+    </figure>
+    <div class="text">
+      <div class="ref"><span class="eyebrow">Paper: Corollary 5</span><span class="kind budget">upper bound</span></div>
+      <h2 id="cor5-h">Agreement at each ingress gives \(2K - 1\)</h2>
+      <div class="statement">
+        <p>If every target has rank at most \(K\), and the groups assigned to each ingress agree on which ingresses rank above it (order aside), then \(\chi(G) \le \min\{M, 2K - 1\}\).</p>
+        <p>If, at each ingress, the groups add at most \(\Delta\) ingresses beyond one reference group's set, then \(\chi(G) \le \min\{M, 2K + 2\Delta - 1\}\).</p>
+      </div>
+      <div class="block"><h3>Why</h3><p>With agreement, \(H(A)\) is one shared set of at most \(K - 1\) ingresses, so the previous result applies with \(R = K - 1\). Each extra ingress a group adds grows \(H(A)\) by one, giving \(R \le K - 1 + \Delta\). A related case: if every ranking extends one common order whose ties have at most \(w\) ingresses, the ingresses above \(A\) number at most \(K - 1\) and ties add at most \(w - 1\), so \(\chi(G) \le \min\{M, 2K + 2w - 3\}\). With no ties (\(w = 1\)) this is \(2K - 1\) again.</p></div>
+      <div class="block"><h3>In the animation</h3><p>Two groups at the same ingress order the same set differently. Across ingresses the preferences go round in a cycle, so no global ranking exists. Finally one group breaks agreement and the bound moves to \(2K + 2\Delta - 1\).</p></div>
+      <div class="takeaway"><h3>Takeaway</h3><p>Agreement within each ingress is what makes a bound in \(K\) possible. The grid of the "rank alone fails" section has none: each group at \(A_j\) prefers a different ingress.</p></div>
+    </div>
+  </section>
+
+  <!-- Corollary 6 -->
+  <section class="result" id="cor6" aria-labelledby="cor6-h">
+    <figure>
+      <video controls preload="metadata" playsinline data-src="cor6_outlier_ingresses.mp4" aria-label="Animation: setting outlier ingresses aside"></video>
+      <ol class="chapters" data-chapters="0:Statement|14:Plan|23.5:A ring and a catch-all|36:One outlier inflates R|42:Set it aside|53:Theorem 4 on the rest|58:Coloring the ring|70:Compare|75:Popular vs scattered|81:At the user level|88:Recap"></ol>
+    </figure>
+    <div class="text">
+      <div class="ref"><span class="eyebrow">Paper: Corollary 6</span><span class="kind budget">upper bound</span></div>
+      <h2 id="cor6-h">Set the outliers aside</h2>
+      <div class="statement">
+        <p>For any set \(S\) of used ingresses, let \(R_S = \max_{A \notin S} |H(A) \setminus S|\): the longest competitor list among the other ingresses, ignoring \(S\). Then \(\chi(G) \le |S| + 2R_S + 1\).</p>
+        <p>Any \(S\) works, so \(\chi(G) \le \min\{M,\ \min_S (|S| + 2R_S + 1)\}\). Taking \(S\) empty gives back the local-competition bound.</p>
+      </div>
+      <div class="block"><h3>Why</h3>
+        <ul>
+          <li>\(R\) is a maximum over all ingresses, so one ingress whose users are scattered, such as a catch-all site, can make \(2R + 1\) useless even when every other ingress has few competitors.</li>
+          <li>Give each ingress in \(S\) a prefix that no other ingress announces. No conflict involving \(S\) can then sit inside one prefix.</li>
+          <li>Among the remaining ingresses every competitor list has at most \(R_S\) entries, so the peel-and-rebuild argument colors them with \(2R_S + 1\) more prefixes.</li>
+        </ul>
+      </div>
+      <div class="block"><h3>In the animation</h3><p>Seven ingresses form a ring where each one's users prefer the next. A catch-all ingress \(X\) has seven user groups, each preferring a different ring ingress, so \(R = 7\) and the local-competition bound gives only 8. With \(X\) on its own prefix, \(R_S = 1\) and the ring needs 3, for a total of 4. That is exact for one prefix per ingress, because \(X\) conflicts with every ring ingress.</p>
+        <p>Setting aside a popular ingress, one that appears in many competitor lists, saves at most one prefix. The gain comes from ingresses whose own users disagree.</p></div>
+      <div class="takeaway"><h3>Takeaway</h3><p>A few ingresses with scattered users cost one prefix each, not a blown-up bound for everyone.</p></div>
+    </div>
+  </section>
+
+  <!-- Proposition 7 -->
+  <section class="result" id="prop7" aria-labelledby="prop7-h">
+    <figure>
+      <video controls preload="metadata" playsinline data-src="sec4_log_bound_proof.mp4" aria-label="Animation: announcement sets, the argument behind the flattening sandwich"></video>
+      <ol class="chapters" data-chapters="35:Announcement sets|59:One witness|75:All pairs|85:Counting patterns"></ol>
+    </figure>
+    <div class="text">
+      <div class="ref"><span class="eyebrow">Paper: Proposition 7</span><span class="kind range">range</span></div>
+      <h2 id="prop7-h">One prefix per ingress is at most exponentially worse</h2>
+      <div class="statement"><p>For every instance, \(\lceil \log_2 \chi(F) \rceil \le \chi(G) \le \chi(F)\), where \(\chi(F)\) is the fewest prefixes when all groups at an ingress share one prefix.</p></div>
+      <div class="block"><h3>Why</h3><p>Take the best plan and give each ingress the set of prefixes it announces. If two ingresses conflict, some group at one of them prefers the other. That group's prefix is announced at its own ingress but cannot be announced at the one it prefers. So conflicting ingresses announce different sets, which is a coloring of the ingress graph with at most \(2^{\chi(G)}\) colors.</p></div>
+      <div class="block"><h3>What it means</h3><p>Splitting an ingress's groups across prefixes can save a lot, but never more than an exponential: the plan with one prefix per ingress needs at most \(2^{\chi(G)}\) prefixes. The animation is the rank-alone video: its announcement-set argument is this proof on one instance.</p></div>
+      <div class="takeaway"><h3>Takeaway</h3><p>Both ends can be reached: identical rankings give \(\chi(G) = \chi(F)\), and the shift instance gives \(\chi(G) \approx \log_2 \chi(F)\).</p></div>
+    </div>
+  </section>
+
+  <!-- Theorem 8 -->
+  <section class="result" id="thm8" aria-labelledby="thm8-h">
+    <figure>
+      <video controls preload="metadata" playsinline data-src="thm8_rank_log_bound.mp4" aria-label="Animation: rank gives a logarithmic bound"></video>
+      <ol class="chapters" data-chapters="0:Statement|14:Plan|23.5:Codes|40:Pick a prefix|58:Check a prefix|72:Count|80:All bounds side by side|92:Recap"></ol>
+    </figure>
+    <div class="text">
+      <div class="ref"><span class="eyebrow">Paper: Theorem 8</span><span class="kind budget">upper bound</span></div>
+      <h2 id="thm8-h">Rank plus the number of ingresses: a logarithmic bound</h2>
+      <div class="statement">
+        <p>If every target has rank at most \(K\), then \(\chi(G) \le L_{K-1}(M)\): the shortest length of \(M\) codes, sets of prefixes, in which no code is covered by \(K - 1\) others.</p>
+        <p>For \(K = 2\) this is the least \(L\) with \(\binom{L}{\lfloor L/2 \rfloor} \ge M\), about \(\log_2 M\). In general it is \(O(K^2 \log M)\).</p>
+      </div>
+      <div class="block"><h3>Why</h3>
+        <ul>
+          <li>Give each used ingress a code: the set of prefixes it may announce.</li>
+          <li>A group ranks at most \(K - 1\) ingresses above its target, and no code is covered by \(K - 1\) others. So some prefix in its target's code is announced by none of the ingresses it prefers: put the group there.</li>
+          <li>Every group on a prefix then sees only its target and ingresses it likes less, so nobody moves.</li>
+        </ul>
+      </div>
+      <div class="block"><h3>In the animation</h3><p>Six ingresses where every pair conflicts, so one prefix per ingress needs 6. Codes of 2 out of 4 prefixes suffice, giving 4. The truth is 3, matching the flattening lower bound \(\lceil \log_2 6 \rceil\).</p>
+        <p>Unlike the agreement bounds, this one lets the groups at one ingress use different prefixes.</p></div>
+      <div class="takeaway"><h3>Takeaway</h3><p>Rank alone cannot bound the prefix count, but rank and size together cap it at about \(\log_2 M\) for second choices, and some instances need \(\lceil \log_2 n \rceil\). So logarithmic growth is the right answer.</p></div>
+    </div>
+  </section>
+
+  <section class="narrow" id="examples" aria-labelledby="examples-h">
+    <h2 id="examples-h">Worked examples: how to read the bounds</h2>
+    <p>Five small scenarios, each built from explicit rankings. For each one the table gives the parameters, every upper bound, and the true answer. \(\chi(F)\) is the fewest prefixes when all groups at an ingress share one prefix; \(\chi(G)\) is the true minimum. Green marks the best upper bound in each row; the last column is the lower bound from the flattening sandwich. All values were computed exactly, not estimated.</p>
+    <div class="table-wrap">
+      <table class="ex-table">
+        <thead><tr><th>Scenario</th><th>Groups</th><th>\(K\)</th><th>\(M\)</th><th>\(M_{\bar K}\)</th><th>\(R\)</th><th>\(\min\{M, 2R+1\}\)</th><th>Outliers aside</th><th>Rank bound \(L_{K-1}(M)\)</th><th>\(\chi(F)\)</th><th>\(\chi(G)\)</th><th>Lower \(\lceil \log_2 \chi(F) \rceil\)</th></tr></thead>
+        <tbody>
+          <tr><td>1. Everyone agrees</td><td>5</td><td>3</td><td class="best">3</td><td>3</td><td>2</td><td class="best">3</td><td>3</td><td class="best">3</td><td>3</td><td class="truth">3</td><td>2</td></tr>
+          <tr><td>2. Two overlapping regions</td><td>6</td><td>3</td><td>5</td><td>5</td><td>4</td><td>5</td><td class="best">4, \(S=\{C\}\)</td><td>5</td><td>3</td><td class="truth">3</td><td>2</td></tr>
+          <tr><td>3. A line of 20 sites</td><td>20</td><td>2</td><td>20</td><td>20</td><td>1</td><td class="best">3</td><td>3</td><td>6</td><td>2</td><td class="truth">2</td><td>1</td></tr>
+          <tr><td>4. The line plus a catch-all site</td><td>40</td><td>2</td><td>21</td><td>21</td><td>20</td><td>21</td><td class="best">4, \(S=\{X\}\)</td><td>7</td><td>3</td><td class="truth">2</td><td>2</td></tr>
+          <tr><td>5. Rank 2, no agreement</td><td>28</td><td>2</td><td>7</td><td>8</td><td>6</td><td>7</td><td>7</td><td class="best">5</td><td>7</td><td class="truth">3</td><td>3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="examples">
+      <div class="example">
+        <h3>1. Everyone agrees</h3>
+        <img class="ex-fig" src="images/example_agree.png" alt="Rankings grid where every group ranks A, B, C, D in the same order; conflict graph where all groups at different sites conflict, colored with 3 colors; bar chart where every bound equals the true value 3." loading="lazy">
+        <p><strong>The situation.</strong> Four sites; every user group ranks them \(A \succ B \succ C \succ D\). Capacity pushes some groups off \(A\): two go to \(A\), two to \(B\), one to \(C\).</p>
+        <p><strong>How to read it.</strong> With one shared order, the group at the lower-ranked of any two used sites prefers the higher one, so every pair of sites conflicts. Nothing can beat \(M\), and \(M\) is at most \(K\): here \(\chi(G) = M = K = 3\), exactly as the identical-rankings result says.</p>
+      </div>
+      <div class="example">
+        <h3>2. Two overlapping regions</h3>
+        <img class="ex-fig" src="images/example_regions.png" alt="Rankings grid for two regions sharing site C; conflict graph made of two separate triangles, colored with 3 colors; bar chart where M, M-bar-K and the local bound give 5, setting C aside gives 4, and the truth is 3." loading="lazy">
+        <p><strong>The situation.</strong> Region 1 ranks \(A \succ B \succ C\), region 2 ranks \(E \succ D \succ C\). Each region sends one group to each of its top three sites, so both regions use \(C\).</p>
+        <p><strong>How to read it.</strong> The global view counts the union of top-3 sets: \(2K - m = 6 - 1 = 5\). The local view sees that \(C\) is contested from both sides, \(|H(C)| = 4\), which keeps \(2R + 1\) at 9. Setting \(C\) aside brings the bound to 4. The true need is 3, because conflicts stay inside each region.</p>
+      </div>
+      <div class="example">
+        <h3>3. A line of 20 sites</h3>
+        <img class="ex-fig" src="images/example_line.png" alt="Rankings grid with a diagonal band, each site's users preferring the next site; conflict graph that is a path of 20 vertices colored with 2 colors; bar chart where M and M_K are 20, the local bound is 3, and the truth is 2." loading="lazy">
+        <p><strong>The situation.</strong> Twenty sites along a line. The users at each site rank the next site east first, then their own site, so every target has rank at most 2.</p>
+        <p><strong>How to read it.</strong> Global bounds see 20 used sites and stop there: \(M = M_{\bar K} = 20\). Locally each site has a single competitor, \(R = 1\), so 3 prefixes suffice whatever the length. The true answer is 2, since alternate sites can share a prefix. Only the local bound notices that the network is long but simple.</p>
+      </div>
+      <div class="example">
+        <h3>4. The line plus a catch-all site</h3>
+        <img class="ex-fig" src="images/example_catchall.png" alt="Rankings grid for the 20-site line plus a site X whose 20 groups each prefer a different site; conflict graph of a path with one extra vertex hanging off each path vertex, colored with 2 colors; bar chart where M, M-bar-K and the local bound are 21, setting X aside gives 4, one prefix per site needs 3, and the truth is 2." loading="lazy">
+        <p><strong>The situation.</strong> The same 20 sites, plus a site \(X\) that absorbs overflow from everywhere: its 20 user groups each prefer a different site of the line.</p>
+        <p><strong>How to read it.</strong> One site with scattered users pushes \(R\) to 20, and the local bound collapses to \(M = 21\). Setting \(X\) aside restores it: \(1 + 2 \cdot 1 + 1 = 4\). With one prefix per site 3 are needed, and if \(X\)'s groups may use different prefixes, 2 suffice.</p>
+      </div>
+      <div class="example">
+        <h3>5. Rank 2, no agreement</h3>
+        <img class="ex-fig" src="images/example_shift.png" alt="Rankings grid of the shift instance with 8 sites; dense conflict graph of 28 groups colored with 3 colors; bar chart where every upper bound is 7 or 8 while the truth and the lower bound are both 3." loading="lazy">
+        <p><strong>The situation.</strong> The shift instance with 8 sites: for every pair \(i &lt; j\), one group ranks \(A_i\) first and is assigned \(A_j\). Every group gets its second choice.</p>
+        <p><strong>How to read it.</strong> The groups at each site all prefer different sites, so \(R = 6\) and every agreement-based bound stays at 7. Even one prefix per site needs all 7, because every pair of sites conflicts. The rank bound uses only \(K = 2\) and \(M = 7\) and gives 5, the only upper bound below 7. The true answer is 3, exactly the lower bound \(\lceil \log_2 \chi(F) \rceil = \lceil \log_2 7 \rceil\): only splitting a site's groups across prefixes gets there.</p>
+      </div>
+    </div>
+    <p class="note">Rule of thumb: global agreement explains why few sites are used, local agreement explains why many sites can still share prefixes, and a few outlier sites are best given their own prefix. When none of these hold, as in example 5, the rank bound still caps the count at about \(\log_2 M\), and \(\lceil \log_2 \chi(F) \rceil\) says how low it can go.</p>
+  </section>
+
+  <section class="narrow" id="kdist" aria-labelledby="kdist-h">
+    <h2 id="kdist-h">What does \(K\) look like in practice?</h2>
+    <p>The bounds only care about ingresses that are actually used. So the useful measure for a target is how many <em>active</em> ingresses its group ranks above it, the quantity the COMPASS submission reports (median 3, mean 4.3, 90th percentile 5 on the measured deployment). The figure models how that distribution arises.</p>
+    <dl class="terms">
+      <dt>Deployment</dt><dd>The submission's 13 facilities (Amsterdam, Bangalore, Frankfurt, Johannesburg, London, Miami, Mumbai, New York, Paris, S&atilde;o Paulo, Singapore, Sydney, Tokyo) with 258 peer&ndash;facility pairs, about 20 peers per facility.</dd>
+      <dt>Reachability</dt><dd>Each user group reaches only some peers, its upstreams and peers: about a quarter of them (\(\rho = 0.28\)). An unreachable peer can neither carry the group nor pull it away.</dd>
+      <dt>COMPASS target</dt><dd>The latency-minimizing assignment over the reachable pairs, under uneven per-link capacities (a linear program; groups may be split).</dd>
+      <dt>BGP preference</dt><dd>Facilities are ordered by latency with a little noise. Peers inside one facility have the same latency, so BGP orders them by policy instead. A small share of groups (4%) are transit-routed: their provider's routing ignores where the facilities are, so their facility order is unrelated to latency.</dd>
+      <dt>Count</dt><dd>For each piece of the target, the number of active pairs the group can reach and ranks above it, counted per piece as in the submission.</dd>
+    </dl>
+    <img class="sim-fig" src="images/rank_above.png" alt="Bar chart of the share of target components by the number of active ingresses ranked above the target: 17 percent have none, 16 percent one, 15 percent two, 15 percent three, then a declining tail, with 4 percent at 15 or more. Median 3, mean 4.5, 90th percentile 7, maximum 75." loading="lazy">
+    <div class="reading">
+      <h3>What the figure shows</h3>
+      <ul class="findings">
+        <li><strong>A typical target has about 3 active ingresses ahead of it.</strong> Most of them are other peers at the same facility: BGP orders those by policy, so COMPASS's chosen peer usually sits in the middle of the peers the group can reach there. The model gives median 3, mean 4.5 and 90th percentile 7, against the submission's 3, 4.3 and 5.</li>
+        <li><strong>A small tail sets the maximum.</strong> About 4% of target pieces have 15 or more active ingresses ahead of them, almost all from transit-routed groups. The maximum is 75, so \(K\) taken as a maximum would be 76.</li>
+        <li><strong>What it means for the bounds.</strong> The results above only need the active ingresses ranked above each target, so \(K\) should be read as 1 plus that count, not a rank among all ingresses. Applied with the maximum, the bounds are pessimistic. A group placed alone on its own prefix can never conflict, so \(\chi(G) \le s + \chi(G')\), where the \(s\) tail pieces are set aside and \(G'\) is the rest; the bounds then apply with the bulk's value, for example \(K = 8\) for 90% of pieces.</li>
+      </ul>
+      <h3>What the model leaves out</h3>
+      <p>Real AS-level topology, correlation between nearby groups' routes, and the exact peer counts per facility. The model reproduces the submission's median and mean closely but spreads its middle a little wider (90th percentile 7 against 5), so the body of the distribution is the robust part; the exact tail is not.</p>
+    </div>
+  </section>
+
+  <section class="reading" aria-labelledby="reading-h">
+    <h2 id="reading-h">How to read these</h2>
+    <ul>
+      <li>The small examples were built to illustrate each argument; they are not measurements. Their conflicts and chromatic numbers were checked by brute force.</li>
+      <li>Every coloring drawn on a graph is the best possible for that graph. Simpler valid plans, such as one prefix per ingress, appear only as text.</li>
+      <li>Apart from the coloring result and the identical-rankings case, the guarantees are upper bounds. The rank bound colors \(G\) directly. The local-competition, local-agreement and outlier bounds apply to plans that put all of an ingress's groups on one prefix, which can use more prefixes than \(\chi(G)\).</li>
+      <li>Everything assumes the prefix model in "The setting": strict rankings that do not depend on the prefix, each prefix announced exactly where its assignments need it, and groups split across several targets can be steered onto different prefixes.</li>
+    </ul>
+  </section>
+</main>
+
+<script>
+  // Videos are published next to the page under videos/.
+  const VIDEO_DIR = "videos/";
+
+  function fmt(s) {
+    const m = Math.floor(s / 60), r = Math.floor(s % 60);
+    return m + ":" + String(r).padStart(2, "0");
+  }
+
+  document.querySelectorAll("figure").forEach((fig) => {
+    if (!fig.querySelector("video")) return;
+    const video = fig.querySelector("video");
+    const list = fig.querySelector(".chapters");
+    video.src = VIDEO_DIR + video.dataset.src;
+    const chapters = list.dataset.chapters.split("|").map((c) => {
+      const i = c.indexOf(":");
+      return { t: parseFloat(c.slice(0, i)), label: c.slice(i + 1) };
+    });
+    const buttons = chapters.map((ch) => {
+      const li = document.createElement("li");
+      const b = document.createElement("button");
+      b.type = "button";
+      const time = document.createElement("span");
+      time.textContent = fmt(ch.t);
+      b.append(time, document.createTextNode(ch.label));
+      b.addEventListener("click", () => {
+        video.currentTime = ch.t;
+        const p = video.play();
+        if (p && p.catch) p.catch(() => {});
+      });
+      li.append(b);
+      list.append(li);
+      return b;
+    });
+    video.addEventListener("timeupdate", () => {
+      let k = 0;
+      chapters.forEach((ch, i) => { if (video.currentTime + 0.05 >= ch.t) k = i; });
+      buttons.forEach((b, i) => b.setAttribute("aria-current", i === k ? "true" : "false"));
+    });
+  });
+</script>
+
+</body>
+</html>
